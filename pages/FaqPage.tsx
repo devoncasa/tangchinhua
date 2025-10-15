@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAppContext } from '../contexts/AppContext';
 import SEOManager from '../components/SEOManager';
@@ -46,14 +46,13 @@ const FaqAccordionItem: React.FC<FaqAccordionItemProps> = ({ faq, isOpen, onTogg
 const FaqPage = () => {
     const { t } = useLanguage();
     const { faqData } = useAppContext();
-    const [openFaqId, setOpenFaqId] = useState<string | null>(null);
-
-    // Safely set the first item as open once data is available.
-    useEffect(() => {
-        if (faqData && faqData.length > 0 && openFaqId === null) {
-            setOpenFaqId(faqData[0].id);
+    const [openFaqId, setOpenFaqId] = useState<string | null>(() => {
+        // Lazily initialize state to open the first FAQ item by default
+        if (faqData && faqData.length > 0) {
+            return faqData[0].id;
         }
-    }, [faqData, openFaqId]);
+        return null;
+    });
 
     const handleToggle = (id: string) => {
         setOpenFaqId(openFaqId === id ? null : id);

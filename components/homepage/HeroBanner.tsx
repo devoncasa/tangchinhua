@@ -39,7 +39,7 @@ const HeroBanner = () => {
         >
           <div className="max-w-5xl">
             {/* 3. Hero Text (Dark Red) */}
-            <h1 data-aos="fade-down" data-aos-delay="100" className="text-4xl md:text-6xl lg:text-7xl font-serif-en font-bold text-brand-red leading-normal">
+            <h1 data-aos="fade-down" data-aos-delay="100" className="text-3xl md:text-4xl lg:text-5xl font-serif-en font-bold text-brand-red leading-normal">
                 {getMultilingual(heroContent.slogan)}
             </h1>
             <p data-aos="fade-up" data-aos-delay="200" className="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-brand-red font-medium">
