@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useAppContext } from '../contexts/AppContext';
 import SEOManager from '../components/SEOManager';
 import SectionBackground from '../components/SectionBackground';
-import { FaqItem } from '../types';
+import { type FaqItem } from '../types';
 import Breadcrumbs, { type BreadcrumbLink } from '../components/Breadcrumbs';
 
 interface FaqAccordionItemProps {
