@@ -68,6 +68,7 @@ export interface ChecklistTask {
     name: MultilingualString;
     description: MultilingualString;
     imageUrl: string;
+    productId?: string;
 }
 
 export interface ChecklistItem {

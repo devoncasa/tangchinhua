@@ -29,7 +29,7 @@ export const products: Product[] = [
     sizes: ['S', 'M', 'L'],
     category: { en: 'Bride\'s Attire', th: 'ชุดสำหรับเจ้าสาว', zh: '新娘礼服' },
     reviews: [
-      { id: 'r001', author: 'The Chen Family', rating: 5, date: '2024-07-15', comment: { en: 'Absolutely breathtaking. The craftsmanship is beyond words. It made my daughter\'s wedding day truly royal. A true heirloom piece.', th: 'งดงามจนแทบลืมหายใจ ฝีมือการปักเหนือคำบรรยาย ทำให้วันแต่งงานของลูกสาวดูสูงค่าดั่งราชวงศ์ เป็นมรดกที่แท้จริง', zh: '简直令人叹为观止。工艺水平无法用言语形容。它让我女儿的婚礼真正具有皇家气派。一件真正的传家宝。' } },
+      { id: 'r001', author: 'The Chen Family', rating: 5, date: '2024-07-15', comment: { en: 'Absolutely breathtaking. The craftsmanship is beyond words. It made my daughter\'s wedding day truly royal. A true heirloom piece.', th: 'งดงามจนแทบลืมหายใจ ฝีมือการปักเหนือคำบรรยาย ทำให้วันแต่งงานของลูกสาวดูสูงค่าดั่งราชวงศ์ เป็นมรดกที่แท้จริง', zh: '简直令人叹为观止。工艺水平无法用言语形容。它让我女儿的婚礼真正具有皇家气派。一件真正的传家之宝。' } },
       { id: 'r002', author: 'Li Wei', rating: 5, date: '2024-06-20', comment: { en: 'The most beautiful dress I have ever worn. I felt like an empress. The team at Tang Chin Hua were so helpful.', th: 'เป็นชุดที่สวยที่สุดที่เคยใส่มา รู้สึกเหมือนเป็นจักรพรรดินีเลย ทีมงานที่ตั้งจิ้นฮั้วให้ความช่วยเหลือดีมาก', zh: '这是我穿过的最美的裙子。我感觉自己像个皇后。Tang Chin Hua的团队非常乐于助人。' } },
     ]
   },
@@ -817,13 +817,13 @@ export const checklistData: ChecklistItem[] = [
         id: 'dowry',
         category: { en: 'For the Dowry & Matrimonial Home', th: 'สำหรับสินสอดและของใช้ในเรือนหอ', zh: '嫁妆与新房用品' },
         tasks: [
-            { id: 'd1', name: { en: 'Red or Pink Bedding Set', th: 'ชุดเครื่องนอนสีแดงหรือสีชมพู', zh: '红色或粉色床上用品' }, description: { en: 'Often embroidered with dragon & phoenix for marital bliss and happiness.', th: 'มักปักลายมังกรและหงส์เพื่อความเป็นสิริมงคลและความสุขในชีวิตสมรส', zh: '通常绣有龙凤图案，象征婚姻美满幸福。' }, imageUrl: pImgs[0] },
+            { id: 'd1', name: { en: 'Red or Pink Bedding Set', th: 'ชุดเครื่องนอนสีแดงหรือสีชมพู', zh: '红色或粉色床上用品' }, description: { en: 'Often embroidered with dragon & phoenix for marital bliss and happiness.', th: 'มักปักลายมังกรและหงส์เพื่อความเป็นสิริมงคลและความสุขในชีวิตสมรส', zh: '通常绣有龙凤图案，象征婚姻美满幸福。' }, imageUrl: pImgs[0], productId: 'bed-001' },
             { id: 'd2', name: { en: 'Pair of Pillows', th: 'หมอน', zh: '一对枕头' }, description: { en: 'Typically a pair, symbolizing a smooth and harmonious life together.', th: 'โดยทั่วไปจะเป็นคู่ เพื่อเป็นสัญลักษณ์ของชีวิตคู่ที่ราบรื่นและปรองดอง', zh: '通常为一对，象征夫妻生活和谐美满。' }, imageUrl: pImgs[1] },
             { id: 'd3', name: { en: 'Sewing Kit', th: 'ชุดอุปกรณ์เย็บปักถักร้อย', zh: '针线盒' }, description: { en: 'Represents the bride\'s readiness in her role as a homemaker.', th: 'แสดงถึงความพร้อมของเจ้าสาวในบทบาทแม่บ้านแม่เรือน', zh: '代表新娘具备持家能力。' }, imageUrl: pImgs[2] },
             { id: 'd4', name: { en: 'Pair of Lamps', th: 'ตะเกียงคู่', zh: '一对台灯' }, description: { en: 'Symbolizes fertility and a bright future for the couple.', th: 'เป็นสัญลักษณ์ของการมีทายาทและอนาคตที่สดใสของคู่บ่าวสาว', zh: '象征子孙满堂和夫妻光明的前程。' }, imageUrl: pImgs[0] },
             { id: 'd5', name: { en: 'Ruler', th: 'ไม้บรรทัด', zh: '尺子' }, description: { en: 'Signifies a life of happiness and abundance.', th: 'หมายถึงชีวิตที่มีความสุขและความอุดมสมบูรณ์', zh: '寓意幸福美满、百子千孙。' }, imageUrl: pImgs[1] },
             { id: 'd6', name: { en: 'Red Wooden Clogs', th: 'เกี๊ยะไม้สีแดง', zh: '红色木屐' }, description: { en: 'Represents a smooth and prosperous path in married life.', th: 'สื่อถึงเส้นทางชีวิตคู่ที่ราบรื่นและเจริญรุ่งเรือง', zh: '象征夫妻同心同步、步步高升。' }, imageUrl: pImgs[2] },
-            { id: 'd7', name: { en: 'Gold Dowry Jewelry', th: 'เครื่องประดับทองสินสอด', zh: '嫁妆金饰' }, description: { en: 'Gold from the bride\'s family, symbolizing value and status.', th: 'ทองจากครอบครัวเจ้าสาว เป็นสัญลักษณ์แสดงถึงคุณค่าและฐานะ', zh: '女方家庭的黄金，象征价值和地位。' }, imageUrl: pImgs[0] },
+            { id: 'd7', name: { en: 'Gold Dowry Jewelry', th: 'เครื่องประดับทองสินสอด', zh: '嫁妆金饰' }, description: { en: 'Gold from the bride\'s family, symbolizing value and status.', th: 'ทองจากครอบครัวเจ้าสาว เป็นสัญลักษณ์แสดงถึงคุณค่าและฐานะ', zh: '女方家庭的黄金，象征价值和地位。' }, imageUrl: pImgs[0], productId: 'guodali-012' },
             { id: 'd8', name: { en: 'Pair of Red Basins', th: 'กะละมังสีแดง', zh: '一对红色脸盆' }, description: { en: 'A pair of basins symbolizes a prosperous new beginning.', th: 'กะละมังคู่เป็นสัญลักษณ์ของการเริ่มต้นชีวิตใหม่ที่รุ่งเรือง', zh: '象征新人生活富足美满。' }, imageUrl: pImgs[1] },
             { id: 'd9', name: { en: 'Baby Bathtub & Potty', th: 'อ่างอาบน้ำและกระโถนเด็ก', zh: '婴儿浴盆和便盆' }, description: { en: 'A symbolic gift wishing for children to come soon.', th: 'ของขวัญเชิงสัญลักษณ์ที่แสดงถึงความปรารถนาที่จะมีลูกในเร็ววัน', zh: '象征早生贵子的祝福。' }, imageUrl: pImgs[2] },
             { id: 'd10', name: { en: 'Pair of New Slippers', th: 'รองเท้าแตะคู่ใหม่', zh: '新婚拖鞋一对' }, description: { en: 'Symbolizes rising to new heights and walking a smooth path together.', th: 'เป็นสัญลักษณ์ของการก้าวไปสู่จุดที่สูงขึ้นและเดินบนเส้นทางที่ราบรื่นร่วมกัน', zh: '象征夫妻同心协力，步步高升。' }, imageUrl: pImgs[0] },
@@ -834,8 +834,8 @@ export const checklistData: ChecklistItem[] = [
         id: 'guodali',
         category: { en: 'For Betrothal Gifts (Guo Da Li)', th: 'สำหรับของขวัญในพิธีหมั้น (กัวต้าหลี่ - 過大禮)', zh: '过大礼聘礼' },
         tasks: [
-            { id: 'gdl1', name: { en: 'Betrothal Baskets', th: 'ตะกร้าหมั้น', zh: '聘礼篮' }, description: { en: 'Traditional tiered baskets for carrying engagement gifts.', th: 'ตะกร้าแบบชั้นๆ ตามธรรมเนียมสำหรับใช้ใส่ของขวัญหมั้น', zh: '用于盛放聘礼的传统多层篮子。' }, imageUrl: pImgs[0] },
-            { id: 'gdl2', name: { en: 'Dragon & Phoenix Candles', th: 'เทียนมังกรและหงส์', zh: '龙凤蜡烛' }, description: { en: 'Symbolizes the union of the couple.', th: 'เป็นสัญลักษณ์ของการรวมเป็นหนึ่งเดียวของคู่บ่าวสาว', zh: '象征着新人的结合。' }, imageUrl: pImgs[1] },
+            { id: 'gdl1', name: { en: 'Betrothal Baskets', th: 'ตะกร้าหมั้น', zh: '聘礼篮' }, description: { en: 'Traditional tiered baskets for carrying engagement gifts.', th: 'ตะกร้าแบบชั้นๆ ตามธรรมเนียมสำหรับใช้ใส่ของขวัญหมั้น', zh: '用于盛放聘礼的传统多层篮子。' }, imageUrl: pImgs[0], productId: 'guodali-001' },
+            { id: 'gdl2', name: { en: 'Dragon & Phoenix Candles', th: 'เทียนมังกรและหงส์', zh: '龙凤蜡烛' }, description: { en: 'Symbolizes the union of the couple.', th: 'เป็นสัญลักษณ์ของการรวมเป็นหนึ่งเดียวของคู่บ่าวสาว', zh: '象征着新人的结合。' }, imageUrl: pImgs[1], productId: 'guodali-003' },
             { id: 'gdl3', name: { en: 'Wedding Cakes/Pastries', th: 'ขนมแต่งงาน/ขนมเปี๊ยะ', zh: '喜饼' }, description: { en: 'Distributed to the bride\'s relatives to announce the marriage.', th: 'สำหรับแจกจ่ายให้แก่ญาติของเจ้าสาวเพื่อประกาศการแต่งงาน', zh: '分发给女方亲戚以宣告婚事。' }, imageUrl: pImgs[2] },
             { id: 'gdl4', name: { en: 'Canned Pig\'s Trotters', th: 'ขาหมูกระป๋อง', zh: '猪脚罐头' }, description: { en: 'A gift representing abundance and wealth.', th: 'ของขวัญที่สื่อถึงความอุดมสมบูรณ์และความมั่งคั่ง', zh: '代表富足和财富的礼物。' }, imageUrl: pImgs[0] },
             { id: 'gdl5', name: { en: 'Liquor or Wine', th: 'เหล้าหรือไวน์', zh: '酒' }, description: { en: 'A gift to show respect to the bride\'s family.', th: 'ของขวัญเพื่อแสดงความเคารพต่อครอบครัวของเจ้าสาว', zh: '表示对女方家庭尊重的礼物。' }, imageUrl: pImgs[1] },
@@ -849,14 +849,14 @@ export const checklistData: ChecklistItem[] = [
         id: 'weddingday_items',
         category: { en: 'For Wedding Day Decorations & Ceremony Items', th: 'สำหรับของตกแต่งและของใช้ในพิธีวันแต่งงาน', zh: '婚礼当天装饰与仪式用品' },
         tasks: [
-            { id: 'wd1', name: { en: 'Double Happiness Symbol (囍)', th: 'อักษรซังฮี้ (囍)', zh: '双喜字 (囍)' }, description: { en: 'The most important symbol, used on everything to signify marital bliss.', th: 'สัญลักษณ์ที่สำคัญที่สุด ใช้ประดับบนทุกสิ่งเพื่อสื่อถึงความสุขในชีวิตสมรส', zh: '最重要的象征，用于各种装饰以示婚姻美满。' }, imageUrl: pImgs[2] },
+            { id: 'wd1', name: { en: 'Double Happiness Symbol (囍)', th: 'อักษรซังฮี้ (囍)', zh: '双喜字 (囍)' }, description: { en: 'The most important symbol, used on everything to signify marital bliss.', th: 'สัญลักษณ์ที่สำคัญที่สุด ใช้ประดับบนทุกสิ่งเพื่อสื่อถึงความสุขในชีวิตสมรส', zh: '最重要的象征，用于各种装饰以示婚姻美满。' }, imageUrl: pImgs[2], productId: 'decor-001' },
             { id: 'wd2', name: { en: 'Red Lanterns', th: 'โคมไฟสีแดง', zh: '红灯笼' }, description: { en: 'Used to bring luck and create a festive atmosphere.', th: 'ใช้เพื่อนำโชคและสร้างบรรยากาศแห่งการเฉลิมฉลอง', zh: '用来带来好运，营造喜庆气氛。' }, imageUrl: pImgs[0] },
             { id: 'wd3', name: { en: 'Dragon & Phoenix Symbols', th: 'สัญลักษณ์มังกรและหงส์', zh: '龙凤图案' }, description: { en: 'Represents the perfect match between the groom (dragon) and bride (phoenix).', th: 'แสดงถึงคู่ที่สมบูรณ์แบบระหว่างเจ้าบ่าว (มังกร) และเจ้าสาว (หงส์)', zh: '代表新郎（龙）和新娘（凤）的完美匹配。' }, imageUrl: pImgs[1] },
             { id: 'wd4', name: { en: 'Red Blessing Banners', th: 'ป้ายผ้าอวยพรสีแดง', zh: '红色对联' }, description: { en: 'Hung on doors and walls with auspicious messages.', th: 'แขวนไว้ที่ประตูและผนังพร้อมข้อความมงคล', zh: '挂在门和墙上，写有吉祥话语。' }, imageUrl: pImgs[2] },
-            { id: 'wd5', name: { en: 'Tea Ceremony Set', th: 'ชุดน้ำชาสำหรับพิธียกน้ำชา', zh: '敬茶茶具' }, description: { en: 'A special red tea set for serving tea to elders to show respect.', th: 'ชุดถ้วยชาสีแดงพิเศษสำหรับใช้ในพิธียกน้ำชาให้แก่ผู้อาวุโสเพื่อแสดงความเคารพ', zh: '用于向长辈敬茶以示尊重的特殊红色茶具。' }, imageUrl: pImgs[0] },
-            { id: 'wd6', name: { en: 'Red Kneeling Cushions', th: 'เบาะรองคุกเข่าสีแดง', zh: '红色跪垫' }, description: { en: 'For the couple to use during the tea ceremony.', th: 'สำหรับให้คู่บ่าวสาวใช้ระหว่างพิธียกน้ำชา', zh: '供新人在敬茶仪式上使用。' }, imageUrl: pImgs[1] },
+            { id: 'wd5', name: { en: 'Tea Ceremony Set', th: 'ชุดน้ำชาสำหรับพิธียกน้ำชา', zh: '敬茶茶具' }, description: { en: 'A special red tea set for serving tea to elders to show respect.', th: 'ชุดถ้วยชาสีแดงพิเศษสำหรับใช้ในพิธียกน้ำชาให้แก่ผู้อาวุโสเพื่อแสดงความเคารพ', zh: '用于向长辈敬茶以示尊重的特殊红色茶具。' }, imageUrl: pImgs[0], productId: 'tea-001' },
+            { id: 'wd6', name: { en: 'Red Kneeling Cushions', th: 'เบาะรองคุกเข่าสีแดง', zh: '红色跪垫' }, description: { en: 'For the couple to use during the tea ceremony.', th: 'สำหรับให้คู่บ่าวสาวใช้ระหว่างพิธียกน้ำชา', zh: '供新人在敬茶仪式上使用。' }, imageUrl: pImgs[1], productId: 'tea-004' },
             { id: 'wd7', name: { en: 'Red Umbrella', th: 'ร่มสีแดง', zh: '红伞' }, description: { en: 'Used to shield the bride from evil as she leaves home.', th: 'ใช้เพื่อป้องกันเจ้าสาวจากสิ่งชั่วร้ายขณะเดินทางออกจากบ้าน', zh: '新娘出门时用以辟邪。' }, imageUrl: pImgs[2] },
-            { id: 'wd8', name: { en: 'Red Fan', th: 'พัดสีแดง', zh: '红扇' }, description: { en: 'Often held by the bride to symbolize leaving the past behind.', th: 'เจ้าสาวมักถือพัดเพื่อเป็นสัญลักษณ์ของการทิ้งอดีตไว้เบื้องหลัง', zh: '新娘手持，象征抛开过去。' }, imageUrl: pImgs[0] },
+            { id: 'wd8', name: { en: 'Red Fan', th: 'พัดสีแดง', zh: '红扇' }, description: { en: 'Often held by the bride to symbolize leaving the past behind.', th: 'เจ้าสาวมักถือพัดเพื่อเป็นสัญลักษณ์ของการทิ้งอดีตไว้เบื้องหลัง', zh: '新娘手持，象征抛开过去。' }, imageUrl: pImgs[0], productId: 'acc-010' },
             { id: 'wd9', name: { en: 'Hair Combing Set', th: 'ชุดสำหรับพิธีหวีผม', zh: '梳头套装' }, description: { en: 'Includes a mirror and special combs for the pre-wedding hair combing ritual.', th: 'ประกอบด้วยกระจกและหวีพิเศษสำหรับพิธีกรรมการหวีผมก่อนแต่งงาน', zh: '包括用于婚前梳头仪式的镜子和专用梳子。' }, imageUrl: pImgs[1] },
             { id: 'wd10', name: { en: 'Firecrackers', th: 'ประทัด', zh: '鞭炮' }, description: { en: 'To be set off to create a celebratory atmosphere and ward off evil spirits.', th: 'ใช้จุดเพื่อสร้างบรรยากาศแห่งการเฉลิมฉลองและขับไล่สิ่งชั่วร้าย', zh: '用于营造喜庆气氛并驱赶邪灵。' }, imageUrl: pImgs[2] },
         ]
@@ -877,199 +877,282 @@ export const checklistData: ChecklistItem[] = [
 
 // Fix: Moved faqData from types.ts to data.ts, added type annotation, and exported it.
 export const faqData: FaqItem[] = [
+    // Existing FAQs
     {
         id: 'faq1',
-        question: {
-            en: 'What is the difference between a Qun Kwa and a Qipao?',
-            th: 'ชุด Qun Kwa (ฉวินขว้า) กับ Qipao (กี่เพ้า) แตกต่างกันอย่างไร?',
-            zh: '裙褂和旗袍有什么区别？'
-        },
-        answer: {
-            en: 'A Qun Kwa is a traditional two-piece bridal gown, heavily embroidered with gold and silver thread, typically worn for the main ceremonies like the tea ceremony. A Qipao (or Cheongsam) is a more modern, form-fitting one-piece dress that can be worn during the wedding banquet or other parts of the celebration.',
-            th: 'Qun Kwa (ฉวินขว้า) เป็นชุดเจ้าสาวสองชิ้นแบบดั้งเดิม ปักด้วยดิ้นทองและเงินอย่างวิจิตร มักสวมใส่ในพิธีหลัก เช่น พิธียกน้ำชา ส่วน Qipao (กี่เพ้า) หรือ Cheongsam เป็นชุดเดรสชิ้นเดียวที่เข้ารูปและทันสมัยกว่า สามารถสวมใส่ในช่วงงานเลี้ยงฉลองมงคลสมรสหรือส่วนอื่นๆ ของงานได้',
-            zh: '裙褂是传统的两件套新娘礼服，通常用金银线进行重工刺绣，主要在敬茶等主要仪式上穿着。旗袍则是一种更为现代、修身的单件连衣裙，可在婚宴或庆典的其他环节穿着。'
-        }
+        question: { en: 'What is the difference between a Qun Kwa and a Qipao?', th: 'ชุด Qun Kwa (ฉวินขว้า) กับ Qipao (กี่เพ้า) แตกต่างกันอย่างไร?', zh: '裙褂和旗袍有什么区别？' },
+        answer: { en: 'A Qun Kwa is a traditional two-piece bridal gown, heavily embroidered with gold and silver thread, typically worn for the main ceremonies like the tea ceremony. A Qipao (or Cheongsam) is a more modern, form-fitting one-piece dress that can be worn during the wedding banquet or other parts of the celebration.', th: 'Qun Kwa (ฉวินขว้า) เป็นชุดเจ้าสาวสองชิ้นแบบดั้งเดิม ปักด้วยดิ้นทองและเงินอย่างวิจิตร มักสวมใส่ในพิธีหลัก เช่น พิธียกน้ำชา ส่วน Qipao (กี่เพ้า) หรือ Cheongsam เป็นชุดเดรสชิ้นเดียวที่เข้ารูปและทันสมัยกว่า สามารถสวมใส่ในช่วงงานเลี้ยงฉลองมงคลสมรสหรือส่วนอื่นๆ ของงานได้', zh: '裙褂是传统的两件套新娘礼服，通常用金银线进行重工刺绣，主要在敬茶等主要仪式上穿着。旗袍则是一种更为现代、修身的单件连衣裙，可在婚宴或庆典的其他环节穿着。' }
     },
     {
         id: 'faq2',
-        question: {
-            en: 'What does the dragon and phoenix embroidery symbolize?',
-            th: 'ลายปักมังกรและหงส์มีความหมายว่าอย่างไร?',
-            zh: '龙凤刺绣象征着什么？'
-        },
-        answer: {
-            en: 'The dragon represents the groom (masculine, yang energy, strength, and good luck), while the phoenix represents the bride (feminine, yin energy, beauty, and grace). Together, they symbolize the perfect, harmonious union of a couple—marital bliss.',
-            th: 'มังกรเป็นตัวแทนของเจ้าบ่าว (พลังหยาง, ความแข็งแกร่ง, โชคลาภ) ในขณะที่หงส์เป็นตัวแทนของเจ้าสาว (พลังหยิน, ความงาม, ความสง่างาม) เมื่ออยู่คู่กันจึงเป็นสัญลักษณ์ของการครองคู่ที่สมบูรณ์แบบและกลมเกลียว หรือความสุขในชีวิตสมรส',
-            zh: '龙代表新郎（阳刚之气、力量和好运），而凤则代表新娘（阴柔之美、优雅和端庄）。两者结合象征着夫妻完美和谐的结合——即婚姻美满。'
-        }
+        question: { en: 'What does the dragon and phoenix embroidery symbolize?', th: 'ลายปักมังกรและหงส์มีความหมายว่าอย่างไร?', zh: '龙凤刺绣象征着什么？' },
+        answer: { en: 'The dragon represents the groom (masculine, yang energy, strength, and good luck), while the phoenix represents the bride (feminine, yin energy, beauty, and grace). Together, they symbolize the perfect, harmonious union of a couple—marital bliss.', th: 'มังกรเป็นตัวแทนของเจ้าบ่าว (พลังหยาง, ความแข็งแกร่ง, โชคลาภ) ในขณะที่หงส์เป็นตัวแทนของเจ้าสาว (พลังหยิน, ความงาม, ความสง่างาม) เมื่ออยู่คู่กันจึงเป็นสัญลักษณ์ของการครองคู่ที่สมบูรณ์แบบและกลมเกลียว หรือความสุขในชีวิตสมรส', zh: '龙代表新郎（阳刚之气、力量和好运），而凤则代表新娘（阴柔之美、优雅和端庄）。两者结合象征着夫妻完美和谐的结合——即婚姻美满。' }
     },
     {
         id: 'faq3',
+        question: { en: 'Do I need an appointment to visit the store?', th: 'ฉันต้องนัดหมายล่วงหน้าเพื่อไปที่ร้านหรือไม่?', zh: '我需要预约才能到店参观吗？' },
+        answer: { en: 'While walk-ins are welcome, we highly recommend making an appointment for bridal attire fittings or detailed consultations. An appointment ensures that one of our specialists can dedicate their full attention to you, providing a personalized and unhurried experience.', th: 'แม้ว่าเราจะยินดีต้อนรับลูกค้าวอล์กอิน แต่เราขอแนะนำอย่างยิ่งให้ทำการนัดหมายล่วงหน้าสำหรับการลองชุดเจ้าสาวหรือการปรึกษาโดยละเอียด การนัดหมายจะช่วยให้แน่ใจว่าผู้เชี่ยวชาญของเราสามารถให้ความสนใจกับคุณได้อย่างเต็มที่ มอบประสบการณ์ที่เป็นส่วนตัวและไม่เร่งรีบ', zh: '虽然我们欢迎您随时光临，但我们强烈建议您为新娘礼服试穿或详细咨询进行预约。预约可确保我们的专家能够全心全意为您服务，提供个性化且从容的体验。' }
+    },
+
+    // New FAQs start here
+    {
+        id: 'faq-new-01',
         question: {
-            en: 'Do I need an appointment to visit the store?',
-            th: 'ฉันต้องนัดหมายล่วงหน้าเพื่อไปที่ร้านหรือไม่?',
-            zh: '我需要预约才能到店参观吗？'
+            th: 'ถ้าจะจัดงานแต่งงานแบบจีน แต่ไม่มีความรู้เลย ควรเริ่มต้นอย่างไร?',
+            en: 'If I want to have a Chinese wedding but have no knowledge, how should I start?',
+            zh: '如果我想举办中式婚礼但没有任何知识，我该如何开始？'
         },
         answer: {
-            en: 'While walk-ins are welcome, we highly recommend making an appointment for bridal attire fittings or detailed consultations. An appointment ensures that one of our specialists can dedicate their full attention to you, providing a personalized and unhurried experience.',
-            th: 'แม้ว่าเราจะยินดีต้อนรับลูกค้าวอล์กอิน แต่เราขอแนะนำอย่างยิ่งให้ทำการนัดหมายล่วงหน้าสำหรับการลองชุดเจ้าสาวหรือการปรึกษาโดยละเอียด การนัดหมายจะช่วยให้แน่ใจว่าผู้เชี่ยวชาญของเราสามารถให้ความสนใจกับคุณได้อย่างเต็มที่ มอบประสบการณ์ที่เป็นส่วนตัวและไม่เร่งรีบ',
-            zh: '虽然我们欢迎您随时光临，但我们强烈建议您为新娘礼服试穿或详细咨询进行预约。预约可确保我们的专家能够全心全意为您服务，提供个性化且从容的体验。'
+            th: 'ไม่ต้องกังวลเลยครับ ถือเป็นเรื่องปกติของคนรุ่นใหม่ ทางร้านยินดีให้คำปรึกษาเบื้องต้นเพื่อลำดับขั้นตอนและแนะนำของใช้ที่จำเป็นในแต่ละพิธีการ การเข้ามาพูดคุยที่ร้านจะช่วยให้คุณเห็นภาพรวมและวางแผนได้ง่ายขึ้นมากครับ',
+            en: 'Don\'t worry, this is common for the new generation. Our shop is happy to provide an initial consultation to outline the steps and recommend necessary items for each ceremony. Visiting us for a chat will help you get a much clearer overall picture and make planning easier.',
+            zh: '别担心，这对新一代来说是很常见的。我们的商店很乐意提供初步咨询，概述步骤并为每个仪式推荐必需品。来店里聊聊会帮助您更清晰地了解整体情况，使策划更容易。'
         }
     },
     {
-        id: 'faq4',
+        id: 'faq-new-02',
         question: {
-            en: 'Do you offer rental services for your attire?',
-            th: 'ทางร้านมีบริการให้เช่าชุดหรือไม่?',
-            zh: '你们提供服装租赁服务吗？'
+            th: 'ของใช้ในพิธีจำเป็นต้องซื้อครบทุกอย่างตามรายการหรือไม่?',
+            en: 'Is it necessary to buy every single item on the ceremonial list?',
+            zh: '清单上的每件仪式用品都必须购买吗？'
         },
         answer: {
-            en: 'Yes, we offer rental services for a wide selection of our traditional wedding attire, including Qun Kwas and Tang suits. This is a popular option for couples who wish to wear authentic garments for their ceremony and photos without purchasing.',
-            th: 'ใช่ เรามีบริการให้เช่าสำหรับชุดแต่งงานโบราณหลากหลายแบบ รวมถึงชุดฉวินขว้าและชุดถังจวง นี่เป็นตัวเลือกยอดนิยมสำหรับคู่รักที่ต้องการสวมใส่ชุดแท้สำหรับพิธีและถ่ายภาพโดยไม่ต้องซื้อ',
-            zh: '是的，我们为多种传统婚礼服饰提供租赁服务，包括裙褂和唐装。对于希望在仪式和拍照时穿着正宗服装而无需购买的新人来说，这是一个很受欢迎的选择。'
+            th: 'ขึ้นอยู่กับธรรมเนียมของแต่ละครอบครัวครับ บางบ้านอาจจะเน้นพิธีการหลักๆ บางบ้านอาจจะจัดเต็มรูปแบบ ทางที่ดีที่สุดคือการเข้ามาปรึกษา เพื่อที่เราจะสามารถช่วยจัดชุดของใช้ให้เหมาะสมกับความต้องการและงบประมาณของคุณได้',
+            en: 'It depends on each family\'s traditions. Some may focus on the main ceremonies, while others may go for the full experience. The best approach is to come in for a consultation, so we can help you assemble a set of items that fits your needs and budget.',
+            zh: '这取决于每个家庭的传统。有些家庭可能只关注主要仪式，而其他家庭可能会选择完整的体验。最好的方法是前来咨询，这样我们可以帮助您组合一套符合您需求和预算的物品。'
         }
     },
     {
-        id: 'faq5',
+        id: 'faq-new-03',
         question: {
-            en: 'How long does custom tailoring take?',
-            th: 'การสั่งตัดชุดใช้เวลานานเท่าไหร่?',
-            zh: '定制服装需要多长时间？'
+            th: 'สินค้าของทางร้านมาจากที่ไหน? คุณภาพเชื่อถือได้หรือไม่?',
+            en: 'Where do your products come from? Is the quality reliable?',
+            zh: '你们的产品来自哪里？质量可靠吗？'
         },
         answer: {
-            en: 'The timeline for custom tailoring can vary depending on the complexity of the design and the level of embroidery. Typically, we recommend allowing at least 3 to 6 months. We advise starting the process as early as possible to ensure a perfect result without any rush.',
-            th: 'ระยะเวลาในการสั่งตัดอาจแตกต่างกันไปขึ้นอยู่กับความซับซ้อนของแบบและระดับของงานปัก โดยทั่วไป เราแนะนำให้เผื่อเวลาไว้อย่างน้อย 3 ถึง 6 เดือน เราแนะนำให้เริ่มกระบวนการให้เร็วที่สุดเพื่อให้ได้ผลลัพธ์ที่สมบูรณ์แบบโดยไม่ต้องเร่งรีบ',
-            zh: '定制的时间长短取决于设计的复杂性和刺绣的程度。通常，我们建议您预留至少3到6个月的时间。我们建议尽早开始这一过程，以确保完美的效果，避免匆忙。'
+            th: 'เราคัดสรรสินค้าคุณภาพเยี่ยม มีทั้งที่นำเข้าและผลิตในประเทศโดยเน้นความถูกต้องตามหลักประเพณีและความสวยงามเป็นสำคัญ อยากให้ลองแวะเข้ามาชมสินค้าจริงที่ร้านเพื่อสัมผัสถึงคุณภาพด้วยตัวคุณเองครับ',
+            en: 'We select high-quality products, both imported and locally made, with a focus on traditional accuracy and beauty. We encourage you to visit our shop to see and feel the quality of the products for yourself.',
+            zh: '我们挑选高品质的产品，包括进口和本地制造的，重点是传统的准确性和美观性。我们鼓励您亲自光临我们的商店，亲眼看看和感受产品的质量。'
         }
     },
     {
-        id: 'faq6',
+        id: 'faq-new-04',
         question: {
-            en: 'What is the purpose of the Tea Ceremony?',
-            th: 'พิธียกน้ำชามีวัตถุประสงค์เพื่ออะไร?',
-            zh: '敬茶仪式的目的是什么？'
+            th: 'ของหมั้น (สี่สีท้ง) และของรับไหว้ จำเป็นต้องเตรียมอะไรบ้าง?',
+            en: 'What should be prepared for the engagement gifts (Si Si Thng) and tea ceremony gifts?',
+            zh: '订婚礼物（四色糖）和敬茶回礼需要准备什么？'
         },
         answer: {
-            en: 'The Tea Ceremony is a significant ritual where the newlyweds show respect, gratitude, and honor to their parents and elders. By serving tea, they are formally accepted into the new family. In return, the elders give their blessings and welcome the new member.',
-            th: 'พิธียกน้ำชาเป็นพิธีกรรมที่สำคัญที่คู่บ่าวสาวแสดงความเคารพ ความกตัญญู และให้เกียรติแก่พ่อแม่และผู้อาวุโส โดยการรินชา พวกเขาจะได้รับการยอมรับเข้าสู่ครอบครัวใหม่อย่างเป็นทางการ ในการตอบแทน ผู้อาวุโสจะให้พรและต้อนรับสมาชิกใหม่',
-            zh: '敬茶仪式是一项重要的仪式，新人通过它向父母和长辈表示尊敬、感激和尊重。通过敬茶，他们被正式接纳到新的家庭中。作为回报，长辈们会给予祝福并欢迎新成员。'
+            th: 'ของหมั้นและของรับไหว้มีความหมายมงคลที่แตกต่างกันไป การเลือกให้เหมาะสมจะช่วยสร้างความประทับใจให้แก่ผู้ใหญ่ ทางเรามีตัวอย่างและคำแนะนำดีๆ มากมาย สามารถเข้ามาเลือกชมและขอคำปรึกษาที่ร้านได้เลยครับ',
+            en: 'Engagement and tea ceremony gifts carry different auspicious meanings. Choosing appropriately will help impress the elders. We have many examples and great recommendations. You can come to our shop to browse and ask for advice.',
+            zh: '订婚礼物和敬茶回礼具有不同的吉祥寓意。恰当的选择会给长辈留下深刻印象。我们有很多样品和很好的建议。您可以来店里浏览并咨询。'
         }
     },
     {
-        id: 'faq7',
+        id: 'faq-new-05',
         question: {
-            en: 'What items are needed for the Guo Da Li (betrothal ceremony)?',
-            th: 'ต้องใช้ของอะไรบ้างสำหรับพิธีหมั้น (กัวต้าหลี่)?',
-            zh: '过大礼（订婚仪式）需要哪些物品？'
+            th: 'คู่สมรสไม่ได้มีเชื้อสายจีน สามารถจัดพิธีแบบจีนได้หรือไม่?',
+            en: 'Can a couple with no Chinese heritage hold a Chinese ceremony?',
+            zh: '没有中国血统的夫妇可以举办中式婚礼吗？'
         },
         answer: {
-            en: 'Guo Da Li involves a variety of symbolic gifts from the groom\'s family to the bride\'s. Common items include betrothal baskets, dragon and phoenix candles, wedding cakes, wine, oranges for good fortune, and a monetary gift (Pin Jin). Our in-store checklist and consultants can provide a comprehensive list based on your specific dialect group customs.',
-            th: 'พิธีหมั้น (กัวต้าหลี่) ประกอบด้วยของขวัญเชิงสัญลักษณ์ที่หลากหลายจากครอบครัวเจ้าบ่าวถึงครอบครัวเจ้าสาว ของที่ใช้กันโดยทั่วไป ได้แก่ ตะกร้าหมั้น, เทียนมังกรและหงส์, ขนมแต่งงาน, เหล้า, ส้มเพื่อความโชคดี และสินสอด (聘金) เช็คลิสต์ในร้านและที่ปรึกษาของเราสามารถให้รายการที่ครบถ้วนตามธรรมเนียมของแต่ละกลุ่มภาษาได้',
-            zh: '过大礼涉及男方家庭向女方家庭赠送各种象征性礼物。常见物品包括聘礼篮、龙凤烛、喜饼、酒、象征好运的橙子以及聘金。我们店内的清单和顾问可以根据您的具体方言习俗提供一份全面的清单。'
+            th: 'ได้แน่นอนครับ ปัจจุบันเป็นเรื่องที่พบเห็นได้บ่อย การจัดพิธีถือเป็นการให้เกียรติและเชื่อมความสัมพันธ์ของทั้งสองครอบครัว เราสามารถช่วยแนะนำวิธีผสมผสานวัฒนธรรมให้ลงตัวและน่าประทับใจได้ครับ',
+            en: 'Absolutely. It\'s quite common nowadays. Holding the ceremony is a way to honor and connect both families. We can help guide you on how to blend cultures for a harmonious and impressive event.',
+            zh: '当然可以。如今这很常见。举办仪式是尊重和连接两个家庭的一种方式。我们可以指导您如何融合文化，打造一个和谐而令人印象深刻的活动。'
         }
     },
     {
-        id: 'faq8',
+        id: 'faq-new-06',
         question: {
-            en: 'Can I wear a Qun Kwa if I am not of Chinese descent?',
-            th: 'ฉันสามารถใส่ชุด Qun Kwa ได้หรือไม่หากไม่มีเชื้อสายจีน?',
-            zh: '如果我不是华裔，可以穿裙褂吗？'
+            th: 'นอกจากของใช้ในงานแต่งงาน ทางร้านมีสินค้าสำหรับพิธีอื่นๆ หรือไม่?',
+            en: 'Besides wedding items, do you have products for other ceremonies?',
+            zh: '除了婚礼用品，你们还有其他仪式用的产品吗？'
         },
         answer: {
-            en: 'Absolutely. We believe in celebrating love and culture. Many couples from diverse backgrounds choose to incorporate a traditional Chinese tea ceremony and attire into their wedding to honor their partner\'s heritage. It is a beautiful gesture of respect and unity.',
-            th: 'แน่นอน เราเชื่อในการเฉลิมฉลองความรักและวัฒนธรรม คู่รักหลายคู่จากภูมิหลังที่หลากหลายเลือกที่จะนำพิธียกน้ำชาและชุดแต่งงานจีนมาใช้ในงานแต่งงานของตนเพื่อเป็นเกียรติแก่มรดกของคู่ของตน ซึ่งเป็นท่าทีที่สวยงามของความเคารพและความเป็นหนึ่งเดียวกัน',
-            zh: '当然可以。我们相信爱情和文化的庆典。许多来自不同背景的新人选择将传统的中式敬茶仪式和服饰融入他们的婚礼中，以尊重他们伴侣的传统。这是一种表示尊重和团结的美好姿态。'
+            th: 'มีครับ เรามีสินค้าสำหรับพิธีมงคลอื่นๆ เช่น งานขึ้นบ้านใหม่ เปิดกิจการ ไหว้เจ้า หรือของขวัญสำหรับผู้ใหญ่ในโอกาสพิเศษต่างๆ ลองเข้ามาสอบถามได้ว่าคุณกำลังมองหาสินค้าสำหรับงานประเภทไหนครับ',
+            en: 'Yes, we do. We have products for other auspicious ceremonies like housewarmings, business openings, deity worship, or special gifts for elders. Feel free to come in and ask about what you\'re looking for.',
+            zh: '是的，我们有。我们有用于其他吉祥仪式（如乔迁、开业、祭拜神明）或送给长辈的特殊礼物的产品。欢迎您来店里咨询您正在寻找的商品。'
         }
     },
     {
-        id: 'faq9',
+        id: 'faq-new-07',
         question: {
-            en: 'How should I care for my traditional wedding attire after the ceremony?',
-            th: 'ฉันควรดูแลชุดแต่งงานโบราณหลังพิธีอย่างไร?',
-            zh: '仪式结束后，我应该如何保养我的传统婚礼服饰？'
+            th: 'ธรรมเนียมของจีนแต่ละถิ่น (แต้จิ๋ว, ฮกเกี้ยน) ใช้ของในพิธีแตกต่างกันหรือไม่?',
+            en: 'Do traditions for different Chinese dialect groups (e.g., Teochew, Hokkien) use different ceremonial items?',
+            zh: '不同华人方言群体（如潮州、福建）的传统仪式用品是否不同？'
         },
         answer: {
-            en: 'Due to the delicate embroidery and fabrics like silk and brocade, we strongly recommend professional dry cleaning by a cleaner experienced with embellished garments. Store the attire in a cool, dry place away from direct sunlight, preferably in a breathable garment bag.',
-            th: 'เนื่องจากงานปักที่ละเอียดอ่อนและเนื้อผ้าอย่างผ้าไหมและผ้าโบรเคด เราขอแนะนำอย่างยิ่งให้ซักแห้งโดยผู้เชี่ยวชาญที่มีประสบการณ์กับเสื้อผ้าที่ประดับตกแต่ง ควรเก็บชุดไว้ในที่เย็นและแห้ง ห่างจากแสงแดดโดยตรง โดยควรเก็บในถุงคลุมเสื้อผ้าที่ระบายอากาศได้',
-            zh: '由于精美的刺绣和丝绸、织锦等娇贵面料，我们强烈建议由经验丰富的专业干洗店进行清洁。请将服装存放在阴凉、干燥、避免阳光直射的地方，最好使用透气的衣物袋。'
+            th: 'มีรายละเอียดที่แตกต่างกันเล็กน้อยครับ ซึ่งเป็นเสน่ห์ของวัฒนธรรมเรา เพื่อความถูกต้องและเหมาะสมที่สุด การแจ้งข้อมูลส่วนนี้กับทางร้านจะช่วยให้เราแนะนำของใช้ในพิธีได้ตรงตามธรรมเนียมของครอบครัวคุณ',
+            en: 'There are slight differences in detail, which is part of the charm of our culture. For the utmost accuracy, providing this information to us will help us recommend items that correctly match your family\'s customs.',
+            zh: '细节上略有不同，这也是我们文化的魅力所在。为了确保最高的准确性，向我们提供这方面的信息将有助于我们推荐完全符合您家庭习俗的物品。'
         }
     },
     {
-        id: 'faq10',
+        id: 'faq-new-08',
         question: {
-            en: 'What does the groom traditionally wear?',
-            th: 'ตามประเพณีแล้วเจ้าบ่าวสวมชุดอะไร?',
-            zh: '新郎传统上穿什么？'
+            th: 'ควรเตรียมตัวและซื้อของสำหรับงานแต่งล่วงหน้านานแค่ไหน?',
+            en: 'How far in advance should we prepare and purchase items for the wedding?',
+            zh: '我们应该提前多久为婚礼准备和购买物品？'
         },
         answer: {
-            en: 'The most common traditional attire for the groom is the Tang Suit (Tangzhuang), a jacket featuring a mandarin collar and frog buttons. Another formal option is the Changshan, a long male gown, which is sometimes worn with a jacket called a Magua over it.',
-            th: 'ชุดแบบดั้งเดิมที่พบบ่อยที่สุดสำหรับเจ้าบ่าวคือชุดถังจวง (Tangzhuang) ซึ่งเป็นเสื้อแจ็คเก็ตที่มีคอจีนและกระดุมแบบจีนโบราณ อีกทางเลือกที่เป็นทางการคือชุดฉางซาน (Changshan) ซึ่งเป็นชุดยาวสำหรับผู้ชาย บางครั้งสวมทับด้วยเสื้อแจ็คเก็ตที่เรียกว่า หม่าขว้า (Magua)',
-            zh: '新郎最常见的传统服装是唐装，这是一种具有立领和盘扣的夹克。另一种正式选择是长衫，这是一种男式长袍，有时会在外面套上一件称为马褂的夹克。'
+            th: 'Generally, we recommend starting preparations about 2-3 months in advance. This gives you enough time to research and select items without rushing. Consulting with us early on can greatly reduce any anxiety.',
+            en: 'โดยทั่วไปแนะนำให้เริ่มเตรียมตัวประมาณ 2-3 เดือนล่วงหน้า เพื่อจะได้มีเวลาศึกษาข้อมูลและเลือกสรรของได้อย่างไม่เร่งรีบ การเข้ามาปรึกษาตั้งแต่เนิ่นๆ จะช่วยลดความกังวลไปได้มากครับ',
+            zh: '通常，我们建议提前2-3个月开始准备。这让您有足够的时间研究和挑选物品，而不会感到匆忙。尽早咨询我们可以大大减轻任何焦虑。'
         }
     },
     {
-        id: 'faq11',
+        id: 'faq-new-09',
         question: {
-            en: 'What is "Si Dian Jin" (四点金)?',
-            th: '"ซี่เตี๋ยมกิม" (四点金) คืออะไร?',
-            zh: '什么是“四点金”？'
+            th: 'สามารถสั่งซื้อสินค้าผ่านช่องทางออนไลน์ได้หรือไม่?',
+            en: 'Can I order products through online channels?',
+            zh: '我可以通过在线渠道订购产品吗？'
         },
         answer: {
-            en: 'A key Teochew tradition, "Si Dian Jin" is a four-piece set of gold jewelry (necklace, bangle, ring, earrings) gifted by the groom\'s mother to the bride. It symbolizes that the bride will always be cared for and have a secure home in her new family.',
-            th: 'ประเพณีที่สำคัญของชาวแต้จิ๋ว "ซี่เตี๋ยมกิม" คือชุดเครื่องประดับทองสี่ชิ้น (สร้อยคอ, กำไล, แหวน, ต่างหู) ที่แม่ของเจ้าบ่าวมอบให้แก่เจ้าสาว เป็นสัญลักษณ์ว่าเจ้าสาวจะได้รับการดูแลและมีบ้านที่มั่นคงในครอบครัวใหม่ของเธอเสมอ',
-            zh: '“四点金”是一项重要的潮州传统，是由新郎的母亲赠送给新娘的一套四件套黄金首饰（项链、手镯、戒指、耳环）。它象征着新娘在新的家庭中将永远受到照顾并拥有一个安稳的家。'
+            th: 'เรามีช่องทางออนไลน์เพื่อความสะดวกในการชมสินค้าเบื้องต้น แต่สำหรับของใช้ในพิธีการซึ่งมีรายละเอียดและความหมายเฉพาะตัว เราแนะนำให้เดินทางมาที่ร้านเพื่อรับคำแนะนำที่ถูกต้องและครบถ้วนจะดีที่สุดครับ',
+            en: 'We have online channels for preliminary viewing convenience. However, for ceremonial items that have specific details and meanings, we recommend visiting the shop to receive the most accurate and complete guidance.',
+            zh: '我们提供在线渠道方便您初步浏览。但对于具有特定细节和寓意的仪式用品，我们建议您亲临商店，以获得最准确和全面的指导。'
         }
     },
     {
-        id: 'faq12',
+        id: 'faq-new-10',
         question: {
-            en: 'Do you ship internationally?',
-            th: 'มีบริการจัดส่งระหว่างประเทศหรือไม่?',
-            zh: '你们提供国际运输服务吗？'
+            th: 'หากต้องการคำปรึกษาแบบละเอียด ต้องนัดหมายล่วงหน้าหรือไม่? มีค่าใช้จ่ายไหม?',
+            en: 'For a detailed consultation, do I need an appointment? Is there a fee?',
+            zh: '如果需要详细咨询，我需要预约吗？有费用吗？'
         },
         answer: {
-            en: 'Currently, our online store focuses on serving customers within Thailand. For any special requests regarding international shipping, please contact us directly so we can explore possible arrangements.',
-            th: 'ปัจจุบัน ร้านค้าออนไลน์ของเราเน้นให้บริการลูกค้าภายในประเทศไทย สำหรับคำขอพิเศษเกี่ยวกับการจัดส่งระหว่างประเทศ โปรดติดต่อเราโดยตรงเพื่อที่เราจะได้พิจารณาความเป็นไปได้ในการจัดการ',
-            zh: '目前，我们的在线商店主要服务于泰国境内的客户。有关国际运输的任何特殊要求，请直接与我们联系，以便我们探讨可能的安排。'
+            th: 'ทางร้านยินดีให้คำปรึกษาโดยไม่มีค่าใช้จ่ายครับ หากคุณมีฤกษ์ยามแล้วและต้องการวางแผนอย่างละเอียด การโทรนัดหมายล่วงหน้าจะช่วยให้เราสามารถเตรียมข้อมูลและให้เวลาคุณได้อย่างเต็มที่',
+            en: 'We are happy to provide consultations free of charge. If you have already chosen an auspicious date and want detailed planning, calling ahead for an appointment will allow us to prepare and dedicate our full attention to you.',
+            zh: '我们很乐意免费提供咨询。如果您已经选定了吉日并希望进行详细策划，提前电话预约将使我们能够为您准备并全力以赴。'
         }
     },
     {
-        id: 'faq13',
+        id: 'faq-new-11',
         question: {
-            en: 'Can I mix traditional Chinese elements with a modern Western-style wedding?',
-            th: 'ฉันสามารถผสมผสานองค์ประกอบจีนโบราณเข้ากับงานแต่งงานสไตล์ตะวันตกสมัยใหม่ได้หรือไม่?',
-            zh: '我可以将中式传统元素与现代西式婚礼相结合吗？'
+            th: 'อยากทราบราคาโดยประมาณสำหรับชุดของใช้ในพิธีแต่งงานทั้งหมด?',
+            en: 'What is the approximate price for a complete set of ceremonial wedding items?',
+            zh: '一套完整的婚礼仪式用品大约多少钱？'
         },
         answer: {
-            en: 'Definitely! Many modern couples beautifully blend traditions. A popular way is to wear a white gown for the main ceremony and change into a red Qipao or Qun Kwa for the tea ceremony or reception. You can also incorporate symbols like "Double Happiness" into your modern decor.',
-            th: 'แน่นอน! คู่รักยุคใหม่หลายคู่ผสมผสานประเพณีได้อย่างสวยงาม วิธีที่นิยมคือการสวมชุดสีขาวสำหรับพิธีหลักและเปลี่ยนเป็นชุดกี่เพ้าสีแดงหรือชุดฉวินขว้าสำหรับพิธียกน้ำชาหรืองานเลี้ยง คุณยังสามารถนำสัญลักษณ์ต่างๆ เช่น "ซังฮี้" มาใช้ในการตกแต่งที่ทันสมัยของคุณได้',
-            zh: '当然可以！许多现代新人都将传统完美地融合在一起。一种流行的方式是在主仪式上穿白色婚纱，然后在敬茶仪式或招待会上换上红色的旗袍或裙褂。您还可以将“双喜”等符号融入您的现代装饰中。'
+            th: 'ราคาจะขึ้นอยู่กับจำนวนรายการและประเภทของสินค้าที่เลือกใช้ ซึ่งแต่ละงานมีความต้องการไม่เท่ากัน เพื่อให้ได้ชุดของใช้ที่ตรงใจและอยู่ในงบประมาณที่วางไว้ ลองเข้ามาให้เราช่วยจัดชุดและประเมินราคาเบื้องต้นได้ครับ',
+            en: 'The price depends on the number of items and the types of products selected, as each wedding has different needs. To get a set that meets your preferences and budget, please visit us so we can help you assemble a package and provide a preliminary estimate.',
+            zh: '价格取决于所选物品的数量和产品类型，因为每场婚礼的需求都不同。为了获得一套符合您偏好和预算的组合，请光临我们，我们可以帮助您组合套餐并提供初步估价。'
         }
     },
     {
-        id: 'faq14',
+        id: 'faq-new-12',
         question: {
-            en: 'What is the significance of the color red?',
-            th: 'สีแดงมีความสำคัญอย่างไร?',
-            zh: '红色有什么特殊意义？'
+            th: 'ทางร้านมีบริการจัดส่งสินค้าหรือไม่?',
+            en: 'Do you offer delivery service?',
+            zh: '你们提供送货服务吗？'
         },
         answer: {
-            en: 'In Chinese culture, red is the ultimate color of luck, joy, vitality, and happiness. It is believed to ward off evil spirits and bring good fortune, which is why it is the predominant color for weddings and other celebrations.',
-            th: 'ในวัฒนธรรมจีน สีแดงเป็นสีสูงสุดแห่งโชคลาภ ความสุข ความมีชีวิตชีวา และความปิติยินดี เชื่อกันว่าสีแดงสามารถปัดเป่าสิ่งชั่วร้ายและนำมาซึ่งโชคดีได้ ซึ่งเป็นเหตุผลว่าทำไมสีแดงจึงเป็นสีหลักสำหรับงานแต่งงานและการเฉลิมฉลองอื่นๆ',
-            zh: '在中国文化中，红色是代表运气、喜悦、活力和幸福的终极颜色。人们相信红色可以驱邪并带来好运，这就是为什么它成为婚礼和其他庆祝活动的主要颜色。'
+            th: 'เรามีบริการจัดส่งเพื่ออำนวยความสะดวกให้แก่ลูกค้าครับ สามารถสอบถามรายละเอียดและเงื่อนไขเพิ่มเติมได้ที่หน้าร้าน',
+            en: 'Yes, we offer delivery services for our customers\' convenience. You can ask for more details and conditions at the shop.',
+            zh: '是的，为方便客户，我们提供送货服务。您可以在店里咨询更多详情和条件。'
         }
     },
     {
-        id: 'faq15',
+        id: 'faq-new-13',
         question: {
-            en: 'Apart from attire, what other wedding items do you offer?',
-            th: 'นอกจากชุดแล้ว ทางร้านมีของใช้อื่นๆ สำหรับงานแต่งงานอะไรอีกบ้าง?',
-            zh: '除了服饰，你们还提供哪些其他婚礼用品？'
+            th: 'ร้านตั้งอยู่ที่ไหนและเปิด-ปิดกี่โมง?',
+            en: 'Where is the shop located and what are the opening hours?',
+            zh: '商店位于哪里？营业时间是？'
         },
         answer: {
-            en: 'We are a one-stop shop for Chinese weddings. We offer a complete range of ceremonial items, including tea sets, betrothal baskets, Double Happiness decor, red envelopes, hair combing sets, dowry items, and much more. Our goal is to provide everything you need for an authentic ceremony.',
-            th: 'เราเป็นร้านค้าครบวงจรสำหรับงานแต่งงานจีน เรามีของใช้ในพิธีครบวงจร รวมถึงชุดน้ำชา ตะกร้าหมั้น ของตกแต่งลายซังฮี้ ซองอั่งเปา ชุดหวีผม ของใช้สำหรับสินสอด และอื่นๆ อีกมากมาย เป้าหมายของเราคือการจัดหาทุกสิ่งที่คุณต้องการสำหรับพิธีที่ถูกต้องตามประเพณี',
-            zh: '我们是中式婚礼的一站式商店。我们提供全方位的仪式用品，包括茶具、聘礼篮、双喜装饰、红包、梳头套装、嫁妆用品等等。我们的目标是为您提供举办正宗仪式所需的一切。'
+            th: 'คุณสามารถดูที่อยู่และแผนที่การเดินทางอย่างละเอียดได้ที่หน้า "ติดต่อเรา" บนเว็บไซต์ครับ เราเปิดให้บริการทุกวัน [เวลาเปิด-ปิด] ยินดีต้อนรับเสมอครับ',
+            en: 'You can find our detailed address and a map on the "Contact Us" page of our website. We are open every day [Opening-Closing Time]. You are always welcome!',
+            zh: '您可以在我们网站的“联系我们”页面上找到详细地址和地图。我们每天[营业时间]开放。随时欢迎您！'
+        }
+    },
+    {
+        id: 'faq-new-14',
+        question: {
+            th: 'สามารถชำระเงินด้วยบัตรเครดิตได้หรือไม่?',
+            en: 'Can I pay by credit card?',
+            zh: '我可以用信用卡支付吗？'
+        },
+        answer: {
+            th: 'รับชำระด้วยบัตรเครดิตครับ ทางร้านมีช่องทางการชำระเงินที่หลากหลายเพื่อความสะดวกของคุณ',
+            en: 'Yes, we accept credit cards. We offer various payment methods for your convenience.',
+            zh: '是的，我们接受信用卡。为方便起见，我们提供多种支付方式。'
+        }
+    },
+    {
+        id: 'faq-new-15',
+        question: {
+            th: 'ทำไมสัญลักษณ์ "ซังฮี้" (囍) ถึงมีความสำคัญในงานแต่งงาน?',
+            en: 'Why is the "Double Happiness" (囍) symbol important in weddings?',
+            zh: '为什么“双喜”（囍）符号在婚礼中很重要？'
+        },
+        answer: {
+            th: '"ซังฮี้" เป็นสัญลักษณ์แห่งความสุขสองเท่าของคู่บ่าวสาว เป็นหัวใจสำคัญของงานแต่งงานเลยทีเดียวครับ ยังมีเกร็ดความรู้อีกมากมายเกี่ยวกับสัญลักษณ์มงคลต่างๆ ซึ่งเรายินดีแบ่งปันเมื่อคุณแวะมาที่ร้าน',
+            en: 'The "Double Happiness" symbol represents the twofold joy of the couple and is the heart of a wedding. There are many more interesting facts about auspicious symbols that we would be happy to share when you visit our shop.',
+            zh: '“双喜”符号代表着新人的双重喜悦，是婚礼的核心。关于吉祥符号还有更多有趣的事实，我们很乐意在您光临本店时与您分享。'
+        }
+    },
+    {
+        id: 'faq-new-16',
+        question: {
+            th: 'ถ้าต้องการจัดพิธียกน้ำชาให้ถูกต้อง ควรเลือกใช้ชาแบบไหน?',
+            en: 'To hold a proper tea ceremony, what kind of tea should be chosen?',
+            zh: '要举办正式的敬茶仪式，应该选择哪种茶？'
+        },
+        answer: {
+            th: 'ชาที่ใช้ในพิธีมีความหมายมงคลแตกต่างกันไป เช่น การอวยพรให้รักกันยืนยาว หรือให้มีลูกเต็มบ้านมีหลานเต็มเมือง เราสามารถช่วยแนะนำชาที่เหมาะสมกับคำอวยพรที่คุณต้องการมอบให้ผู้ใหญ่ได้ครับ',
+            en: 'The teas used in the ceremony have different auspicious meanings, such as blessing for a long-lasting love or for a large family. We can help recommend the right tea that matches the blessings you wish to convey to the elders.',
+            zh: '仪式中使用的茶叶具有不同的吉祥寓意，例如祝福爱情长久或子孙满堂。我们可以帮助您推荐适合您想传达给长辈的祝福的茶叶。'
+        }
+    },
+    {
+        id: 'faq-new-17',
+        question: {
+            th: 'ของใช้ในพิธีจำเป็นต้องเป็นสีแดงทั้งหมดหรือไม่?',
+            en: 'Do all ceremonial items have to be red?',
+            zh: '所有仪式用品都必须是红色的吗？'
+        },
+        answer: {
+            th: 'สีแดงคือสีมงคลหลัก แต่ก็สามารถใช้สีทองหรือสีชมพูเข้ามาประกอบเพื่อความสวยงามได้ครับ การเลือกใช้สีก็เป็นศิลปะอย่างหนึ่ง ซึ่งเราสามารถให้คำแนะนำเพื่อคุมโทนงานของคุณให้ดูทันสมัยแต่ยังคงความถูกต้องตามประเพณี',
+            en: 'Red is the primary auspicious color, but gold or pink can also be incorporated for aesthetic purposes. Color choice is an art, and we can provide advice to create a modern yet traditionally correct color scheme for your event.',
+            zh: '红色是主要的吉祥色，但也可以加入金色或粉色以增加美感。色彩选择是一门艺术，我们可以提供建议，为您的活动打造一个既现代又符合传统的配色方案。'
+        }
+    },
+    {
+        id: 'faq-new-18',
+        question: {
+            th: 'ขนมมงคลในพิธีมีความหมายแตกต่างกันอย่างไร?',
+            en: 'How do the auspicious sweets in the ceremony differ in meaning?',
+            zh: '仪式中的吉祥甜点在寓意上有何不同？'
+        },
+        answer: {
+            th: 'ขนมแต่ละชนิดเป็นตัวแทนของคำอวยพรที่แตกต่างกันครับ เช่น ขนมจันอับหมายถึงความสุขสมบูรณ์ การเลือกใช้ขนมจึงเป็นมากกว่าแค่ความอร่อย แต่เป็นการมอบคำอวยพรให้แก่คู่บ่าวสาว',
+            en: 'Each type of sweet represents a different blessing. For example, certain sweets signify complete happiness. Therefore, choosing sweets is about more than just taste; it\'s about giving blessings to the couple.',
+            zh: '每种甜点代表着不同的祝福。例如，某些甜点象征着圆满的幸福。因此，选择甜点不仅仅是为了口味，更是为了给新人送上祝福。'
+        }
+    },
+    {
+        id: 'faq-new-19',
+        question: {
+            th: 'ชุดเอี๊ยมแต่งงาน มีความสำคัญอย่างไร?',
+            en: 'What is the significance of the wedding apron set?',
+            zh: '婚礼围裙套装有何重要意义？'
+        },
+        answer: {
+            th: 'เป็นอีกหนึ่งประเพณีที่สำคัญครับ เอี๊ยมเป็นสัญลักษณ์ของการเริ่มต้นชีวิตครอบครัวและการอวยพรให้มีทายาทสืบสกุล ในชุดจะประกอบด้วยของมงคลต่างๆ ซึ่งแต่ละอย่างมีความหมายซ่อนอยู่',
+            en: 'This is another important tradition. The apron symbolizes the start of family life and is a blessing for having descendants. The set contains various auspicious items, each with its own hidden meaning.',
+            zh: '这是另一个重要的传统。围裙象征着家庭生活的开始，也是对子孙后代的祝福。套装中包含各种吉祥物品，每件物品都有其隐藏的寓意。'
+        }
+    },
+    {
+        id: 'faq-new-20',
+        question: {
+            th: 'จำเป็นต้องปฏิบัติตามธรรมเนียมโบราณอย่างเคร่งครัดหรือไม่?',
+            en: 'Is it necessary to follow ancient traditions strictly?',
+            zh: '有必要严格遵守古代传统吗？'
+        },
+        answer: {
+            th: 'แก่นแท้ของพิธีคือการแสดงความเคารพต่อผู้ใหญ่และขอพรเพื่อการเริ่มต้นชีวิตคู่ที่ดี คุณสามารถปรับบางขั้นตอนให้เข้ากับยุคสมัยได้ การเข้ามาพูดคุยจะช่วยให้เราหาจุดที่ลงตัวระหว่างธรรมเนียมดั้งเดิมและความต้องการของคุณได้ครับ',
+            en: 'The essence of the ceremony is to show respect to elders and ask for blessings for a good start to married life. You can adapt some steps to fit modern times. A discussion with us can help find the perfect balance between traditional customs and your personal preferences.',
+            zh: '仪式的核心是向长辈表示尊重，并为美好的婚姻生活祈求祝福。您可以调整一些步骤以适应现代。与我们讨论可以帮助您在传统习俗和个人偏好之间找到完美的平衡。'
         }
     }
 ];

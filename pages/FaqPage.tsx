@@ -10,16 +10,18 @@ interface FaqAccordionItemProps {
     faq: FaqItem;
     isOpen: boolean;
     onToggle: () => void;
+    index: number;
 }
 
-const FaqAccordionItem: React.FC<FaqAccordionItemProps> = ({ faq, isOpen, onToggle }) => {
+const FaqAccordionItem: React.FC<FaqAccordionItemProps> = ({ faq, isOpen, onToggle, index }) => {
     const { getMultilingual } = useLanguage();
+    const bgColor = index % 2 === 0 ? 'bg-faq-pink-light' : 'bg-faq-pink-dark';
 
     return (
-        <div className="border-b border-legacy-gold/30">
+        <div className={`mb-4 rounded-lg shadow-sm transition-all duration-300 overflow-hidden border border-legacy-gold/20 ${bgColor}`}>
             <button
                 onClick={onToggle}
-                className="flex justify-between items-center w-full py-5 text-left text-xl font-semibold text-brand-red"
+                className="flex justify-between items-center w-full p-6 text-left text-xl font-semibold text-brand-red"
                 aria-expanded={isOpen}
             >
                 <span className="flex-grow pr-4">{getMultilingual(faq.question)}</span>
@@ -32,7 +34,7 @@ const FaqAccordionItem: React.FC<FaqAccordionItemProps> = ({ faq, isOpen, onTogg
             <div
                  className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}
             >
-                <div className="pt-2 pb-5 text-light-text text-lg leading-relaxed">
+                <div className="pt-0 pb-6 px-6 text-light-text text-lg leading-relaxed">
                     <p>{getMultilingual(faq.answer)}</p>
                 </div>
             </div>
@@ -87,13 +89,14 @@ const FaqPage = () => {
                         <p className="text-lg max-w-2xl mx-auto opacity-90" data-aos="fade-down" data-aos-delay="100">{t('faqIntro')}</p>
                     </div>
 
-                    <div className="max-w-4xl mx-auto bg-light-bg/60 backdrop-blur-sm p-6 sm:p-10 rounded-lg shadow-lg border border-legacy-gold/30" data-aos="fade-up">
-                        {faqData.map((faq) => (
+                    <div className="max-w-4xl mx-auto" data-aos="fade-up">
+                        {faqData.map((faq, index) => (
                            <FaqAccordionItem 
                                 key={faq.id}
                                 faq={faq}
                                 isOpen={openFaqId === faq.id}
                                 onToggle={() => handleToggle(faq.id)}
+                                index={index}
                            />
                         ))}
                     </div>

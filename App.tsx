@@ -15,7 +15,6 @@ import TraditionsPage from './pages/TraditionsPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import AboutPage from './pages/AboutPage';
-import ChecklistPage from './pages/ChecklistPage';
 import FaqPage from './pages/FaqPage';
 
 declare const AOS: any;
@@ -54,7 +53,6 @@ function App() {
                     <Route path="/blog" element={<BlogPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/about" element={<AboutPage />} />
-                    <Route path="/checklist" element={<ChecklistPage />} />
                     <Route path="/faq" element={<FaqPage />} />
                     <Route path="/product/:id" element={<ProductDetailPage />} />
                     <Route path="/cart" element={<CartPage />} />

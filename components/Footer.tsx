@@ -10,7 +10,6 @@ const Footer = () => {
         { to: '/', text: t('home') },
         { to: '/shop', text: t('shop') },
         { to: '/traditions', text: t('traditions') },
-        { to: '/checklist', text: t('weddingChecklist')},
         { to: '/blog', text: t('blog') },
         { to: '/about', text: t('about') },
         { to: '/faq', text: t('faq') },
