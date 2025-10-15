@@ -7,7 +7,6 @@ import ProductCard from '../components/ProductCard';
 import SEOManager from '../components/SEOManager';
 import SectionBackground from '../components/SectionBackground';
 import Breadcrumbs, { type BreadcrumbLink } from '../components/Breadcrumbs';
-// Fix: Use inline `type` for consistent, type-only imports across the project.
 import { type Review } from '../types';
 
 // StarRating component for displaying reviews
@@ -246,22 +245,23 @@ export const ProductDetailPage = () => {
                 </div>
             </div>
         </div>
+      </div>
         
-        {/* Related Products Section */}
-        {relatedProducts.length > 0 && (
-          <SectionBackground className="mt-28">
-            <div className="container mx-auto px-6 py-24">
-              <h2 className="text-3xl md:text-4xl font-serif-zh font-bold text-brand-red text-center mb-12">{t('youMightAlsoLike')}</h2>
-              <div className="flex space-x-8 overflow-x-auto pb-6 -mb-6">
-                {relatedProducts.map(p => (
-                  <div key={p.id} className="flex-shrink-0 w-64 sm:w-72">
-                     <ProductCard product={p} />
-                  </div>
-                ))}
-              </div>
+      {/* Related Products Section */}
+      {relatedProducts.length > 0 && (
+        <SectionBackground className="mt-28">
+          <div className="container mx-auto px-6 py-24">
+            <h2 className="text-3xl md:text-4xl font-serif-zh font-bold text-brand-red text-center mb-12">{t('youMightAlsoLike')}</h2>
+            <div className="flex space-x-8 overflow-x-auto pb-6 -mb-6">
+              {relatedProducts.map(p => (
+                <div key={p.id} className="flex-shrink-0 w-64 sm:w-72">
+                   <ProductCard product={p} />
+                </div>
+              ))}
             </div>
-          </SectionBackground>
-        )}
+          </div>
+        </SectionBackground>
+      )}
     </>
   );
 };

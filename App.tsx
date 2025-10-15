@@ -12,7 +12,6 @@ import ShopPage from './pages/ShopPage';
 import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
 import TraditionsPage from './pages/TraditionsPage';
-// Fix: Changed to a named import to resolve a module loading issue.
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import AboutPage from './pages/AboutPage';
