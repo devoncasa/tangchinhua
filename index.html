@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/devoncasa/tangchinhua-assets@main/logo_tcy.png" type="image/png" />
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/devoncasa/tangchinhua-assets@main/logo_tcy.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tang Chin Hua (ตั้งจิ้นฮั้ว) | Chinese Wedding Attire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+Thai:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-red': '#B91C1C',
+              'brand-gold': '#D4AF37',
+              'brand-dark-gold': '#B8860B',
+              
+              // New Palette
+              'imperial-red': '#B91C1C',
+              'legacy-gold': '#D4AF37',
+              'charcoal-ink': '#262626',
+              'blush-silk': '#FADBD8',
+              'antique-cream': '#FFF8F0',
+              'jade-whisper': '#E0EFEA',
+
+              // Theme-specific colors
+              'light-bg': '#FFF8F0',
+              'light-text': '#262626',
+            },
+            fontFamily: {
+              'serif-en': ['Playfair Display', 'serif'],
+              'serif-zh': ['Noto Serif SC', 'serif'],
+              'sans-th': ['Noto Sans Thai', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-light-bg text-light-text transition-colors duration-500">
+    <div id="root"></div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
