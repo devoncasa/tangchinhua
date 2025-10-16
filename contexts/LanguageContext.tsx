@@ -104,6 +104,12 @@ const translations: Record<string, MultilingualString> = {
   noReviews: { en: 'No reviews yet.', th: 'ยังไม่มีรีวิว', zh: '暂无评价' },
   selectSize: { en: 'Select a Size', th: 'เลือกขนาด', zh: '选择尺寸' },
   sizeRequired: { en: 'Please select a size.', th: 'กรุณาเลือกขนาด', zh: '请选择尺寸。' },
+  inStock: { en: 'In Stock', th: 'มีสินค้าพร้อมส่ง', zh: '有现货' },
+  sortBy: { en: 'Sort by', th: 'เรียงตาม', zh: '排序方式' },
+  sortNewest: { en: 'Newest', th: 'ใหม่ที่สุด', zh: '最新' },
+  sortRatingHigh: { en: 'Highest Rating', th: 'คะแนนสูงสุด', zh: '评分最高' },
+  sortRatingLow: { en: 'Lowest Rating', th: 'คะแนนต่ำสุด', zh: '评分最低' },
+  recentlyViewed: { en: 'Recently Viewed Items', th: 'สินค้าที่คุณเพิ่งชม', zh: '最近浏览过的商品' },
 
   // Shop Page Filters
   filterBySizeLabel: { en: 'Filter by Size:', th: 'กรองตามขนาด:', zh: '按尺寸筛选：' },

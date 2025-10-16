@@ -1,5 +1,4 @@
-
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -8,7 +7,10 @@ import ProductCard from '../components/ProductCard';
 import SEOManager from '../components/SEOManager';
 import SectionBackground from '../components/SectionBackground';
 import Breadcrumbs, { type BreadcrumbLink } from '../components/Breadcrumbs';
-import { type Review } from '../types';
+import { type Review, type Product } from '../types';
+import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
+import RecentlyViewedProducts from '../components/RecentlyViewedProducts';
+import StickyAddToCartBar from '../components/StickyAddToCartBar';
 
 // StarRating component for displaying reviews
 const StarRating: React.FC<{ rating: number; totalStars?: number }> = ({ rating, totalStars = 5 }) => (
@@ -29,12 +31,51 @@ const StarRating: React.FC<{ rating: number; totalStars?: number }> = ({ rating,
   </div>
 );
 
+// ImageZoom component for the main product image
+const ImageZoom: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
+    const [zoom, setZoom] = useState(false);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const imageRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (imageRef.current) {
+            const { left, top, width, height } = imageRef.current.getBoundingClientRect();
+            const x = ((e.clientX - left) / width) * 100;
+            const y = ((e.clientY - top) / height) * 100;
+            setMousePosition({ x, y });
+        }
+    };
+
+    return (
+        <div 
+            ref={imageRef}
+            className="relative overflow-hidden cursor-zoom-in"
+            onMouseEnter={() => setZoom(true)}
+            onMouseLeave={() => setZoom(false)}
+            onMouseMove={handleMouseMove}
+        >
+            <img src={src} alt={alt} className="w-full h-full object-cover transition-opacity duration-300" style={{ opacity: zoom ? 0 : 1 }} />
+            {zoom && (
+                <div
+                    className="absolute inset-0 bg-no-repeat bg-center pointer-events-none"
+                    style={{
+                        backgroundImage: `url(${src})`,
+                        backgroundSize: '200%',
+                        backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
+                    }}
+                />
+            )}
+        </div>
+    );
+};
+
 
 export const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const { products } = useAppContext();
   const { t, getMultilingual } = useLanguage();
   const { addToCart } = useCart();
+  const { addProductToRecentlyViewed } = useRecentlyViewed();
   
   const product = products.find(p => p.id === id);
 
@@ -44,20 +85,57 @@ export const ProductDetailPage = () => {
   const [activeTab, setActiveTab] = useState<'description' | 'specs' | 'reviews'>('description');
   const [notification, setNotification] = useState('');
   const [error, setError] = useState('');
+  const [reviewSort, setReviewSort] = useState<'newest' | 'rating-high' | 'rating-low'>('newest');
 
-  // Update active image if product changes
-  React.useEffect(() => {
+  const [showStickyBar, setShowStickyBar] = useState(false);
+  const mainAddToCartRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
     if (product) {
+      addProductToRecentlyViewed(product.id);
       setActiveImage(product.imageUrls[0]);
-      setSelectedSize(null); // Reset size on product change
+      setSelectedSize(null);
     }
-  }, [product]);
+  }, [product, addProductToRecentlyViewed]);
+
+  useEffect(() => {
+      const observer = new IntersectionObserver(
+          ([entry]) => {
+              setShowStickyBar(!entry.isIntersecting);
+          },
+          { rootMargin: "0px", threshold: 0 }
+      );
+
+      const currentRef = mainAddToCartRef.current;
+      if (currentRef) {
+          observer.observe(currentRef);
+      }
+
+      return () => {
+          if (currentRef) {
+              observer.unobserve(currentRef);
+          }
+      };
+  }, []);
 
   const averageRating = useMemo(() => {
     if (!product?.reviews || product.reviews.length === 0) return 0;
     const total = product.reviews.reduce((acc, review) => acc + review.rating, 0);
     return total / product.reviews.length;
   }, [product?.reviews]);
+
+  const sortedReviews = useMemo(() => {
+    if (!product?.reviews) return [];
+    return [...product.reviews].sort((a, b) => {
+        switch (reviewSort) {
+            case 'rating-high': return b.rating - a.rating;
+            case 'rating-low': return a.rating - b.rating;
+            case 'newest':
+            default:
+                return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }
+    });
+  }, [product?.reviews, reviewSort]);
 
 
   if (!product) {
@@ -76,10 +154,10 @@ export const ProductDetailPage = () => {
   
   const relatedProducts = products.filter(
     p => p.category.en === product.category.en && p.id !== product.id
-  ).slice(0, 8); // Show more related products for carousel
+  ).slice(0, 8);
 
   const handleAddToCart = () => {
-    if (product.sizes.length > 0 && !selectedSize) {
+    if (product.sizes.length > 0 && !selectedSize && product.sizes[0] !== 'N/A' && product.sizes[0] !== 'One Size') {
       setError(t('sizeRequired'));
       setTimeout(() => setError(''), 3000);
       return;
@@ -110,7 +188,7 @@ export const ProductDetailPage = () => {
   ];
   
   const tabButtonStyle = (isActive: boolean) => 
-    `px-6 py-3 font-bold text-lg border-b-4 transition-colors duration-300 ${
+    `px-4 sm:px-6 py-3 font-bold text-base sm:text-lg border-b-4 transition-colors duration-300 ${
         isActive 
         ? 'border-brand-red text-brand-red' 
         : 'border-transparent text-gray-500 hover:border-brand-red/50 hover:text-brand-red'
@@ -125,11 +203,11 @@ export const ProductDetailPage = () => {
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 {/* Image Gallery */}
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 sticky top-28">
                     <div className="border border-legacy-gold/30 rounded-lg shadow-lg overflow-hidden aspect-square">
-                        <img src={activeImage} alt={getMultilingual(product.name)} className="w-full h-full object-cover" />
+                        <ImageZoom src={activeImage} alt={getMultilingual(product.name)} />
                     </div>
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-5 gap-4">
                         {product.imageUrls.map((url, index) => (
                             <button 
                                 key={index} 
@@ -146,30 +224,35 @@ export const ProductDetailPage = () => {
 
                 {/* Product Info & Actions */}
                 <div>
-                    <h1 className="text-4xl font-serif-zh font-bold text-brand-red mb-4">{getMultilingual(product.name)}</h1>
+                    <h1 className="text-4xl lg:text-5xl font-serif-zh font-bold text-brand-red mb-3">{getMultilingual(product.name)}</h1>
                     
                     {product.reviews && product.reviews.length > 0 && (
                       <div className="flex items-center gap-2 mb-4">
                         <StarRating rating={averageRating} />
-                        <span className="text-light-text/80">{t('basedOnReviews', { count: product.reviews.length })}</span>
+                        <a href="#reviews" className="text-light-text/80 hover:underline">{t('basedOnReviews', { count: product.reviews.length })}</a>
                       </div>
                     )}
 
-                    <p className="text-3xl font-bold text-brand-dark-gold mb-6">
+                    <p className="text-4xl font-bold text-brand-dark-gold mb-6">
                         {new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(product.price)}
                     </p>
+                    
+                    <div className="text-green-600 font-semibold mb-6 flex items-center">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                        {t('inStock')}
+                    </div>
+
                     <p className="text-light-text mb-8 leading-relaxed text-lg">{getMultilingual(product.description).split('.')[0]}.</p>
 
-                    {/* Size Selector */}
                     {product.sizes.length > 1 && product.sizes[0] !== 'N/A' && product.sizes[0] !== 'One Size' && (
                         <div className="mb-8">
-                            <h3 className="text-lg font-bold text-brand-red mb-3">{t('selectSize')}:</h3>
+                            <h3 className="text-lg font-bold text-brand-red mb-3">{t('selectSize')}: <span className="text-light-text font-medium">{selectedSize}</span></h3>
                             <div className="flex flex-wrap gap-3">
                                 {product.sizes.map(size => (
                                     <button 
                                         key={size}
                                         onClick={() => setSelectedSize(size)}
-                                        className={`px-5 py-2 border-2 rounded-full font-semibold transition-all duration-200 ${
+                                        className={`px-5 py-2 border-2 rounded-lg font-semibold transition-all duration-200 min-w-[50px] text-center ${
                                             selectedSize === size 
                                             ? 'bg-brand-red text-white border-brand-red scale-105 shadow-md'
                                             : 'bg-white text-brand-red border-legacy-gold hover:border-brand-red'
@@ -182,15 +265,13 @@ export const ProductDetailPage = () => {
                         </div>
                     )}
                 
-                    <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
-                        {/* Quantity Selector */}
+                    <div ref={mainAddToCartRef} className="flex flex-col sm:flex-row items-center gap-4 mb-8">
                         <div className="flex items-center border-2 border-legacy-gold rounded-full">
                             <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="px-5 py-3 text-xl font-bold text-brand-red rounded-l-full hover:bg-blush-silk/50 transition">-</button>
                             <input type="number" value={quantity} readOnly className="w-16 text-center text-lg font-bold bg-transparent focus:outline-none" />
                             <button onClick={() => setQuantity(q => q + 1)} className="px-5 py-3 text-xl font-bold text-brand-red rounded-r-full hover:bg-blush-silk/50 transition">+</button>
                         </div>
-                        {/* Add to Cart Button */}
-                        <button onClick={handleAddToCart} className="w-full sm:w-auto flex-grow px-8 py-4 bg-legacy-gold text-brand-red font-bold text-lg rounded-full hover:bg-brand-dark-gold transition-transform transform hover:scale-105 shadow-xl">
+                        <button onClick={handleAddToCart} className="w-full sm:w-auto flex-grow px-8 py-4 bg-legacy-gold text-brand-red font-bold text-xl rounded-full hover:bg-brand-dark-gold transition-transform transform hover:scale-105 shadow-xl">
                             {t('addToCart')}
                         </button>
                     </div>
@@ -201,20 +282,19 @@ export const ProductDetailPage = () => {
                 </div>
             </div>
 
-            {/* Detailed Info Tabs */}
-            <div className="mt-16">
+            <div id="reviews" className="mt-16 pt-8">
                 <div className="border-b border-legacy-gold/30 mb-8">
-                    <nav className="flex items-center -mb-px space-x-6">
+                    <nav className="flex items-center -mb-px space-x-2 sm:space-x-6">
                         <button onClick={() => setActiveTab('description')} className={tabButtonStyle(activeTab === 'description')}>{t('description')}</button>
                         <button onClick={() => setActiveTab('specs')} className={tabButtonStyle(activeTab === 'specs')}>{t('specifications')}</button>
                         <button onClick={() => setActiveTab('reviews')} className={tabButtonStyle(activeTab === 'reviews')}>{t('reviews')} ({product.reviews?.length || 0})</button>
                     </nav>
                 </div>
 
-                <div className="bg-light-bg/50 p-8 sm:p-12 rounded-lg shadow-inner border border-legacy-gold/20">
+                <div className="bg-light-bg/50 p-6 sm:p-12 rounded-lg shadow-inner border border-legacy-gold/20 min-h-[300px]">
                     {activeTab === 'description' && (
                         <div className="prose prose-lg max-w-none text-light-text leading-relaxed">
-                            <p>{getMultilingual(product.description)}</p>
+                            {getMultilingual(product.description).split('\n').map((para, index) => <p key={index}>{para}</p>)}
                         </div>
                     )}
                     {activeTab === 'specs' && (
@@ -228,13 +308,28 @@ export const ProductDetailPage = () => {
                     )}
                     {activeTab === 'reviews' && (
                         <div>
-                            <h2 className="text-2xl font-bold text-brand-red mb-6">{t('customerReviews')}</h2>
-                            {(!product.reviews || product.reviews.length === 0) ? (
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                                <h2 className="text-2xl font-bold text-brand-red mb-4 sm:mb-0">{t('customerReviews')}</h2>
+                                <div className="flex items-center gap-2">
+                                    <label htmlFor="sort-reviews" className="font-semibold text-light-text">{t('sortBy')}:</label>
+                                    <select
+                                        id="sort-reviews"
+                                        value={reviewSort}
+                                        onChange={(e) => setReviewSort(e.target.value as any)}
+                                        className="bg-white border border-legacy-gold/50 rounded-md p-2"
+                                    >
+                                        <option value="newest">{t('sortNewest')}</option>
+                                        <option value="rating-high">{t('sortRatingHigh')}</option>
+                                        <option value="rating-low">{t('sortRatingLow')}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {(!sortedReviews || sortedReviews.length === 0) ? (
                                 <p>{t('noReviews')}</p>
                             ) : (
                                 <div className="space-y-8">
-                                    {product.reviews.map((review: Review) => (
-                                        <div key={review.id} className="border-b border-legacy-gold/20 pb-6">
+                                    {sortedReviews.map((review: Review) => (
+                                        <div key={review.id} className="border-b border-legacy-gold/20 pb-6 last:border-b-0">
                                             <div className="flex items-center mb-2">
                                                 <StarRating rating={review.rating} />
                                                 <h3 className="ml-4 font-bold text-lg">{review.author}</h3>
@@ -252,7 +347,8 @@ export const ProductDetailPage = () => {
         </div>
       </div>
         
-      {/* Related Products Section */}
+      <RecentlyViewedProducts currentProductId={product.id} />
+
       {relatedProducts.length > 0 && (
         <SectionBackground className="mt-16">
           <div className="container mx-auto px-6 py-16">
@@ -266,6 +362,15 @@ export const ProductDetailPage = () => {
             </div>
           </div>
         </SectionBackground>
+      )}
+
+      {showStickyBar && (
+          <StickyAddToCartBar 
+              product={product}
+              selectedSize={selectedSize}
+              onSizeSelect={setSelectedSize}
+              onAddToCart={handleAddToCart}
+          />
       )}
     </>
   );
