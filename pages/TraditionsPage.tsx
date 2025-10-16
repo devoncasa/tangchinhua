@@ -40,7 +40,7 @@ const TraditionAccordionItem: React.FC<TraditionAccordionItemProps> = ({ traditi
                 </span>
             </button>
             <div
-                 className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}
+                 className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[1000px]' : 'max-h-0'}`}
             >
                 <div className="pt-0 pb-6 px-6 text-light-text text-base leading-relaxed space-y-4">
                     {getMultilingual(tradition.longDescription).split('\n').map((paragraph, index) => (
