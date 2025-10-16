@@ -34,7 +34,7 @@ const CategoryShowcase = () => {
 
   return (
     <div className="bg-antique-cream/50">
-      <div className="container mx-auto px-6 py-24">
+      <div className="container mx-auto px-6 py-16">
         <h2 className="text-3xl md:text-4xl font-serif-zh font-bold text-brand-red text-center mb-12" data-aos="fade-up">{t('shopByCategory')}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {categoryData.map((cat, index) => (

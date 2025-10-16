@@ -22,7 +22,7 @@ const Testimonials = () => {
 
     return (
         <SectionBackground>
-            <div className="container mx-auto px-6 py-24">
+            <div className="container mx-auto px-6 py-16">
                 <h2 className="text-3xl md:text-4xl font-serif-zh font-bold text-brand-red text-center mb-12" data-aos="fade-up">{t('testimonials')}</h2>
                 
                 <div className="relative max-w-3xl mx-auto h-48 mb-16 text-center flex items-center justify-center" data-aos="fade-up">

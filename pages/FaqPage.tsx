@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAppContext } from '../contexts/AppContext';
@@ -82,7 +83,7 @@ const FaqPage = () => {
             />
             <Breadcrumbs links={breadcrumbLinks} />
             <SectionBackground>
-                <div className="container mx-auto px-6 py-20">
+                <div className="container mx-auto px-6 py-16">
                     <div className="text-center mb-16">
                         <h1 className="text-4xl md:text-5xl font-serif-zh font-bold text-brand-red mb-4" data-aos="fade-down">{t('faqTitle')}</h1>
                         <p className="text-lg max-w-2xl mx-auto opacity-90" data-aos="fade-down" data-aos-delay="100">{t('faqIntro')}</p>

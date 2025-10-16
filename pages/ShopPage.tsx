@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -131,7 +132,7 @@ const ShopPage = () => {
             />
             <Breadcrumbs links={breadcrumbLinks} />
             <SectionBackground>
-                <div className="container mx-auto px-6 pt-20 pb-10">
+                <div className="container mx-auto px-6 pt-16 pb-10">
                     <h1 className="text-4xl md:text-5xl font-serif-zh font-bold text-brand-red text-center mb-4">{t('shop')}</h1>
                     <p className="text-lg text-center max-w-3xl mx-auto mb-12 text-light-text opacity-90">
                         {t('shopIntro')}
@@ -229,7 +230,7 @@ const ShopPage = () => {
             </SectionBackground>
             
             <SectionBackground>
-                <div className="container mx-auto px-6 py-20">
+                <div className="container mx-auto px-6 py-16">
                     <h2 className="text-4xl md:text-5xl font-serif-zh font-bold text-brand-red text-center mb-4">{t('ceremonialItemsTitle')}</h2>
                      <p className="text-lg text-center max-w-3xl mx-auto mb-12 text-light-text opacity-90">
                         {t('ceremonialItemsIntro')}

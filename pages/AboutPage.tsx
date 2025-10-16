@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import SEOManager from '../components/SEOManager';
@@ -19,7 +20,7 @@ const AboutPage = () => {
             />
             <Breadcrumbs links={breadcrumbLinks} />
             <div className="bg-light-bg">
-                <div className="container mx-auto px-6 py-20">
+                <div className="container mx-auto px-6 py-16">
                     <h1 className="text-4xl md:text-5xl font-serif-zh font-bold text-brand-red text-center mb-16" data-aos="fade-down">{t('about')}</h1>
                     
                     <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">

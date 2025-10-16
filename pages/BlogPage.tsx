@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAppContext } from '../contexts/AppContext';
@@ -54,7 +55,7 @@ const BlogPage = () => {
             />
             <Breadcrumbs links={breadcrumbLinks} />
             <SectionBackground>
-                <div className="container mx-auto px-6 py-20">
+                <div className="container mx-auto px-6 py-16">
                     <h1 className="text-4xl md:text-5xl font-serif-zh font-bold text-brand-red text-center mb-16">{t('blog')}</h1>
                     
                     <div className="flex flex-col md:flex-row gap-12">

@@ -17,7 +17,7 @@ const Footer = () => {
     ];
 
   return (
-    <footer className="bg-brand-red text-blush-silk mt-24 border-t-4 border-legacy-gold">
+    <footer className="bg-brand-red text-blush-silk mt-16 border-t-4 border-legacy-gold">
       <div className="container mx-auto px-6 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
           {/* Column 1: Brand Info */}

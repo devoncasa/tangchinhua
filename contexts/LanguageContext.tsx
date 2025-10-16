@@ -41,6 +41,24 @@ const translations: Record<string, MultilingualString> = {
   connectWithUs: { en: 'Connect with us for a private consultation:', th: 'ติดต่อเราเพื่อรับคำปรึกษาส่วนตัว:', zh: '联系我们进行私人咨询：' },
   shopByCategory: { en: 'Shop by Category', th: 'เลือกซื้อตามหมวดหมู่', zh: '按类别购物' },
   
+  // Homepage Redesign
+  guideTitle: { en: 'A Guide to Your Perfect Ceremony', th: 'คู่มือนำทางสู่พิธีที่สมบูรณ์แบบของคุณ', zh: '您的完美仪式指南' },
+  guideStep1Title: { en: 'Consultation', th: 'การปรึกษา', zh: '咨询' },
+  guideStep1Desc: { en: 'Begin your journey with expert advice from our specialists.', th: 'เริ่มต้นการเดินทางของคุณด้วยคำแนะนำจากผู้เชี่ยวชาญของเรา', zh: '从我们专家的建议开始您的旅程。' },
+  guideStep2Title: { en: 'Selection', th: 'การเลือกสรร', zh: '挑选' },
+  guideStep2Desc: { en: 'Handpick the perfect items for your unique ceremony.', th: 'เลือกสรรสิ่งของที่สมบูรณ์แบบสำหรับพิธีที่เป็นเอกลักษณ์ของคุณ', zh: '为您的独特仪式精心挑选完美的物品。' },
+  guideStep3Title: { en: 'Celebration', th: 'การเฉลิมฉลอง', zh: '庆祝' },
+  guideStep3Desc: { en: 'Celebrate your special day with traditions held dear.', th: 'เฉลิมฉลองวันพิเศษของคุณด้วยประเพณีอันล้ำค่า', zh: '用珍贵的传统庆祝您的特殊日子。' },
+  heritageTitle: { en: 'Explore Our Heritage', th: 'สำรวจมรดกของเรา', zh: '探索我们的传承' },
+  learnMore: { en: 'Learn More', th: 'เรียนรู้เพิ่มเติม', zh: '了解更多' },
+  collectionsTitle: { en: 'Featured Collections', th: 'คอลเลคชั่นแนะนำ', zh: '特色系列' },
+  collection_tea_sets: { en: 'Ceremonial Tea Sets', th: 'ชุดถ้วยชาในพิธี', zh: '仪式茶具' },
+  collection_attire: { en: 'Bridal Attire & Accessories', th: 'ชุดเจ้าสาวและเครื่องประดับ', zh: '新娘礼服及配饰' },
+  collection_gifts: { en: 'Wedding Gifts & Decor', th: 'ของขวัญและของตกแต่ง', zh: '婚礼礼品与装饰' },
+  communityTitle: { en: 'Words from Our Community', th: 'เสียงจากลูกค้าของเรา', zh: '来自我们社区的声音' },
+  event_wedding: { en: 'Wedding Ceremony', th: 'พิธีมงคลสมรส', zh: '婚礼仪式' },
+  event_consultation: { en: 'Guo Da Li Consultation', th: 'ปรึกษาพิธีหมั้น', zh: '过大礼咨询' },
+  
   // Product & Shop
   filterByCategoryLabel: { en: 'Filter by Category:', th: 'กรองตามหมวดหมู่:', zh: '按类别筛选：' },
   allProducts: { en: 'All Products', th: 'สินค้าทั้งหมด', zh: '所有产品' },
@@ -162,9 +180,10 @@ const translations: Record<string, MultilingualString> = {
     th: 'จวบจนวันนี้ คำมั่นสัญญานั้นได้รับการสืบทอดต่อโดยครอบครัวรุ่นที่สองและสาม แม้โลกจะเปลี่ยนไป แต่หลักการของเรายังคงหนักแน่นไม่สั่นคลอน เราเปิดรับสิ่งใหม่พร้อมกับให้เกียรติในสิ่งเก่า เพราะเราเชื่อว่าเรื่องราวความรักสมัยใหม่นั้นคู่ควรที่จะถูกห่อหุ้มไว้ด้วยความสง่างามอันเป็นอมตะของประเพณี สินค้าของเราจึงเป็นดั่งสะพานที่เชื่อมระหว่างอดีตและปัจจุบัน โดยผ่านการคัดสรรมาอย่างพิถีพิถันเพื่อให้มั่นใจว่าของทุกชิ้นไม่เพียงแต่ถูกต้องตามสัญลักษณ์มงคล แต่ยังงดงามล้ำเลิศในเชิงศิลปะและฝีมือ',
     zh: '如今，这份创始的承诺由我们家族的第二代和第三代继承。世界变了，但我们的原则始终坚定不移。我们拥抱新事物，同时尊重旧传统，因为我们明白现代的爱情故事值得被包裹在永恒的传统优雅之中。我们的系列是连接过去与现在的桥梁，经过精心策划，确保每一件物品不仅在其象征意义上是真实的，而且在工艺上也是精致绝伦的。'
   },
+  // Fix: Corrected syntax for about_p4 entry and fixed a typo in the Thai translation.
   about_p4: {
     en: 'At ตั้งจิ้นฮั้ว, we believe a wedding is more than a day—it is the weaving of two family histories into a single, beautiful tapestry. It is the first chapter of a new legacy. For over five decades, we have been privileged to provide the threads for that chapter. We don\'t just sell wedding supplies; we share in the joy of new beginnings, offering our knowledge, our passion, and our unwavering commitment to making every union as auspicious and beautiful as it is destined to be.',
-    th: 'ที่ ตั้งจิ้นฮั้ว เราเชื่อว่างานวิวาห์เป็นมากกว่าแค่วันสำคัญวันหนึ่ง แต่คือการถักทอเรื่องราวของสองครอบครัวให้กลายเป็นผืนผ้าแห่งประวัติศาสตร์ผืนเดียวกันที่งดงาม และเป็นบทแรกของตำนานบทใหม่ที่กำลังจะเริ่มต้นขึ้น ตลอดห้าทศวรรษที่ผ่านมา เรารู้สึกเป็นเกียรติอย่างยิ่งที่ได้เป็นผู้มอบเส้นด้ายสำหรับเรื่องราวบทแรกนี้ เราไม่ได้เป็นเพียงผู้ขายของใช้ในงานวิวาห์ แต่เราคือผู้ร่วมยินดีในการเริ่มต้นครั้งใหม่ พร้อมมอบทั้งความรู้ ความหลงไหล และความมุ่งมั่นทุ่มเทอย่างไม่เสื่อมคลาย เพื่อทำให้ทุกการครองคู่นั้นเป็นไปอย่างเป็นมงคลและงดงามที่สุดเท่าที่ควรจะเป็น',
+    th: 'ที่ ตั้งจิ้นฮั้ว เราเชื่อว่างานวิวาห์เป็นมากกว่าแค่วันสำคัญวันหนึ่ง แต่คือการถักทอเรื่องราวของสองครอบครัวให้กลายเป็นผืนผ้าแห่งประวัติศาสตร์ผืนเดียวกันที่งดงาม และเป็นบทแรกของตำนานบทใหม่ที่กำลังจะเริ่มต้นขึ้น ตลอดห้าทศวรรษที่ผ่านมา เรารู้สึกเป็นเกียรติอย่างยิ่งที่ได้เป็นผู้มอบเส้นด้ายสำหรับเรื่องราวบทแรกนี้ เราไม่ได้เป็นเพียงผู้ขายของใช้ในงานวิวาห์ แต่เราคือผู้ร่วมยินดีในการเริ่มต้นครั้งใหม่ พร้อมมอบทั้งความรู้ ความหลงใหล และความมุ่งมั่นทุ่มเทอย่างไม่เสื่อมคลาย เพื่อทำให้ทุกการครองคู่นั้นเป็นไปอย่างเป็นมงคลและงดงามที่สุดเท่าที่ควรจะเป็น',
     zh: '在ตั้งจิ้นฮั้ว，我们相信婚礼不仅仅是一天——它是将两个家族的历史编织成一幅美丽挂毯的过程，是新传奇的第一章。五十多年来，我们有幸为这一章提供了丝线。我们不只是销售婚礼用品；我们分享新开始的喜悦，提供我们的知识、热情和坚定不移的承诺，致力于使每一次结合都尽可能吉祥和美丽。'
   },
   about_p5: {

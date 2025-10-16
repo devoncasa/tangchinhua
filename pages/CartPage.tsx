@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
@@ -33,7 +34,7 @@ const CartPage = () => {
         />
         <Breadcrumbs links={breadcrumbLinks} />
         <SectionBackground>
-            <div className="container mx-auto px-6 py-20 text-center">
+            <div className="container mx-auto px-6 py-16 text-center">
                 <h1 className="text-4xl font-serif-zh font-bold text-brand-red mb-4">{t('shoppingCart')}</h1>
                 <p className="text-xl text-light-text mb-8">{t('emptyCart')}</p>
                 <Link 
@@ -56,7 +57,7 @@ const CartPage = () => {
         />
         <Breadcrumbs links={breadcrumbLinks} />
         <SectionBackground>
-            <div className="container mx-auto px-6 py-20">
+            <div className="container mx-auto px-6 py-16">
             <h1 className="text-4xl md:text-5xl font-serif-zh font-bold text-brand-red text-center mb-16">{t('shoppingCart')}</h1>
             
             <div className="bg-light-bg/60 backdrop-blur-sm shadow-lg rounded-lg p-6 sm:p-10 border border-legacy-gold/30">

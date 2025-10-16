@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import SEOManager from '../components/SEOManager';
@@ -20,7 +21,7 @@ const ContactPage = () => {
             />
             <Breadcrumbs links={breadcrumbLinks} />
             <SectionBackground>
-                <div className="container mx-auto px-6 py-20">
+                <div className="container mx-auto px-6 py-16">
                     <h1 className="text-4xl md:text-5xl font-serif-zh font-bold text-brand-red text-center mb-16">{t('contact')}</h1>
                     
                     <div className="max-w-4xl mx-auto bg-light-bg/60 backdrop-blur-sm p-12 rounded-lg shadow-lg mb-12 border border-legacy-gold/30">

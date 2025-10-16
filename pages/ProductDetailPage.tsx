@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
@@ -91,12 +92,16 @@ export const ProductDetailPage = () => {
   };
   
   const productName = getMultilingual(product.name);
-  const pageTitle = `${productName} | ${t('brand_name')}`;
-  const productDescription = t('meta_desc_product', {
-    productName: productName,
-    category: getMultilingual(product.category),
-    material: getMultilingual(product.specifications.material),
-  }).substring(0, 160);
+  
+  const { pageTitle, productDescription } = useMemo(() => {
+    const title = `${productName} | ${t('brand_name')}`;
+    const description = t('meta_desc_product', {
+        productName: productName,
+        category: getMultilingual(product.category),
+        material: getMultilingual(product.specifications.material),
+    }).substring(0, 160);
+    return { pageTitle: title, productDescription: description };
+  }, [product, productName, t, getMultilingual]);
   
   const breadcrumbLinks: BreadcrumbLink[] = [
     { name: t('home'), to: '/' },
@@ -116,7 +121,7 @@ export const ProductDetailPage = () => {
     <>
       <SEOManager title={pageTitle} description={productDescription} />
       <Breadcrumbs links={breadcrumbLinks} />
-      <div className="container mx-auto px-6 py-12 md:py-20">
+      <div className="container mx-auto px-6 py-12 md:py-16">
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 {/* Image Gallery */}
@@ -197,7 +202,7 @@ export const ProductDetailPage = () => {
             </div>
 
             {/* Detailed Info Tabs */}
-            <div className="mt-20">
+            <div className="mt-16">
                 <div className="border-b border-legacy-gold/30 mb-8">
                     <nav className="flex items-center -mb-px space-x-6">
                         <button onClick={() => setActiveTab('description')} className={tabButtonStyle(activeTab === 'description')}>{t('description')}</button>
@@ -249,8 +254,8 @@ export const ProductDetailPage = () => {
         
       {/* Related Products Section */}
       {relatedProducts.length > 0 && (
-        <SectionBackground className="mt-28">
-          <div className="container mx-auto px-6 py-24">
+        <SectionBackground className="mt-16">
+          <div className="container mx-auto px-6 py-16">
             <h2 className="text-3xl md:text-4xl font-serif-zh font-bold text-brand-red text-center mb-12">{t('youMightAlsoLike')}</h2>
             <div className="flex space-x-8 overflow-x-auto pb-6 -mb-6">
               {relatedProducts.map(p => (

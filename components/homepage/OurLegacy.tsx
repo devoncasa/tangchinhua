@@ -8,7 +8,7 @@ const OurLegacy = () => {
 
     return (
         <div className="bg-light-bg">
-            <div className="container mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+            <div className="container mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
                     <img src="https://cdn.jsdelivr.net/gh/devoncasa/tangchinhua-assets@main/Screenshot+2568-10-13+at+15.54.40.webp" alt="Historical photo of Tang Chin Hua store" className="rounded-lg shadow-xl border-4 border-legacy-gold/50 w-full h-auto object-cover" />
                 </div>
