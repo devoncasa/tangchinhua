@@ -1,6 +1,6 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { type Product, type CulturalTip, type BlogEntry, type HeroPreset, type Tradition, type ChecklistItem, type FaqItem } from '../types';
-import { products, culturalTips, blogEntries, heroPresets, traditions, checklistData, faqData } from '../services/data';
+import { products, culturalTips, blogEntries, heroPresets, traditions, checklistData, faqData, traditionsFaqData } from '../services/data';
 
 interface AppContextType {
   products: Product[];
@@ -10,6 +10,7 @@ interface AppContextType {
   traditions: Tradition[];
   checklistData: ChecklistItem[];
   faqData: FaqItem[];
+  traditionsFaqData: FaqItem[];
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -27,7 +28,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
     heroPresets,
     traditions,
     checklistData,
-    faqData
+    faqData,
+    traditionsFaqData
   };
 
   return (
