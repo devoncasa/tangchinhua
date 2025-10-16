@@ -3,10 +3,11 @@ import React from 'react';
 import HeroBanner from '../components/homepage/HeroBanner';
 import SEOManager from '../components/SEOManager';
 import { useLanguage } from '../contexts/LanguageContext';
-import GuideSection from '../components/homepage/GuideSection';
-import HeritageSection from '../components/homepage/HeritageSection';
-import CollectionsSection from '../components/homepage/CollectionsSection';
-import CommunitySection from '../components/homepage/CommunitySection';
+import FeaturedCollections from '../components/homepage/FeaturedCollections';
+import DiscoverTraditions from '../components/homepage/DiscoverTraditions';
+import OurLegacyPreview from '../components/homepage/OurLegacyPreview';
+import JournalPreview from '../components/homepage/JournalPreview';
+import VisitBoutique from '../components/homepage/VisitBoutique';
 
 const HomePage = () => {
   const { t } = useLanguage();
@@ -17,10 +18,11 @@ const HomePage = () => {
         description={t('meta_desc_home')}
       />
       <HeroBanner />
-      <GuideSection />
-      <HeritageSection />
-      <CollectionsSection />
-      <CommunitySection />
+      <FeaturedCollections />
+      <DiscoverTraditions />
+      <OurLegacyPreview />
+      <JournalPreview />
+      <VisitBoutique />
     </>
   );
 };

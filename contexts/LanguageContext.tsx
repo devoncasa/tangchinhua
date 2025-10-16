@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, ReactNode, useCallback } from 'react';
 import { type Language, type MultilingualString } from '../types';
 
@@ -58,6 +57,16 @@ const translations: Record<string, MultilingualString> = {
   communityTitle: { en: 'Words from Our Community', th: 'เสียงจากลูกค้าของเรา', zh: '来自我们社区的声音' },
   event_wedding: { en: 'Wedding Ceremony', th: 'พิธีมงคลสมรส', zh: '婚礼仪式' },
   event_consultation: { en: 'Guo Da Li Consultation', th: 'ปรึกษาพิธีหมั้น', zh: '过大礼咨询' },
+
+  // Homepage Redesign Previews
+  exploreAllProducts: { en: 'Explore All Products', th: 'เลือกชมสินค้าทั้งหมด', zh: '探索所有产品' },
+  discoverOurTraditions: { en: 'Discover Our Traditions', th: 'ค้นพบประเพณีของเรา', zh: '探索我们的传统' },
+  learnMoreHeritage: { en: 'Learn More About Our Heritage', th: 'เรียนรู้เพิ่มเติมเกี่ยวกับมรดกของเรา', zh: '了解更多关于我们的传统' },
+  fromOurJournal: { en: 'From Our Journal', th: 'จากบันทึกของเรา', zh: '日志摘录' },
+  readArticle: { en: 'Read Article', th: 'อ่านบทความ', zh: '阅读文章' },
+  visitKnowledgeHub: { en: 'Visit Our Knowledge Hub', th: 'เยี่ยมชมสาระน่ารู้', zh: '访问我们的知识中心' },
+  visitOurBoutique: { en: 'Visit Our Boutique', th: 'เยี่ยมชมร้านของเรา', zh: '光临我们的精品店' },
+  getDirectionsContact: { en: 'Get Directions & Contact Info', th: 'ดูเส้นทางและข้อมูลติดต่อ', zh: '获取路线和联系信息' },
   
   // Product & Shop
   filterByCategoryLabel: { en: 'Filter by Category:', th: 'กรองตามหมวดหมู่:', zh: '按类别筛选：' },
@@ -125,6 +134,16 @@ const translations: Record<string, MultilingualString> = {
   filterByCategory: { en: 'Filter by Category', th: 'กรองตามหมวดหมู่', zh: '按类别筛选' },
   allCategories: { en: 'All Categories', th: 'ทุกหมวดหมู่', zh: '所有类别' },
   filterByTag: { en: 'Filter by Tag', th: 'กรองตามแท็ก', zh: '按标签筛选' },
+  traditions_intro_p1: { 
+    en: "Welcome to the heart of the Chinese wedding—its cherished traditions. These are not merely steps in a ceremony; they are timeless expressions of love, respect, and unity that connect generations. Each ritual, from the reverent Tea Ceremony to the joyous Betrothal Gifts, is woven with blessings for a happy, prosperous, and harmonious life together.",
+    th: "ยินดีต้อนรับสู่หัวใจของพิธีวิวาห์จีน—ประเพณีอันล้ำค่า สิ่งเหล่านี้ไม่ใช่เป็นเพียงขั้นตอนในพิธี แต่เป็นการแสดงออกถึงความรัก ความเคารพ และความเป็นหนึ่งเดียวที่เชื่อมโยงคนทุกรุ่น ทุกพิธีกรรม ตั้งแต่พิธียกน้ำชาที่แสดงความเคารพไปจนถึงของขวัญหมั้นหมายที่เปี่ยมด้วยความสุข ล้วนถักทอด้วยคำอวยพรเพื่อชีวิตคู่ที่มีความสุข ความเจริญรุ่งเรือง และความปรองดอง",
+    zh: "欢迎来到中式婚礼的核心——其珍贵的传统。这些不仅仅是仪式中的步骤；它们是连接几代人的爱、尊重和团结的永恒表达。每一个仪式，从庄重的敬茶到喜悦的聘礼，都编织着对幸福、繁荣与和谐生活的祝福。"
+  },
+  traditions_intro_p2: { 
+    en: "On this page, you can explore the rich stories and deep meanings behind each custom. Click on any tradition to unfold its details and discover the beautiful symbolism that will make your special day even more meaningful. We invite you to embark on this journey of discovery.",
+    th: "ในหน้านี้ คุณสามารถสำรวจเรื่องราวอันงดงามและความหมายลึกซึ้งเบื้องหลังแต่ละประเพณีได้ คลิกที่ประเพณีใดก็ได้เพื่อดูรายละเอียดและค้นพบสัญลักษณ์อันสวยงามที่จะทำให้วันพิเศษของคุณมีความหมายมากยิ่งขึ้น เราขอเชิญคุณเริ่มต้นการเดินทางแห่งการค้นพบนี้",
+    zh: "在此页面，您可以探索每个习俗背后丰富的故事和深刻的含义。点击任何一项传统即可展开其详细信息，发现那些将使您的特殊日子更加有意义的美丽象征。我们邀请您踏上这段发现之旅。"
+  },
   
   // Blog Categories
   'meaning-of-symbols': { en: 'Meaning of Symbols', th: 'ความหมายของสัญลักษณ์', zh: '符号意义' },
@@ -159,43 +178,111 @@ const translations: Record<string, MultilingualString> = {
   checklistIntro: { en: 'A comprehensive checklist of traditional items and decorations for a seamless Chinese wedding. Checked items are saved automatically to your browser.', th: 'เช็คลิสต์ของใช้และของประดับตามประเพณีสำหรับงานแต่งงานจีนที่สมบูรณ์แบบ รายการที่เช็คแล้วจะถูกบันทึกในเบราว์เซอร์ของคุณโดยอัตโนมัติ', zh: '一份全面的传统中式婚礼用品和装饰清单，助您打造一场圆满的婚礼。已勾选项目会自动保存到您的浏览器中。' },
   progress: { en: 'Progress', th: 'ความคืบหน้า', zh: '进展' },
   
-  // About Page Narrative
-  about_subtitle: {
-    en: 'A Legacy of Love, A Future of Elegance',
-    th: 'สืบสานตำนานรัก...สู่ความสง่างามแห่งอนาคต',
-    zh: '爱的传承，优雅的未来'
+  // About Page Redesign
+  about_hero_title: {
+    en: 'A Legacy Woven in Silk and Gold',
+    th: 'ตำนานที่ถักทอด้วยไหมและทองคำ',
+    zh: '丝金织就的传奇'
   },
-  about_p1: {
-    en: 'In the vibrant heart of Bangkok\'s Chinatown, where the scent of tradition lingers in the air, a legacy was born over fifty years ago. This is the story of ตั้งจิ้นฮั้ว, a name that has become synonymous with the sacred artistry of the Chinese wedding. Our journey began not as a business, but as a family\'s promise: to preserve the profound beauty and intricate customs of our heritage for generations to come.',
-    th: 'ณ ใจกลางย่านเยาวราชอันเปี่ยมด้วยชีวิตชีวา ที่ซึ่งกลิ่นอายแห่งประเพณียังคงอบอวลอยู่เสมอ เมื่อกว่าห้าสิบปีก่อน ตำนานแห่งหนึ่งได้ถือกำเนิดขึ้น...นี่คือเรื่องราวของ ตั้งจิ้นฮั้ว ชื่อที่เปรียบเสมือนตัวแทนแห่งศาสตร์และศิลป์ของพิธีวิวาห์จีน เรื่องราวของเราไม่ได้เริ่มต้นในฐานะธุรกิจ แต่คือคำมั่นสัญญาของครอบครัว ที่จะสืบสานความงดงามอันลึกซึ้งและธรรมเนียมปฏิบัติอันละเอียดอ่อนแห่งมรดกทางวัฒนธรรมของเราให้คงอยู่สืบไป',
-    zh: '在曼谷唐人街充满活力的中心，传统的气息弥漫在空气中，五十多年前，一个传奇诞生了。这就是ตั้งจิ้นฮั้ว（Tang Chin Hua）的故事，这个名字已成为中华神圣婚礼艺术的代名词。我们的旅程并非始于商业，而是一个家族的承诺：为后代保存我们传统的深邃之美和复杂习俗。'
+  about_hero_subtitle: {
+    en: 'The story of ตั้งจิ้นฮั้ว begins not as a business, but as a family’s promise: to preserve the profound beauty and intricate customs of our heritage for generations to come.',
+    th: 'เรื่องราวของ ตั้งจิ้นฮั้ว ไม่ได้เริ่มต้นในฐานะธุรกิจ แต่คือคำมั่นสัญญาของครอบครัว ที่จะสืบสานความงดงามอันลึกซึ้งและธรรมเนียมปฏิบัติอันละเอียดอ่อนแห่งมรดกของเราให้คงอยู่สืบไป',
+    zh: 'ตั้งจิ้นฮั้ว的故事并非始于商业，而是一个家族的承诺：为后代保存我们传统的深邃之美和复杂习俗。'
   },
-  about_p2: {
-    en: 'Founded by our family patriarch, a master artisan with a deep reverence for the rituals that bind families and honor ancestors, our shop was a humble treasure trove of handcrafted wonders. Every silk thread in our Qun Kwas told a story of prosperity; every hand-painted tea set held the promise of familial harmony. We were more than merchants; we were custodians of culture, guiding young couples through the meaningful steps of Guo Da Li, the reverence of the tea ceremony, and the blessings of An Chuang.',
-    th: 'ร้านของเราก่อตั้งขึ้นโดยบรรพบุรุษผู้เป็นดั่งปรมาจารย์ช่างศิลป์ ผู้มีความเคารพอย่างสุดซึ้งต่อพิธีกรรมที่เชื่อมโยงครอบครัวและให้เกียรติแด่บรรพชน ในยุคแรกเริ่ม ร้านของเราเป็นดั่งหีบสมบัติอันล้ำค่าที่เต็มไปด้วยงานฝีมืออันน่าอัศจรรย์ เส้นไหมทุกเส้นบนชุด \'คัว\' (Qun Kwa) ของเรา ล้วนถักทอเรื่องราวแห่งความเจริญรุ่งเรือง ชุดถ้วยชาทุกลายเส้นที่วาดด้วยมือแฝงไว้ด้วยคำอวยพรให้ครอบครัวปรองดองเป็นหนึ่งเดียว เราเป็นมากกว่าผู้ค้า แต่เราคือผู้สืบทอดและพิทักษ์วัฒนธรรม ผู้คอยแนะนำคู่รักหนุ่มสาวให้เข้าใจถึงขั้นตอนอันเปี่ยมความหมายของพิธีหมั้น \'กัวต้าหลี่\' (Guo Da Li) ความเคารพนบนอบในพิธียกน้ำชา และการให้พรในพิธีปูเตียง \'อันฉวง\' (An Chuang)',
-    zh: '我们的店铺由家族的先祖创立，他是一位对联结家庭、尊敬祖先的仪式怀有深深敬意的工匠大师。起初，它只是一个充满手工艺品奇迹的宝库。我们裙褂上的每一根丝线都诉说着繁荣的故事；每一套手绘茶具都承载着家庭和谐的承诺。我们不仅仅是商人；我们是文化的守护者，引导年轻夫妇走过“过大礼”的意义深远的步骤，体验敬茶仪式的庄重，以及“安床”的祝福。'
+  about_timeline_title: {
+    en: 'Our Journey Through Time',
+    th: 'การเดินทางผ่านกาลเวลาของเรา',
+    zh: '我们的时光之旅'
   },
-  about_p3: {
-    en: 'Today, that founding promise is carried forward by the second and third generations of our family. The world has changed, but our principles remain unwavering. We have embraced the new while honoring the old, understanding that modern love stories deserve to be wrapped in the timeless elegance of tradition. Our collection is a bridge between the past and the present, meticulously curated to ensure every item is not only authentic in its symbolism but also exquisite in its craftsmanship.',
-    th: 'จวบจนวันนี้ คำมั่นสัญญานั้นได้รับการสืบทอดต่อโดยครอบครัวรุ่นที่สองและสาม แม้โลกจะเปลี่ยนไป แต่หลักการของเรายังคงหนักแน่นไม่สั่นคลอน เราเปิดรับสิ่งใหม่พร้อมกับให้เกียรติในสิ่งเก่า เพราะเราเชื่อว่าเรื่องราวความรักสมัยใหม่นั้นคู่ควรที่จะถูกห่อหุ้มไว้ด้วยความสง่างามอันเป็นอมตะของประเพณี สินค้าของเราจึงเป็นดั่งสะพานที่เชื่อมระหว่างอดีตและปัจจุบัน โดยผ่านการคัดสรรมาอย่างพิถีพิถันเพื่อให้มั่นใจว่าของทุกชิ้นไม่เพียงแต่ถูกต้องตามสัญลักษณ์มงคล แต่ยังงดงามล้ำเลิศในเชิงศิลปะและฝีมือ',
-    zh: '如今，这份创始的承诺由我们家族的第二代和第三代继承。世界变了，但我们的原则始终坚定不移。我们拥抱新事物，同时尊重旧传统，因为我们明白现代的爱情故事值得被包裹在永恒的传统优雅之中。我们的系列是连接过去与现在的桥梁，经过精心策划，确保每一件物品不仅在其象征意义上是真实的，而且在工艺上也是精致绝伦的。'
+  about_milestone1_year: { en: '1970s', th: 'ทศวรรษ 1970', zh: '1970年代' },
+  about_milestone1_title: {
+    en: 'A Humble Beginning',
+    th: 'จุดเริ่มต้นที่เรียบง่าย',
+    zh: '一个谦逊的开始'
   },
-  // Fix: Corrected syntax for about_p4 entry and fixed a typo in the Thai translation.
-  about_p4: {
-    en: 'At ตั้งจิ้นฮั้ว, we believe a wedding is more than a day—it is the weaving of two family histories into a single, beautiful tapestry. It is the first chapter of a new legacy. For over five decades, we have been privileged to provide the threads for that chapter. We don\'t just sell wedding supplies; we share in the joy of new beginnings, offering our knowledge, our passion, and our unwavering commitment to making every union as auspicious and beautiful as it is destined to be.',
-    th: 'ที่ ตั้งจิ้นฮั้ว เราเชื่อว่างานวิวาห์เป็นมากกว่าแค่วันสำคัญวันหนึ่ง แต่คือการถักทอเรื่องราวของสองครอบครัวให้กลายเป็นผืนผ้าแห่งประวัติศาสตร์ผืนเดียวกันที่งดงาม และเป็นบทแรกของตำนานบทใหม่ที่กำลังจะเริ่มต้นขึ้น ตลอดห้าทศวรรษที่ผ่านมา เรารู้สึกเป็นเกียรติอย่างยิ่งที่ได้เป็นผู้มอบเส้นด้ายสำหรับเรื่องราวบทแรกนี้ เราไม่ได้เป็นเพียงผู้ขายของใช้ในงานวิวาห์ แต่เราคือผู้ร่วมยินดีในการเริ่มต้นครั้งใหม่ พร้อมมอบทั้งความรู้ ความหลงใหล และความมุ่งมั่นทุ่มเทอย่างไม่เสื่อมคลาย เพื่อทำให้ทุกการครองคู่นั้นเป็นไปอย่างเป็นมงคลและงดงามที่สุดเท่าที่ควรจะเป็น',
-    zh: '在ตั้งจิ้นฮั้ว，我们相信婚礼不仅仅是一天——它是将两个家族的历史编织成一幅美丽挂毯的过程，是新传奇的第一章。五十多年来，我们有幸为这一章提供了丝线。我们不只是销售婚礼用品；我们分享新开始的喜悦，提供我们的知识、热情和坚定不移的承诺，致力于使每一次结合都尽可能吉祥和美丽。'
+  about_milestone1_desc: {
+    en: 'In the vibrant heart of Bangkok\'s Chinatown, our journey began. Founded by our family patriarch, a master artisan with a deep reverence for tradition, our shop was a humble treasure trove of handcrafted wonders, built on a promise to preserve the sacred artistry of the Chinese wedding.',
+    th: 'ณ ใจกลางย่านเยาวราชอันเปี่ยมด้วยชีวิตชีวา การเดินทางของเราได้เริ่มต้นขึ้น ร้านของเราก่อตั้งขึ้นโดยบรรพบุรุษผู้เป็นปรมาจารย์ช่างศิลป์และมีความเคารพอย่างสุดซึ้งต่อประเพณี ที่นี่เป็นดั่งหีบสมบัติอันล้ำค่าที่เต็มไปด้วยงานฝีมืออันน่าอัศจรรย์ สร้างขึ้นจากคำมั่นสัญญาที่จะสืบสานศาสตร์และศิลป์อันศักดิ์สิทธิ์ของพิธีวิวาห์จีน',
+    zh: '在曼谷唐人街充满活力的中心，我们的旅程开始了。我们的店铺由家族的先祖创立，他是一位对传统怀有深深敬意的工匠大师。它是一个充满手工艺品奇迹的宝库，建立在保存中华神圣婚礼艺术的承诺之上。'
   },
-  about_p5: {
-    en: 'Welcome to our family... Welcome to the beginning of your forever.',
-    th: 'ยินดีต้อนรับสู่ครอบครัวของเรา... ยินดีต้อนรับสู่จุดเริ่มต้นของคำว่า \'ตลอดไป\' สำหรับคุณ',
-    zh: '欢迎来到我们的家庭... 欢迎来到您“永远”的开始。'
+  about_milestone2_year: { en: '1990s', th: 'ทศวรรษ 1990', zh: '1990年代' },
+  about_milestone2_title: {
+    en: 'Becoming Custodians of Culture',
+    th: 'ก้าวสู่การเป็นผู้พิทักษ์วัฒนธรรม',
+    zh: '成为文化的守护者'
+  },
+  about_milestone2_desc: {
+    en: 'As our reputation grew, so did our responsibility. We became more than merchants; we were custodians of culture, guiding young couples through the meaningful steps of Guo Da Li, the reverence of the tea ceremony, and the blessings of An Chuang.',
+    th: 'เมื่อชื่อเสียงของเราเป็นที่รู้จักมากขึ้น ความรับผิดชอบของเราก็เพิ่มขึ้นตามไปด้วย เราเป็นมากกว่าผู้ค้า แต่เราคือผู้พิทักษ์วัฒนธรรม คอยแนะนำคู่รักหนุ่มสาวให้เข้าใจถึงขั้นตอนอันเปี่ยมความหมายของพิธีหมั้น \'กัวต้าหลี่\' ความเคารพในพิธียกน้ำชา และการให้พรในพิธีปูเตียง',
+    zh: '随着我们声誉的增长，我们的责任也随之增加。我们不仅仅是商人；我们是文化的守护者，引导年轻夫妇走过“过大礼”的意义深远的步骤，体验敬茶仪式的庄重，以及“安床”的祝福。'
+  },
+  about_milestone3_year: { en: 'Today', th: 'ปัจจุบัน', zh: '今日' },
+  about_milestone3_title: {
+    en: 'A Bridge Between Past and Present',
+    th: 'สะพานเชื่อมระหว่างอดีตและปัจจุบัน',
+    zh: '连接过去与现在的桥梁'
+  },
+  about_milestone3_desc: {
+    en: 'Carried forward by the second and third generations, our founding promise remains unwavering. We embrace the new while honoring the old, understanding that modern love stories deserve to be wrapped in the timeless elegance of tradition. Our collection is a bridge between the past and the present.',
+    th: 'คำมั่นสัญญาแรกเริ่มของเรายังคงหนักแน่นและได้รับการสืบทอดต่อโดยครอบครัวรุ่นที่สองและสาม เราเปิดรับสิ่งใหม่พร้อมกับให้เกียรติสิ่งเก่า เพราะเราเชื่อว่าเรื่องราวความรักสมัยใหม่นั้นคู่ควรที่จะถูกห่อหุ้มไว้ด้วยความสง่างามอันเป็นอมตะของประเพณี สินค้าของเราจึงเป็นดั่งสะพานที่เชื่อมระหว่างอดีตและปัจจุบัน',
+    zh: '由第二代和第三代继承，我们的创始承诺始终坚定不移。我们拥抱新事物，同时尊重旧传统，因为我们明白现代的爱情故事值得被包裹在永恒的传统优雅之中。我们的系列是连接过去与现在的桥梁。'
+  },
+  about_philosophy_title: {
+    en: 'Our Philosophy',
+    th: 'ปรัชญาของเรา',
+    zh: '我们的哲学'
+  },
+  about_philosophy1_title: {
+    en: 'Authentic Tradition',
+    th: 'ความถูกต้องตามประเพณี',
+    zh: '正宗传统'
+  },
+  about_philosophy1_desc: {
+    en: 'Every item is meticulously curated to ensure it is not only exquisite in its craftsmanship but also authentic in its symbolism.',
+    th: 'สินค้าทุกชิ้นผ่านการคัดสรรมาอย่างพิถีพิถันเพื่อให้มั่นใจว่าไม่เพียงแต่งดงามล้ำเลิศในเชิงศิลปะ แต่ยังถูกต้องตามสัญลักษณ์มงคล',
+    zh: '每一件物品都经过精心策划，确保其不仅工艺精湛，而且在其象征意义上也是真实的。'
+  },
+  about_philosophy2_title: {
+    en: 'Uncompromising Quality',
+    th: 'คุณภาพที่เหนือกว่า',
+    zh: '不妥协的品质'
+  },
+  about_philosophy2_desc: {
+    en: 'From the finest silk threads in our Qun Kwas to the delicate porcelain of our tea sets, we believe in providing only the best for life\'s most important day.',
+    th: 'ตั้งแต่เส้นไหมที่ดีที่สุดในชุด \'คัว\' ของเราไปจนถึงเครื่องลายครามอันละเอียดอ่อนของชุดถ้วยชา เราเชื่อมั่นในการมอบสิ่งที่ดีที่สุดสำหรับวันที่สำคัญที่สุดของชีวิต',
+    zh: '从我们裙褂上最优质的丝线到我们茶具的精致瓷器，我们坚信只为生命中最重要的日子提供最好的。'
+  },
+  about_philosophy3_title: {
+    en: 'Service from the Heart',
+    th: 'บริการด้วยใจ',
+    zh: '用心服务'
+  },
+  about_philosophy3_desc: {
+    en: 'We don\'t just sell wedding supplies; we share in the joy of new beginnings, offering our knowledge, passion, and commitment to every family.',
+    th: 'เราไม่ได้เป็นเพียงผู้ขายของใช้ในงานวิวาห์ แต่เราคือผู้ร่วมยินดีในการเริ่มต้นครั้งใหม่ พร้อมมอบทั้งความรู้ ความหลงใหล และความทุ่มเทให้กับทุกครอบครัว',
+    zh: '我们不只是销售婚礼用品；我们分享新开始的喜悦，为每个家庭提供我们的知识、热情和承诺。'
+  },
+  about_closing_title: {
+    en: 'The Next Chapter of a Beautiful Tapestry',
+    th: 'บทต่อไปของผืนผ้าอันงดงาม',
+    zh: '美丽织锦的下一章'
+  },
+  about_closing_desc: {
+    en: 'A wedding is the weaving of two family histories into a single tapestry. For over 50 years, we have been privileged to provide the threads. Welcome to our family... Welcome to the beginning of your forever.',
+    th: 'งานวิวาห์คือการถักทอเรื่องราวของสองครอบครัวให้กลายเป็นผืนผ้าผืนเดียวกัน ตลอด 50 กว่าปีที่ผ่านมา เรารู้สึกเป็นเกียรติที่ได้เป็นผู้มอบเส้นด้ายสำหรับเรื่องราวนั้น ยินดีต้อนรับสู่ครอบครัวของเรา... สู่จุดเริ่มต้นของคำว่า \'ตลอดไป\' สำหรับคุณ',
+    zh: '婚礼是将两个家族的历史编织成一幅织锦。五十多年来，我们有幸提供了这些丝线。欢迎来到我们的家庭... 欢迎来到您“永远”的开始。'
   },
 
   // FAQ Page
   faqTitle: { en: 'Frequently Asked Questions', th: 'คำถามที่พบบ่อย', zh: '常见问题' },
   faqIntro: { en: 'Find answers to common questions about our products, services, and traditional Chinese wedding customs.', th: 'ค้นหาคำตอบสำหรับคำถามที่พบบ่อยเกี่ยวกับสินค้า บริการ และธรรมเนียมประเพณีการแต่งงานของจีน', zh: '查找有关我们的产品、服务和中式婚礼习俗的常见问题解答。' },
-  
+  faq_search_placeholder: { en: 'Type here to find answers...', th: 'พิมพ์เพื่อค้นหาคำตอบ...', zh: '在此输入以查找答案...' },
+  faq_cat_all: { en: 'All Questions', th: 'คำถามทั้งหมด', zh: '所有问题' },
+  faq_cat_products_ceremonies: { en: 'Products & Ceremonies', th: 'สินค้าและพิธีการ', zh: '产品与仪式' },
+  faq_cat_store_services: { en: 'Store Services', th: 'การบริการของร้าน', zh: '店铺服务' },
+  faq_cat_knowledge_culture: { en: 'Knowledge & Culture', th: 'เกร็ดความรู้และวัฒนธรรม', zh: '知识与文化' },
+  faq_no_results: { en: 'No questions match your search.', th: 'ไม่พบคำถามที่ตรงกับการค้นหาของคุณ', zh: '没有符合您搜索的问题。' },
+
   // SEO Meta Tags
   meta_title_home: { en: 'Tang Chin Hua | Authentic Chinese Wedding Attire in Bangkok', th: 'ตั้งจิ้นฮั้ว | ชุดแต่งงานจีนโบราณแท้ในกรุงเทพฯ', zh: '陳振華 | 曼谷正宗中式婚礼服饰' },
   meta_desc_home: { en: 'Discover authentic, handcrafted Chinese wedding attire in Bangkok. Explore our collections of Qun Kwa, Cheongsam, and traditional accessories.', th: 'ค้นพบชุดแต่งงานจีนโบราณทำมือใจกลางกรุงเทพฯ ชมคอลเลคชั่นฉวินขว้า กี่เพ้า และเครื่องประดับตามประเพณี', zh: '在曼谷探索正宗的手工制作的中式婚纱。浏览我们的裙褂、旗袍和传统配饰系列。' },

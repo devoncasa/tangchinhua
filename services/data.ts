@@ -877,26 +877,27 @@ export const checklistData: ChecklistItem[] = [
 
 // Fix: Moved faqData from types.ts to data.ts, added type annotation, and exported it.
 export const faqData: FaqItem[] = [
-    // Existing FAQs
     {
         id: 'faq1',
+        category: 'products_ceremonies',
         question: { en: 'What is the difference between a Qun Kwa and a Qipao?', th: 'ชุด Qun Kwa (ฉวินขว้า) กับ Qipao (กี่เพ้า) แตกต่างกันอย่างไร?', zh: '裙褂和旗袍有什么区别？' },
         answer: { en: 'A Qun Kwa is a traditional two-piece bridal gown, heavily embroidered with gold and silver thread, typically worn for the main ceremonies like the tea ceremony. A Qipao (or Cheongsam) is a more modern, form-fitting one-piece dress that can be worn during the wedding banquet or other parts of the celebration.', th: 'Qun Kwa (ฉวินขว้า) เป็นชุดเจ้าสาวสองชิ้นแบบดั้งเดิม ปักด้วยดิ้นทองและเงินอย่างวิจิตร มักสวมใส่ในพิธีหลัก เช่น พิธียกน้ำชา ส่วน Qipao (กี่เพ้า) หรือ Cheongsam เป็นชุดเดรสชิ้นเดียวที่เข้ารูปและทันสมัยกว่า สามารถสวมใส่ในช่วงงานเลี้ยงฉลองมงคลสมรสหรือส่วนอื่นๆ ของงานได้', zh: '裙褂是传统的两件套新娘礼服，通常用金银线进行重工刺绣，主要在敬茶等主要仪式上穿着。旗袍则是一种更为现代、修身的单件连衣裙，可在婚宴或庆典的其他环节穿着。' }
     },
     {
         id: 'faq2',
+        category: 'products_ceremonies',
         question: { en: 'What does the dragon and phoenix embroidery symbolize?', th: 'ลายปักมังกรและหงส์มีความหมายว่าอย่างไร?', zh: '龙凤刺绣象征着什么？' },
         answer: { en: 'The dragon represents the groom (masculine, yang energy, strength, and good luck), while the phoenix represents the bride (feminine, yin energy, beauty, and grace). Together, they symbolize the perfect, harmonious union of a couple—marital bliss.', th: 'มังกรเป็นตัวแทนของเจ้าบ่าว (พลังหยาง, ความแข็งแกร่ง, โชคลาภ) ในขณะที่หงส์เป็นตัวแทนของเจ้าสาว (พลังหยิน, ความงาม, ความสง่างาม) เมื่ออยู่คู่กันจึงเป็นสัญลักษณ์ของการครองคู่ที่สมบูรณ์แบบและกลมเกลียว หรือความสุขในชีวิตสมรส', zh: '龙代表新郎（阳刚之气、力量和好运），而凤则代表新娘（阴柔之美、优雅和端庄）。两者结合象征着夫妻完美和谐的结合——即婚姻美满。' }
     },
     {
         id: 'faq3',
+        category: 'store_services',
         question: { en: 'Do I need an appointment to visit the store?', th: 'ฉันต้องนัดหมายล่วงหน้าเพื่อไปที่ร้านหรือไม่?', zh: '我需要预约才能到店参观吗？' },
         answer: { en: 'While walk-ins are welcome, we highly recommend making an appointment for bridal attire fittings or detailed consultations. An appointment ensures that one of our specialists can dedicate their full attention to you, providing a personalized and unhurried experience.', th: 'แม้ว่าเราจะยินดีต้อนรับลูกค้าวอล์กอิน แต่เราขอแนะนำอย่างยิ่งให้ทำการนัดหมายล่วงหน้าสำหรับการลองชุดเจ้าสาวหรือการปรึกษาโดยละเอียด การนัดหมายจะช่วยให้แน่ใจว่าผู้เชี่ยวชาญของเราสามารถให้ความสนใจกับคุณได้อย่างเต็มที่ มอบประสบการณ์ที่เป็นส่วนตัวและไม่เร่งรีบ', zh: '虽然我们欢迎您随时光临，但我们强烈建议您为新娘礼服试穿或详细咨询进行预约。预约可确保我们的专家能够全心全意为您服务，提供个性化且从容的体验。' }
     },
-
-    // New FAQs start here
     {
         id: 'faq-new-01',
+        category: 'knowledge_culture',
         question: {
             th: 'ถ้าจะจัดงานแต่งงานแบบจีน แต่ไม่มีความรู้เลย ควรเริ่มต้นอย่างไร?',
             en: 'If I want to have a Chinese wedding but have no knowledge, how should I start?',
@@ -910,6 +911,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-02',
+        category: 'products_ceremonies',
         question: {
             th: 'ของใช้ในพิธีจำเป็นต้องซื้อครบทุกอย่างตามรายการหรือไม่?',
             en: 'Is it necessary to buy every single item on the ceremonial list?',
@@ -923,6 +925,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-03',
+        category: 'store_services',
         question: {
             th: 'สินค้าของทางร้านมาจากที่ไหน? คุณภาพเชื่อถือได้หรือไม่?',
             en: 'Where do your products come from? Is the quality reliable?',
@@ -936,6 +939,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-04',
+        category: 'products_ceremonies',
         question: {
             th: 'ของหมั้น (สี่สีท้ง) และของรับไหว้ จำเป็นต้องเตรียมอะไรบ้าง?',
             en: 'What should be prepared for the engagement gifts (Si Si Thng) and tea ceremony gifts?',
@@ -949,6 +953,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-05',
+        category: 'knowledge_culture',
         question: {
             th: 'คู่สมรสไม่ได้มีเชื้อสายจีน สามารถจัดพิธีแบบจีนได้หรือไม่?',
             en: 'Can a couple with no Chinese heritage hold a Chinese ceremony?',
@@ -962,6 +967,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-06',
+        category: 'store_services',
         question: {
             th: 'นอกจากของใช้ในงานแต่งงาน ทางร้านมีสินค้าสำหรับพิธีอื่นๆ หรือไม่?',
             en: 'Besides wedding items, do you have products for other ceremonies?',
@@ -975,6 +981,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-07',
+        category: 'products_ceremonies',
         question: {
             th: 'ธรรมเนียมของจีนแต่ละถิ่น (แต้จิ๋ว, ฮกเกี้ยน) ใช้ของในพิธีแตกต่างกันหรือไม่?',
             en: 'Do traditions for different Chinese dialect groups (e.g., Teochew, Hokkien) use different ceremonial items?',
@@ -988,6 +995,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-08',
+        category: 'knowledge_culture',
         question: {
             th: 'ควรเตรียมตัวและซื้อของสำหรับงานแต่งล่วงหน้านานแค่ไหน?',
             en: 'How far in advance should we prepare and purchase items for the wedding?',
@@ -1001,6 +1009,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-09',
+        category: 'store_services',
         question: {
             th: 'สามารถสั่งซื้อสินค้าผ่านช่องทางออนไลน์ได้หรือไม่?',
             en: 'Can I order products through online channels?',
@@ -1014,6 +1023,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-10',
+        category: 'store_services',
         question: {
             th: 'หากต้องการคำปรึกษาแบบละเอียด ต้องนัดหมายล่วงหน้าหรือไม่? มีค่าใช้จ่ายไหม?',
             en: 'For a detailed consultation, do I need an appointment? Is there a fee?',
@@ -1027,6 +1037,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-11',
+        category: 'store_services',
         question: {
             th: 'อยากทราบราคาโดยประมาณสำหรับชุดของใช้ในพิธีแต่งงานทั้งหมด?',
             en: 'What is the approximate price for a complete set of ceremonial wedding items?',
@@ -1040,6 +1051,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-12',
+        category: 'store_services',
         question: {
             th: 'ทางร้านมีบริการจัดส่งสินค้าหรือไม่?',
             en: 'Do you offer delivery service?',
@@ -1053,6 +1065,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-13',
+        category: 'store_services',
         question: {
             th: 'ร้านตั้งอยู่ที่ไหนและเปิด-ปิดกี่โมง?',
             en: 'Where is the shop located and what are the opening hours?',
@@ -1066,6 +1079,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-14',
+        category: 'store_services',
         question: {
             th: 'สามารถชำระเงินด้วยบัตรเครดิตได้หรือไม่?',
             en: 'Can I pay by credit card?',
@@ -1079,6 +1093,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-15',
+        category: 'products_ceremonies',
         question: {
             th: 'ทำไมสัญลักษณ์ "ซังฮี้" (囍) ถึงมีความสำคัญในงานแต่งงาน?',
             en: 'Why is the "Double Happiness" (囍) symbol important in weddings?',
@@ -1092,6 +1107,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-16',
+        category: 'products_ceremonies',
         question: {
             th: 'ถ้าต้องการจัดพิธียกน้ำชาให้ถูกต้อง ควรเลือกใช้ชาแบบไหน?',
             en: 'To hold a proper tea ceremony, what kind of tea should be chosen?',
@@ -1105,6 +1121,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-17',
+        category: 'products_ceremonies',
         question: {
             th: 'ของใช้ในพิธีจำเป็นต้องเป็นสีแดงทั้งหมดหรือไม่?',
             en: 'Do all ceremonial items have to be red?',
@@ -1118,6 +1135,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-18',
+        category: 'products_ceremonies',
         question: {
             th: 'ขนมมงคลในพิธีมีความหมายแตกต่างกันอย่างไร?',
             en: 'How do the auspicious sweets in the ceremony differ in meaning?',
@@ -1131,6 +1149,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-19',
+        category: 'products_ceremonies',
         question: {
             th: 'ชุดเอี๊ยมแต่งงาน มีความสำคัญอย่างไร?',
             en: 'What is the significance of the wedding apron set?',
@@ -1144,6 +1163,7 @@ export const faqData: FaqItem[] = [
     },
     {
         id: 'faq-new-20',
+        category: 'knowledge_culture',
         question: {
             th: 'จำเป็นต้องปฏิบัติตามธรรมเนียมโบราณอย่างเคร่งครัดหรือไม่?',
             en: 'Is it necessary to follow ancient traditions strictly?',

@@ -81,6 +81,7 @@ export interface FaqItem {
     id: string;
     question: MultilingualString;
     answer: MultilingualString;
+    category: string;
 }
 
 export interface CartItem {
