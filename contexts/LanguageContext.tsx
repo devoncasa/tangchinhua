@@ -95,6 +95,10 @@ const translations: Record<string, MultilingualString> = {
   sizes: { en: 'Sizes', th: 'ขนาด', zh: '尺寸' },
   category: { en: 'Category', th: 'หมวดหมู่', zh: '类别' },
   youMightAlsoLike: { en: 'You Might Also Like', th: 'สินค้าที่คุณอาจสนใจ', zh: '您可能也喜欢' },
+  essentialItemsForCeremony: { en: 'Essential Items for This Ceremony', th: 'ของใช้ที่จำเป็นสำหรับพิธีนี้', zh: '此仪式必备物品' },
+  shopAllForCeremony: { en: 'Shop All Items for This Ceremony', th: 'เลือกซื้อของทั้งหมดสำหรับพิธีนี้', zh: '选购此仪式的所有物品' },
+  showingResultsFor: { en: 'Showing results for:', th: 'แสดงผลลัพธ์สำหรับ:', zh: '显示结果：' },
+  clearFilter: { en: 'Clear', th: 'ล้าง', zh: '清除' },
 
   // Product Detail Page
   reviews: { en: 'Reviews', th: 'รีวิว', zh: '评价' },

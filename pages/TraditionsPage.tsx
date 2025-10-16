@@ -1,20 +1,26 @@
-
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAppContext } from '../contexts/AppContext';
-import { type Tradition } from '../types';
+import { type Tradition, type Product } from '../types';
 import SEOManager from '../components/SEOManager';
 import Breadcrumbs, { type BreadcrumbLink } from '../components/Breadcrumbs';
+import ProductCard from '../components/ProductCard';
 
 // An interactive accordion component for displaying each tradition.
 interface TraditionAccordionItemProps {
     tradition: Tradition;
     isOpen: boolean;
     onToggle: () => void;
+    products: Product[];
 }
 
-const TraditionAccordionItem: React.FC<TraditionAccordionItemProps> = ({ tradition, isOpen, onToggle }) => {
-    const { getMultilingual } = useLanguage();
+const TraditionAccordionItem: React.FC<TraditionAccordionItemProps> = ({ tradition, isOpen, onToggle, products }) => {
+    const { getMultilingual, t } = useLanguage();
+
+    const relevantProducts = useMemo(() => {
+        return products.filter(p => p.traditionTags?.includes(tradition.id));
+    }, [products, tradition.id]);
     
     return (
         <div className="bg-brand-soft-pink rounded-lg shadow-sm transition-shadow duration-300 overflow-hidden border border-brand-rose-pink/20 hover:shadow-md">
@@ -41,6 +47,27 @@ const TraditionAccordionItem: React.FC<TraditionAccordionItemProps> = ({ traditi
                         <p key={index}>{paragraph}</p>
                     ))}
                 </div>
+
+                {isOpen && relevantProducts.length > 0 && (
+                    <div className="px-6 pb-6 mt-4 border-t border-brand-rose-pink/30 pt-6">
+                        <h3 className="text-lg font-serif-zh font-bold text-brand-red mb-4">{t('essentialItemsForCeremony')}</h3>
+                        <div className="flex space-x-4 overflow-x-auto pb-4 -mb-4">
+                            {relevantProducts.map(product => (
+                                <div key={product.id} className="flex-shrink-0 w-48">
+                                    <ProductCard product={product} />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="mt-8 text-center">
+                            <Link
+                                to={`/shop?tradition=${tradition.id}`}
+                                className="inline-block px-6 py-2 bg-brand-rose-pink text-white font-bold rounded-full hover:bg-brand-red transition-colors shadow-md hover:shadow-lg"
+                            >
+                                {t('shopAllForCeremony')}
+                            </Link>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -49,7 +76,7 @@ const TraditionAccordionItem: React.FC<TraditionAccordionItemProps> = ({ traditi
 
 const TraditionsPage = () => {
     const { t } = useLanguage();
-    const { traditions } = useAppContext();
+    const { traditions, products } = useAppContext();
     const [openTraditionId, setOpenTraditionId] = useState<string | null>(traditions.length > 0 ? traditions[0].id : null);
 
     const breadcrumbLinks: BreadcrumbLink[] = [
@@ -78,13 +105,14 @@ const TraditionsPage = () => {
                         </div>
                     </div>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="max-w-4xl mx-auto space-y-4">
                         {traditions.map(trad => (
                             <TraditionAccordionItem 
                                 key={trad.id}
                                 tradition={trad}
                                 isOpen={openTraditionId === trad.id}
                                 onToggle={() => handleToggle(trad.id)}
+                                products={products}
                             />
                         ))}
                     </div>

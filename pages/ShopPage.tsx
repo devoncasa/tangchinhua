@@ -1,5 +1,5 @@
-
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import ProductCard from '../components/ProductCard';
@@ -10,17 +10,35 @@ import { MultilingualString } from '../types';
 import Breadcrumbs, { type BreadcrumbLink } from '../components/Breadcrumbs';
 
 const ShopPage = () => {
-    const { products, checklistData } = useAppContext();
+    const { products, checklistData, traditions } = useAppContext();
     const { t, getMultilingual } = useLanguage();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const traditionFilterFromUrl = searchParams.get('tradition');
     
     // State for main product filtering and sorting
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
     const [selectedSize, setSelectedSize] = useState<string>('all');
     const [selectedColor, setSelectedColor] = useState<string>('all');
     const [sortBy, setSortBy] = useState<string>('popularity');
+    const [selectedTradition, setSelectedTradition] = useState<string | null>(traditionFilterFromUrl);
     
     // State for checklist section
     const [selectedChecklistCategory, setSelectedChecklistCategory] = useState<string>('all');
+
+    useEffect(() => {
+        // Sync state with URL param if it changes (e.g., browser back/forward)
+        setSelectedTradition(traditionFilterFromUrl);
+    }, [traditionFilterFromUrl]);
+
+    const activeTradition = useMemo(() => {
+        return traditions.find(t => t.id === selectedTradition);
+    }, [traditions, selectedTradition]);
+
+    const clearTraditionFilter = () => {
+        setSelectedTradition(null);
+        searchParams.delete('tradition');
+        setSearchParams(searchParams, { replace: true });
+    };
 
     // Get unique product categories with images for the filter
     const uniqueCategoriesWithImages = useMemo(() => {
@@ -56,6 +74,11 @@ const ShopPage = () => {
     // Apply filtering and sorting to products
     const filteredAndSortedProducts = useMemo(() => {
         let items = [...products];
+
+        // Filter by tradition
+        if (selectedTradition) {
+            items = items.filter(p => p.traditionTags?.includes(selectedTradition));
+        }
 
         // Filter by category
         if (selectedCategory !== 'all') {
@@ -93,7 +116,7 @@ const ShopPage = () => {
         }
 
         return items;
-    }, [products, selectedCategory, selectedSize, selectedColor, sortBy, getMultilingual]);
+    }, [products, selectedTradition, selectedCategory, selectedSize, selectedColor, sortBy, getMultilingual]);
 
     const filteredChecklistCategories = useMemo(() => {
         if (selectedChecklistCategory === 'all') {
@@ -137,6 +160,21 @@ const ShopPage = () => {
                     <p className="text-lg text-center max-w-3xl mx-auto mb-12 text-light-text opacity-90">
                         {t('shopIntro')}
                     </p>
+
+                    {activeTradition && (
+                        <div className="mb-8 p-4 bg-brand-soft-pink rounded-lg flex items-center justify-between shadow border border-brand-rose-pink/50">
+                            <p className="font-semibold text-brand-red">
+                                {t('showingResultsFor')} <span className="font-bold">{getMultilingual(activeTradition.title)}</span>
+                            </p>
+                            <button 
+                                onClick={clearTraditionFilter}
+                                className="font-semibold text-gray-600 hover:text-brand-red flex items-center gap-1 text-sm"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                {t('clearFilter')}
+                            </button>
+                        </div>
+                    )}
 
                     {/* Visual Category Filter */}
                     <div className="mb-8">

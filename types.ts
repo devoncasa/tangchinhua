@@ -30,6 +30,7 @@ export interface Product {
   sizes: string[];
   category: MultilingualString;
   reviews?: Review[];
+  traditionTags?: string[];
 }
 
 export interface CulturalTip {
