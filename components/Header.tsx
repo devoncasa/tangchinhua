@@ -55,7 +55,7 @@ const Header = () => {
                 <div className="text-2xl font-serif-zh font-bold tracking-wider">
                     <span className="text-legacy-gold">{t('brand_name_header_part1')}</span>{t('brand_name_header_part2')}
                 </div>
-                <span className="hidden md:block text-xs font-sans-th text-blush-silk opacity-90 mt-1">
+                <span className="block text-xs font-sans-th text-blush-silk opacity-90 mt-1">
                     {t('header_tagline')}
                 </span>
             </div>

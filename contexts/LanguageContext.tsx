@@ -145,14 +145,14 @@ const translations: Record<string, MultilingualString> = {
   allCategories: { en: 'All Categories', th: 'ทุกหมวดหมู่', zh: '所有类别' },
   filterByTag: { en: 'Filter by Tag', th: 'กรองตามแท็ก', zh: '按标签筛选' },
   traditions_intro_p1: { 
-    en: "Welcome to the heart of the Chinese wedding—its cherished traditions. These are not merely steps in a ceremony; they are timeless expressions of love, respect, and unity that connect generations. Each ritual, from the reverent Tea Ceremony to the joyous Betrothal Gifts, is woven with blessings for a happy, prosperous, and harmonious life together.",
-    th: "ยินดีต้อนรับสู่หัวใจของพิธีวิวาห์จีน—ประเพณีอันล้ำค่า สิ่งเหล่านี้ไม่ใช่เป็นเพียงขั้นตอนในพิธี แต่เป็นการแสดงออกถึงความรัก ความเคารพ และความเป็นหนึ่งเดียวที่เชื่อมโยงคนทุกรุ่น ทุกพิธีกรรม ตั้งแต่พิธียกน้ำชาที่แสดงความเคารพไปจนถึงของขวัญหมั้นหมายที่เปี่ยมด้วยความสุข ล้วนถักทอด้วยคำอวยพรเพื่อชีวิตคู่ที่มีความสุข ความเจริญรุ่งเรือง และความปรองดอง",
-    zh: "欢迎来到中式婚礼的核心——其珍贵的传统。这些不仅仅是仪式中的步骤；它们是连接几代人的爱、尊重和团结的永恒表达。每一个仪式，从庄重的敬茶到喜悦的聘礼，都编织着对幸福、繁荣与和谐生活的祝福。"
+    en: "Welcome to the beautiful world of Chinese wedding traditions. These ceremonies, passed down through generations, are not merely steps to be followed; they are a poem expressing love, respect, and the warm beginning of family life. We believe that every detail in the ceremony is a blessing for the couple, and we are ready to guide you to their profound meanings.",
+    th: "โลกแห่งประเพณีอันงดงามของการแต่งงานจีน พิธีการต่างๆ ที่สืบทอดจากรุ่นสู่รุ่นนี้ไม่ใช่เพียงแค่ขั้นตอนที่ต้องปฏิบัติ แต่คือบทกวีที่แสดงออกถึงความรัก ความเคารพ และการเริ่มต้นชีวิตครอบครัวที่อบอุ่น เราเชื่อว่าทุกรายละเอียดในพิธีคือการอวยพรให้แก่คู่บ่าวสาว และเราพร้อมที่จะนำทางคุณไปสู่ความหมายอันลึกซึ้งเหล่านั้น",
+    zh: "欢迎来到绚丽多彩的中式婚礼传统世界。这些代代相传的仪式不仅仅是需要遵循的步骤；它们是一首表达爱、尊重和家庭生活温馨开端的诗篇。我们相信，仪式中的每一个细节都是对新人的祝福，我们随时准备引导您领会其深刻的含义。"
   },
   traditions_intro_p2: { 
-    en: "On this page, you can explore the rich stories and deep meanings behind each custom. Click on any tradition to unfold its details and discover the beautiful symbolism that will make your special day even more meaningful. We invite you to embark on this journey of discovery.",
-    th: "ในหน้านี้ คุณสามารถสำรวจเรื่องราวอันงดงามและความหมายลึกซึ้งเบื้องหลังแต่ละประเพณีได้ คลิกที่ประเพณีใดก็ได้เพื่อดูรายละเอียดและค้นพบสัญลักษณ์อันสวยงามที่จะทำให้วันพิเศษของคุณมีความหมายมากยิ่งขึ้น เราขอเชิญคุณเริ่มต้นการเดินทางแห่งการค้นพบนี้",
-    zh: "在此页面，您可以探索每个习俗背后丰富的故事和深刻的含义。点击任何一项传统即可展开其详细信息，发现那些将使您的特殊日子更加有意义的美丽象征。我们邀请您踏上这段发现之旅。"
+    en: "On this page, you can easily explore each tradition to discover the stories and significance hidden behind them. Click on a topic you're interested in to learn more and find the essential items to make your special day truly complete and meaningful.",
+    th: "ในหน้านี้ คุณสามารถสำรวจประเพณีแต่ละอย่างเพื่อค้นพบเรื่องราวและความสำคัญที่ซ่อนอยู่เบื้องหลังได้อย่างง่ายดาย ลองคลิกที่หัวข้อที่คุณสนใจเพื่อเรียนรู้เพิ่มเติม และค้นหาสิ่งของที่จำเป็นเพื่อทำให้วันพิเศษของคุณสมบูรณ์แบบและเปี่ยมด้วยความหมายอย่างแท้จริง",
+    zh: "在此页面上，您可以轻松探索每项传统，发现其背后隐藏的故事和重要性。点击您感兴趣的主题以了解更多信息，并找到使您的特殊日子真正圆满和有意义的必备物品。"
   },
   
   // Blog Categories
