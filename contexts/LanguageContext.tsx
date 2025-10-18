@@ -293,6 +293,10 @@ const translations: Record<string, MultilingualString> = {
   faq_cat_knowledge_culture: { en: 'Knowledge & Culture', th: 'เกร็ดความรู้และวัฒนธรรม', zh: '知识与文化' },
   faq_no_results: { en: 'No questions match your search.', th: 'ไม่พบคำถามที่ตรงกับการค้นหาของคุณ', zh: '没有符合您搜索的问题。' },
 
+  // Construction Banner
+  underConstructionTitle: { en: 'Site Under Construction', th: 'เว็บไซต์อยู่ระหว่างการปรับปรุง', zh: '网站正在建设中' },
+  underConstructionMessage: { en: 'Our website is currently under active development. We are working hard to bring you a complete experience. For any inquiries or to place an order, please feel free to contact us.', th: 'เว็บไซต์ของเรากำลังอยู่ในระหว่างการพัฒนาอย่างต่อเนื่อง เรากำลังทำงานอย่างหนักเพื่อมอบประสบการณ์ที่สมบูรณ์แบบแก่คุณ สำหรับข้อสงสัยหรือการสั่งซื้อ กรุณาติดต่อเราได้เลย', zh: '我们的网站目前正在积极开发中。我们正在努力为您带来完整的体验。如有任何查询或下订单，请随时与我们联系。' },
+
   // SEO Meta Tags
   meta_title_home: { en: 'Tang Chin Hua | Authentic Chinese Wedding Attire in Bangkok', th: 'ตั้งจิ้นฮั้ว | ชุดแต่งงานจีนโบราณแท้ในกรุงเทพฯ', zh: '陳振華 | 曼谷正宗中式婚礼服饰' },
   meta_desc_home: { en: 'Discover authentic, handcrafted Chinese wedding attire in Bangkok. Explore our collections of Qun Kwa, Cheongsam, and traditional accessories.', th: 'ค้นพบชุดแต่งงานจีนโบราณทำมือใจกลางกรุงเทพฯ ชมคอลเลคชั่นฉวินขว้า กี่เพ้า และเครื่องประดับตามประเพณี', zh: '在曼谷探索正宗的手工制作的中式婚纱。浏览我们的裙褂、旗袍和传统配饰系列。' },
