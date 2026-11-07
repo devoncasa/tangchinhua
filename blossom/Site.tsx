@@ -439,6 +439,7 @@ function Contact() {
     setSelected(requested==='groom'||requested==='bride'||requested==='both'?requested:'');
     setCopyStatus('idle');
   },[search]);
+  useEffect(()=>setCopyStatus('idle'),[lang]);
   const selectedOffer=offers.find(o=>o.id===selected);
   const chosen=selectedOffer?.name[lang]??(selected==='both'?w('ชุดฝ่ายเจ้าบ่าวและชุดฝ่ายเจ้าสาว','Groom’s and bride’s sets','男女双方的订婚礼品套装'):'');
   const selectedDate = new Date(date+'T00:00:00Z');
