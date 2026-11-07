@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import { Link, useLocation } from 'react-router-dom';
 import { products } from '../services/data';
 import type { CartItem, Language, MultilingualString, Product } from '../types';
+import { productIllustration } from './product-media';
 import { articles, brand, collections, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, regularPairPrice, text } from './content';
 
 const Locale = createContext<Language>('th');
@@ -64,7 +65,7 @@ export function pageInfo(path: string, lang: Language) {
   const label = entry?.name ?? story?.title ?? pageNames[path] ?? text('ไม่พบหน้านี้','Page not found','未找到页面');
   const general = text('เลือกชุดของหมั้นจีนและอุปกรณ์ตามพิธี อ่านรายการในชุด แล้วสอบถามรายละเอียดและการจัดส่งกับ Tang Chin Hua', 'Browse Chinese ceremony sets, see what is included, and ask Tang Chin Hua about availability and delivery.', '浏览中式礼仪套装与用品、查看清单，并向 Tang Chin Hua 咨询供货和配送。');
   const description = entry && 'summary' in entry ? entry.summary : entry && 'intro' in entry ? entry.intro : story?.intro ?? (entry && 'description' in entry ? entry.description : pageDescriptions[path] ?? general);
-  return {title:label[lang]+' | '+brand, description:description[lang], label:label[lang]};
+  return {title:label[lang]+' | '+brand, description:description[lang], label:label[lang], image:path.startsWith('/product/') ? productIllustration(id)?.detail : undefined};
 }
 
 function A({to, children, className, onClick, current}: {to:string; children:ReactNode; className?:string; onClick?:()=>void; current?:boolean}) {
@@ -211,10 +212,25 @@ function OfferPage({offer}:{offer:typeof offers[number]}) {
     </div></div>
   </section>;
 }
+function ProductPhoto({product, categoryImage, detail=false}:{product:Product;categoryImage:string;detail?:boolean}) {
+  const w=useWords();
+  const lang=useContext(Locale);
+  const media=productIllustration(product.id);
+  if(!media)return <Frame id={categoryImage} kind={detail?'full':''} caption={detail} eager={detail}/>;
+  return <figure className="frame product-photo">
+    <img src={media.thumbnail} srcSet={media.thumbnail+' 480w, '+media.detail+' 960w'}
+      sizes={detail?'(max-width: 680px) 92vw, (max-width: 1280px) 48vw, 620px':'(max-width: 490px) 92vw, (max-width: 800px) 46vw, 395px'}
+      width="960" height="720" alt={w('ภาพจำลอง ','Illustration of ','示意图：')+product.name[lang]}
+      loading={detail?'eager':'lazy'} fetchPriority={detail?'high':undefined} decoding="async"/>
+    <figcaption>{detail
+      ?w('ภาพจำลองจาก AI สินค้าจริงอาจต่างจากภาพ','AI illustration. The actual product may differ.','AI 示意图，实物可能与图示不同。')
+      :w('ภาพจำลองจาก AI','AI illustration','AI 示意图')}</figcaption>
+  </figure>;
+}
 function ProductCard({product}:{product:Product}) {
   const lang=useContext(Locale);
   const collection=collections.find(c=>c.groups.some(g=>product.id.startsWith(g+'-'))) ?? collections[0];
-  return <A className="card" to={'/product/'+product.id}><Frame id={collection.image}/><div className="card-body"><p className="eyebrow">{product.category[lang]}</p><h3>{product.name[lang]}</h3><p>{askPrice[lang]}</p></div></A>;
+  return <A className="card" to={'/product/'+product.id}><ProductPhoto product={product} categoryImage={collection.image}/><div className="card-body"><p className="eyebrow">{product.category[lang]}</p><h3>{product.name[lang]}</h3><p>{askPrice[lang]}</p></div></A>;
 }
 function Shop({initial}:{initial?:typeof collections[number]}) {
   const w=useWords();
@@ -225,7 +241,7 @@ function Shop({initial}:{initial?:typeof collections[number]}) {
   return <><Banner tag="THE CEREMONY EDIT" title={initial?.name[lang]??w('เลือกของตามพิธี','Shop by ceremony','按仪式选购')} description={initial?.intro[lang]??w('เริ่มจากพิธีที่บ้านคุณจัด แล้วเลือกดูของที่ต้องใช้','Start with your ceremony and see the items you may need.','从家中准备举行的仪式开始，查看可能需要的用品。')} image={initial?.image??'tea'}/>
     <section className="wrap section"><div className="pills route-pills"><A to="/shop" current={!initial}>{w('ทั้งหมด','All items','全部')}</A>{collections.map(c=><A key={c.id} to={'/shop/'+c.id} current={initial?.id===c.id}>{c.name[lang]}</A>)}</div>
       <label className="field search"><span>{w('ค้นหาสินค้า','Find an item','搜索商品')}</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder={w('พิมพ์ชื่อสินค้า','Enter an item name','输入商品名')}/></label>
-      <p className="fine" aria-live="polite">{matching.length} {w('รายการ · ภาพประกอบตามหมวด','items · editorial category imagery','项 · 分类示意图')}</p>
+      <p className="fine" aria-live="polite">{matching.length} {w('รายการ','items','项')}</p>
       {matching.length?<div className="grid three">{matching.map(p=><ProductCard key={p.id} product={p}/>)}</div>:<p className="empty">{w('ไม่พบสินค้าที่ตรงกับคำค้น','No items match your search.','没有符合搜索条件的商品。')}</p>}
     </section>
   </>;
@@ -243,7 +259,7 @@ function ProductPage({product}:{product:Product}) {
   photoParams.set('photo','1');
   return <section className="wrap section">
     <A className="text-link back" to={'/shop/'+collection.id}>{collection.name[lang]}</A>
-    <div className="detail"><Frame id={collection.image} kind="full" caption eager/><div>
+    <div className="detail"><ProductPhoto product={product} categoryImage={collection.image} detail/><div>
       <p className="eyebrow">{product.category[lang]}</p><h1>{product.name[lang]}</h1>
       <p className="lead">{product.description[lang].split(/(?<=[.!?。])\s*/)[0]}</p>
       <dl className="specs"><div><dt>{w('วัสดุ','Material','材质')}</dt><dd>{product.specifications.material[lang]}</dd></div><div><dt>{w('สี','Colour','颜色')}</dt><dd>{product.specifications.color[lang]}</dd></div></dl>

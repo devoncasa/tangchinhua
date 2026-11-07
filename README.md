@@ -25,3 +25,13 @@ Use `npm run dev` when developing components. Run `npx tsc --noEmit` for the Typ
 ## Before release
 
 Verify prices and item counts against Facebook, test the Messenger destination with a signed-in phone, confirm stock photography when available, and check GA4/GSC at the production hostname.
+
+## Product illustrations
+
+Each physical product has SKU-matched 480 px and 960 px WebP illustrations in `public/media/products`. The catalogue and product detail pages label them as AI illustrations. The artwork from the Facebook offer and the request for an exact item photo remain separate. Service entries use editorial category imagery. When replacing an illustration with a verified stock photo, update the two files and the corresponding caption before publishing.
+
+Visual references used for garment construction and ceremony objects
+
+- [Hong Kong Intangible Cultural Heritage Office — Cheongsam and Kwan Kwa](https://www.icho.hk/en/web/icho/representative_list_cheongsam_kwan_kwa.html)
+- [The Chinese Wedding Shop — Betrothal baskets and ceremony candles](https://www.thechineseweddingshop.com.sg/guo-da-li/1659-127-guo-da-li-betrothal-package)
+- [Vows.sg — The four components of Si Dian Jin](https://www.vows.sg/guides/si-dian-jin-singapore-guide)

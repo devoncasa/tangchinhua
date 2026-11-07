@@ -23,7 +23,7 @@ for(const path of paths) {
       '<meta property="og:title" content="'+escape(info.title)+'">',
       '<meta property="og:description" content="'+escape(info.description)+'">',
       '<meta property="og:url" content="'+canonical+'">',
-      '<meta property="og:image" content="'+origin+'/media/hero-960.webp">',
+      '<meta property="og:image" content="'+origin+(info.image??'/media/hero-960.webp')+'">',
       '<meta property="og:type" content="'+(path.startsWith('/blog/')?'article':'website')+'">',
       preview||hidden?'<meta name="robots" content="noindex, follow">':'',
     ].join('\n');
