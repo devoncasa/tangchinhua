@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { products } from '../services/data';
 import type { CartItem, Language, MultilingualString, Product } from '../types';
 import { productIllustration } from './product-media';
-import { articles, brand, collections, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, regularPairPrice, storeAddress, storeMap, storeMapEmbed, text } from './content';
+import { articles, brand, collections, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, promotionOriginal, regularPairPrice, storeAddress, storeMap, storeMapEmbed, text } from './content';
 
 const Locale = createContext<Language>('th');
 const useText = () => {
@@ -37,7 +37,9 @@ export function parsePath(pathname: string) {
 
 const pageNames: Record<string,MultilingualString> = {
   '/':text('ชุดของหมั้นจีนและของใช้ในพิธีแต่งงาน','Chinese engagement and wedding essentials','中式订婚礼品及婚礼用品'),
-  '/packages':text('ชุดของหมั้นจีนทั้งสองฝ่าย','Chinese engagement sets for both families','中式订婚双方礼套装'),
+  '/packages':text('เปรียบเทียบชุดของหมั้นจีนทั้งสองฝ่าย','Compare Chinese engagement sets','比较中式订婚礼套装'),
+  '/packages/groom':text('ชุดของหมั้นจีนฝ่ายเจ้าบ่าว','Groom’s Chinese engagement set','男方中式订婚礼套装'),
+  '/packages/bride':text('ชุดของหมั้นจีนฝ่ายเจ้าสาว','Bride’s Chinese engagement set','女方中式订婚礼套装'),
   '/shop':text('เลือกของตามพิธี','Shop by ceremony','按仪式选购'),
   '/traditions':text('เตรียมงานตามพิธีของครอบครัว','Plan by ceremony','按家庭习俗筹备仪式'),
   '/blog':text('คู่มือและเรื่องเล่า','Wedding journal and guides','婚礼指南与故事'),
@@ -47,7 +49,18 @@ const pageNames: Record<string,MultilingualString> = {
   '/cart':text('รายการที่บันทึกไว้','Saved items','已保存商品'),
 };
 const pageDescriptions: Record<string, MultilingualString> = {
-  '/packages': text('เปรียบเทียบชุดฝ่ายเจ้าบ่าวและฝ่ายเจ้าสาว ดูรายการและราคาจากโพสต์ของ Tang Chin Hua', 'Compare the groom’s and bride’s engagement sets, including contents and published prices.', '比较男方与女方订婚礼套装，查看清单和原帖价格。'),
+  '/': text('ชุดของหมั้นจีน ตั้งจิ้นฮั้ว กรุงเทพฯ เปรียบเทียบชุดฝ่ายเจ้าบ่าวและเจ้าสาว ดูรายการของในแต่ละชุด แล้วสอบถามราคาและการจัดส่งผ่าน Messenger',
+    'Compare groom’s and bride’s Chinese engagement sets at Tang Chin Hua, Bangkok. See what each set includes and ask about pricing and delivery in Messenger.',
+    '曼谷 Tang Chin Hua 中式订婚礼品。比较男方和女方套装、查看各套清单，并通过 Messenger 咨询价格和配送。'),
+  '/packages': text('เปรียบเทียบชุดของหมั้นจีนฝ่ายเจ้าบ่าวและเจ้าสาว ดูราคาและรายการของในแต่ละชุดจากโพสต์ของตั้งจิ้นฮั้ว แล้วสอบถามการจัดส่งผ่าน Messenger',
+    'Compare the published prices and contents of both Chinese engagement sets. Ask Tang Chin Hua about current prices and delivery in Messenger.',
+    '比较男女双方中式订婚礼套装的原帖价格与清单，并通过 Messenger 咨询现价和配送。'),
+  '/packages/groom': text('ชุดของหมั้นจีนฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ 48 ลูก และขนมจันอับ 4 กิโลกรัม ดูราคาตามโพสต์และสอบถามการจัดส่งกับตั้งจิ้นฮั้ว',
+    'See the groom’s set from Tang Chin Hua with 48 Double Happiness oranges and 4 kg of traditional sweets. Check the published price and ask about delivery.',
+    '查看 Tang Chin Hua 男方订婚礼套装，含贴双喜字的橙子48个及传统糖果4公斤。可查询原帖价格并咨询配送。'),
+  '/packages/bride': text('ชุดของหมั้นจีนฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วย และของใช้ในพิธี ดูรายการครบชุดและสอบถามราคากับตั้งจิ้นฮั้ว',
+    'See the bride’s set from Tang Chin Hua with Double Happiness oranges, traditional sweets, bananas and ceremony accessories. Check the full list and enquire.',
+    '查看 Tang Chin Hua 女方订婚礼套装，含双喜橙子、传统糖果、香蕉及仪式用品。可查阅完整清单并咨询。'),
   '/shop': text('เลือกของหมั้นจีน อุปกรณ์ยกน้ำชา และของใช้แต่งงานตามพิธีของคุณ', 'Find Chinese engagement gifts, tea ceremony objects and wedding accessories by ceremony.', '按仪式查找订婚礼品、敬茶用品和婚礼配件。'),
   '/blog': text('อ่านเช็กลิสต์และเคล็ดลับสั้น ๆ สำหรับเตรียมของหมั้นและพิธีแต่งงานจีน', 'Short guides and checklists for Chinese engagement gifts and wedding ceremonies.', '阅读中式订婚礼品与婚礼仪式的简短指南和清单。'),
   '/contact': text('เตรียมข้อความและสอบถามชุดที่สนใจ ราคา และการจัดส่งผ่าน Inbox ของ Tang Chin Hua', 'Prepare a message for Tang Chin Hua and ask about ceremony sets, prices and delivery in Messenger.', '准备留言，通过 Messenger 向 Tang Chin Hua 咨询套装、价格和配送。'),
@@ -62,10 +75,13 @@ export function pageInfo(path: string, lang: Language) {
     : path.startsWith('/product/') ? products.find(x=>x.id===id)
     : undefined;
   const story = path.startsWith('/blog/') ? articles.find(x=>x.slug===id) : undefined;
-  const label = entry?.name ?? story?.title ?? pageNames[path] ?? text('ไม่พบหน้านี้','Page not found','未找到页面');
+  const label = pageNames[path] ?? entry?.name ?? story?.title ?? text('ไม่พบหน้านี้','Page not found','未找到页面');
   const general = text('เลือกชุดของหมั้นจีนและอุปกรณ์ตามพิธี อ่านรายการในชุด แล้วสอบถามรายละเอียดและการจัดส่งกับ Tang Chin Hua', 'Browse Chinese ceremony sets, see what is included, and ask Tang Chin Hua about availability and delivery.', '浏览中式礼仪套装与用品、查看清单，并向 Tang Chin Hua 咨询供货和配送。');
-  const description = entry && 'summary' in entry ? entry.summary : entry && 'intro' in entry ? entry.intro : story?.intro ?? (entry && 'description' in entry ? entry.description : pageDescriptions[path] ?? general);
-  return {title:label[lang]+' | '+brand, description:description[lang], label:label[lang], image:path.startsWith('/product/') ? productIllustration(id)?.detail : undefined};
+  const description = pageDescriptions[path] ?? (entry && 'intro' in entry ? entry.intro : story?.intro ?? (entry && 'description' in entry ? entry.description : general));
+  const image = path === '/packages' || path.startsWith('/packages/') ? promotionOriginal
+    : path.startsWith('/product/') ? productIllustration(id)?.detail
+    : story ? '/media/'+story.image+'-960.webp' : undefined;
+  return {title:label[lang]+' | '+brand, description:description[lang], label:label[lang], image};
 }
 
 function A({to, children, className, onClick, current}: {to:string; children:ReactNode; className?:string; onClick?:()=>void; current?:boolean}) {
@@ -100,8 +116,6 @@ function Frame({id, kind='', caption=false, eager=false}:{id:string;kind?:string
   const t=useText();
   return <figure className={'frame '+kind}><Photo id={id} eager={eager} sizes={kind.includes('full')?'(max-width: 680px) 92vw, 650px':undefined}/>{caption&&<figcaption>{t(illustration)}</figcaption>}</figure>;
 }
-const promotionOriginal='/media/engagement-promotion-original.jpg';
-
 function PromotionArtwork({eager=false}:{eager?:boolean}) {
   const w=useWords();
   return <figure className="promotion-artwork">
@@ -206,12 +220,39 @@ function SourceNote() {
   const w=useWords();
   return <p className="fine">{w('ราคาตามโพสต์ของร้าน กรุณายืนยันราคาและรอบจัดส่งก่อนสั่ง','Prices are from the shop’s post. Confirm the price and delivery date before ordering.','价格来自商家原帖。订购前请确认价格和配送日期。')} <a href={offerSource} target="_blank" rel="noopener noreferrer">{w('ดูโพสต์ต้นฉบับ','See the original post','查看原帖')}</a></p>;
 }
+function PackageComparison() {
+  const w=useWords();
+  const lang=useContext(Locale);
+  return <section className="contents package-comparison" aria-labelledby="package-comparison-title">
+    <h2 id="package-comparison-title">{w('ชุดฝ่ายเจ้าบ่าวและเจ้าสาวต่างกันอย่างไร','How do the two sets compare?','两款套装有什么区别？')}</h2>
+    <p>{w('ทั้งสองชุดมีส้มเช้งติดซังฮี้ 48 ลูกและขนมจันอับ 4 กิโลกรัม ชุดฝ่ายเจ้าสาวเพิ่มผลไม้และของใช้ในพิธี',
+      'Both sets include 48 Double Happiness oranges and 4 kg of traditional sweets. The bride’s set adds fruit and ceremony items.',
+      '两款套装均含48个双喜橙和4公斤传统糖果。女方套装另含水果和仪式用品。')}</p>
+    <table aria-labelledby="package-comparison-title">
+      <thead><tr><th scope="col">{w('รายการเปรียบเทียบ','Compare','对比项目')}</th>
+        {offers.map(o=><th key={o.id} scope="col">{o.name[lang]}</th>)}
+      </tr></thead>
+      <tbody>
+        <tr><th scope="row">{w('ราคาตามโพสต์','Published price','原帖价格')}</th>
+          {offers.map(o=><td key={o.id}><strong>{money(o.price)}</strong></td>)}
+        </tr>
+        <tr><th scope="row">{w('ของในชุด','What’s included','套装内容')}</th>
+          {offers.map(o=><td key={o.id}><p>{o.summary[lang]}</p><A className="text-link" to={'/packages/'+o.id}>{w('ดูรายการทั้งหมด','View full list','查看完整清单')}</A></td>)}
+        </tr>
+      </tbody>
+    </table>
+    <p>{w('สอบถามราคาและการจัดส่งผ่าน Messenger โดยแจ้งชุดที่สนใจ วันงาน และจังหวัดหรือพื้นที่จัดส่ง',
+      'Ask about current prices and delivery in Messenger. Tell us which set you want, your event date and your delivery area.',
+      '请通过 Messenger 咨询现价和配送，并告知意向套装、仪式日期和配送地区。')}</p>
+  </section>;
+}
 function PackageIndex() {
   const w=useWords();
   const lang=useContext(Locale);
   const [selection,setSelection]=useState('both');
   const chosen = offers.filter(o=>selection==='both'||o.id===selection);
   return <><PackagePromotion/>
+    <div className="wrap package-comparison-wrap"><PackageComparison/></div>
     <section className="wrap section">
       <Heading tag="01 / COMPARE" title={w('เลือกชุดที่ต้องการ','Choose your set','选择需要的套装')}/>
       <div className="pills" aria-label={w('เลือกฝ่าย','Select a set','选择一方')}>{[['both',w('ทั้งสองฝ่าย','Both families','双方')],...offers.map(o=>[o.id,o.name[lang]])].map(([id,label])=><button key={id} type="button" aria-pressed={selection===id} onClick={()=>setSelection(id)}>{label}</button>)}</div>
@@ -226,7 +267,7 @@ function OfferPage({offer}:{offer:typeof offers[number]}) {
     <A className="text-link back" to="/packages">{w('กลับไปดูชุดทั้งหมด','Back to all sets','返回全部套装')}</A>
     <div className="detail"><PromotionArtwork eager/><div>
       <p className="eyebrow">{w('ชุดของหมั้นจีน','CHINESE ENGAGEMENT SET','中式订婚礼套装')}</p>
-      <h1>{offer.name[lang]}</h1><p className="lead">{offer.summary[lang]}</p><p className="price">{money(offer.price)}</p>
+      <h1>{pageNames['/packages/'+offer.id][lang]}</h1><p className="lead">{offer.summary[lang]}</p><p className="price">{money(offer.price)}</p>
       <div className="contents"><h2>{w('ในชุดประกอบด้วย','What’s included','套装包括')}</h2><ul>{offer.items.map(item=><li key={item.th}>{item[lang]}</li>)}</ul></div>
       <A to={'/contact?set='+offer.id} className="button"><ChatIcon/>{w('เตรียมข้อความสอบถาม','Prepare an enquiry','准备咨询留言')}</A><SourceNote/>
     </div></div>

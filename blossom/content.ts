@@ -14,6 +14,7 @@ export const storeAddress = text(
   '泰国曼谷 Pom Prap Sattru Phai 区 Mittraphan 路 482、484 号，10100',
 );
 export const offerSource = 'https://www.facebook.com/photo.php?fbid=122094314373522288';
+export const promotionOriginal = '/media/engagement-promotion-original.jpg';
 export function localePath(lang: Language, path: string) {
   const suffix = path.search(/[?#]/);
   const pathname = suffix === -1 ? path : path.slice(0, suffix);

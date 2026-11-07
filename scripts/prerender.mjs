@@ -11,10 +11,11 @@ const urls=[];
 for(const path of paths) {
   for(const lang of languages) {
     const url=localePath(lang,path);
-    const {html,info,lang:htmlLang}=render(url);
+    const {html,info,lang:htmlLang,schema}=render(url,origin);
     const canonical=origin+url;
     const alternates=languages.map(code=>'<link rel="alternate" hreflang="'+locales[code]+'" href="'+origin+localePath(code,path)+'">');
     const hidden=path==='/cart';
+    const shareImage=origin+(info.image??'/media/hero-960.webp');
     const metadata=[
       '<link rel="canonical" href="'+canonical+'">',
       ...alternates,
@@ -23,8 +24,13 @@ for(const path of paths) {
       '<meta property="og:title" content="'+escape(info.title)+'">',
       '<meta property="og:description" content="'+escape(info.description)+'">',
       '<meta property="og:url" content="'+canonical+'">',
-      '<meta property="og:image" content="'+origin+(info.image??'/media/hero-960.webp')+'">',
+      '<meta property="og:image" content="'+shareImage+'">',
       '<meta property="og:type" content="'+(path.startsWith('/blog/')?'article':'website')+'">',
+      '<meta name="twitter:card" content="summary_large_image">',
+      '<meta name="twitter:title" content="'+escape(info.title)+'">',
+      '<meta name="twitter:description" content="'+escape(info.description)+'">',
+      '<meta name="twitter:image" content="'+shareImage+'">',
+      schema.length ? '<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@graph':schema}).replace(/</g,'\\u003c')+'</script>' : '',
       preview||hidden?'<meta name="robots" content="noindex, follow">':'',
     ].join('\n');
     const page=template.replace('<html lang="th">','<html lang="'+htmlLang+'">')
@@ -38,7 +44,7 @@ for(const path of paths) {
     if(!hidden)urls.push('<url><loc>'+canonical+'</loc>'+languages.map(code=>'<xhtml:link rel="alternate" hreflang="'+locales[code]+'" href="'+origin+localePath(code,path)+'"/>').join('')+'<xhtml:link rel="alternate" hreflang="x-default" href="'+origin+localePath('th',path)+'"/></url>');
   }
 }
-const missing=render('/404');
+const missing=render('/404',origin);
 await writeFile('dist/404.html',template.replace('<title>Tang Chin Hua</title>','<title>ไม่พบหน้านี้ | Tang Chin Hua</title>').replace('<!-- page-metadata -->','<meta name="robots" content="noindex, follow">').replace('<div id="root"></div>',()=>'<div id="root" data-not-found>'+missing.html+'</div>'));
 await writeFile('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'+urls.join('\n')+'\n</urlset>\n');
 await writeFile('dist/robots.txt',preview?'User-agent: *\nAllow: /\n':'User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n');

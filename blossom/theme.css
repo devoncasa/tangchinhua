@@ -191,3 +191,9 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 .store-location-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem 2rem}
 .store-location address{font-style:normal;margin-top:.5rem}
 .store-location iframe{display:block;width:100%;height:clamp(220px,38vw,320px);border:1px solid var(--line);border-radius:.65rem;margin-top:1rem}
+
+.package-comparison-wrap{margin-top:2rem}
+.package-comparison table{width:100%;border-collapse:collapse;table-layout:fixed;margin:1rem 0}
+.package-comparison th,.package-comparison td{text-align:start;vertical-align:top;padding:clamp(.35rem,1.4vw,.8rem);border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.package-comparison th:first-child{width:22%}
+.package-comparison thead th{color:var(--deep);background:var(--ivory)}
