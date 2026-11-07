@@ -100,6 +100,16 @@ function Frame({id, kind='', caption=false, eager=false}:{id:string;kind?:string
   const t=useText();
   return <figure className={'frame '+kind}><Photo id={id} eager={eager} sizes={kind.includes('full')?'(max-width: 680px) 92vw, 650px':undefined}/>{caption&&<figcaption>{t(id==='offer'?text('ภาพจากโพสต์ Facebook ของร้าน','Artwork from the shop’s Facebook post','商家 Facebook 原帖图片'):illustration)}</figcaption>}</figure>;
 }
+function OfferArtwork({offer, eager=false}:{offer:typeof offers[number];eager?:boolean}) {
+  const w=useWords();
+  const lang=useContext(Locale);
+  return <figure className="frame offer-artwork">
+    <div className={'offer-window '+offer.id}>
+      <img src="/media/offer-640.webp" srcSet="/media/offer-640.webp 640w, /media/offer-1100.webp 1100w" sizes="(max-width: 640px) 145vw, 730px" width="640" height="640" alt={offer.name[lang]} loading={eager?'eager':'lazy'} fetchPriority={eager?'high':undefined} decoding="async"/>
+    </div>
+    <figcaption>{w('ภาพจากโพสต์ Facebook ของร้าน','Image from the shop’s Facebook post','商家 Facebook 原帖图片')}</figcaption>
+  </figure>;
+}
 function Header({path}:{path:string}) {
   const w=useWords();
   const lang=useContext(Locale);
@@ -144,7 +154,7 @@ function CollectionCard({collection}:{collection:typeof collections[number]}) {
 function OfferCard({offer}:{offer:typeof offers[number]}) {
   const t=useText();
   const w=useWords();
-  return <article className="card offer-card"><Frame id={offer.image} caption/><div className="card-body"><p className="eyebrow">{w('ชุดจาก Facebook','Facebook offer','Facebook 套装')}</p><h3>{t(offer.name)}</h3><p>{t(offer.summary)}</p><p className="price">{money(offer.price)}</p><A className="button outline" to={'/packages/'+offer.id}>{t(view)}</A></div></article>;
+  return <article className="card offer-card"><OfferArtwork offer={offer}/><div className="card-body"><p className="eyebrow">{w('ชุดจาก Facebook','Facebook offer','Facebook 套装')}</p><h3>{t(offer.name)}</h3><p>{t(offer.summary)}</p><p className="price">{money(offer.price)}</p><A className="button outline" to={'/packages/'+offer.id}>{t(view)}</A></div></article>;
 }
 function ArticleCard({article}:{article:typeof articles[number]}) {
   const t=useText();
@@ -193,7 +203,7 @@ function OfferPage({offer}:{offer:typeof offers[number]}) {
   const lang=useContext(Locale);
   return <section className="wrap section">
     <A className="text-link back" to="/packages">{w('กลับไปดูชุดทั้งหมด','Back to all sets','返回全部套装')}</A>
-    <div className="detail"><Frame id={offer.image} kind="full" caption eager/><div>
+    <div className="detail"><OfferArtwork offer={offer} eager/><div>
       <p className="eyebrow">{w('ชุดของหมั้นจีน','CHINESE ENGAGEMENT SET','中式订婚礼套装')}</p>
       <h1>{offer.name[lang]}</h1><p className="lead">{offer.summary[lang]}</p><p className="price">{money(offer.price)}</p>
       <div className="contents"><h2>{w('ในชุดประกอบด้วย','What’s included','套装包括')}</h2><ul>{offer.items.map(item=><li key={item.th}>{item[lang]}</li>)}</ul></div>
@@ -229,6 +239,8 @@ function ProductPage({product}:{product:Product}) {
   const [size,setSize]=useState('');
   const params=new URLSearchParams({item:product.id});
   if(size)params.set('size',size);
+  const photoParams=new URLSearchParams(params);
+  photoParams.set('photo','1');
   return <section className="wrap section">
     <A className="text-link back" to={'/shop/'+collection.id}>{collection.name[lang]}</A>
     <div className="detail"><Frame id={collection.image} kind="full" caption eager/><div>
@@ -236,7 +248,8 @@ function ProductPage({product}:{product:Product}) {
       <p className="lead">{product.description[lang].split(/(?<=[.!?。])\s*/)[0]}</p>
       <dl className="specs"><div><dt>{w('วัสดุ','Material','材质')}</dt><dd>{product.specifications.material[lang]}</dd></div><div><dt>{w('สี','Colour','颜色')}</dt><dd>{product.specifications.color[lang]}</dd></div></dl>
       {sizes.length>0&&<label className="field"><span>{w('ขนาดที่อยากสอบถาม','Size to ask about','意向尺码')}</span><select value={size} onChange={e=>setSize(e.target.value)}><option value="">{w('ยังไม่ระบุ','Not selected','未选择')}</option>{sizes.map(s=><option key={s}>{s}</option>)}</select></label>}
-      <p className="fine">{t(askPrice)}</p><A className="button" to={'/contact?'+params.toString()}><ChatIcon/>{t(chat)}</A>
+      <p className="fine">{t(askPrice)}</p>
+      <div className="actions"><A className="button" to={'/contact?'+params.toString()}><ChatIcon/>{t(chat)}</A>{!product.id.startsWith('service-')&&<A className="button outline" to={'/contact?'+photoParams.toString()}>{w('ขอรูปสินค้าจริง','Request a product photo','索取商品实拍')}</A>}</div>
     </div></div>
   </section>;
 }
@@ -313,6 +326,7 @@ function Contact() {
   const summary=[
     w('สวัสดีค่ะ/ครับ ขอสอบถาม Tang Chin Hua','Hello Tang Chin Hua, I’d like to enquire.','Tang Chin Hua 您好，我想咨询。'),
     chosen, item ? item.name[lang]+(itemSize?' ('+itemSize+')':'') : '',
+    item && params.get('photo')==='1' ? w('รบกวนส่งรูปสินค้าจริงของรายการนี้ให้ดูด้วยค่ะ/ครับ','Could you send a photo of this exact item?','可以发这件商品的实拍照片吗？') : '',
     date ? w('วันงาน','Event date','仪式日期')+' '+date : '',
     area ? w('พื้นที่จัดส่ง','Delivery area','配送地区')+' '+area.trim() : '',
     w('ขอทราบราคา รายการ และรอบจัดส่งที่ยืนยันได้','Please confirm price, contents and delivery options.','请确认价格、清单和配送安排。'),
