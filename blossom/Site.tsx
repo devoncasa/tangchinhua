@@ -243,8 +243,8 @@ function ProductPhoto({product, categoryImage, detail=false}:{product:Product;ca
       width="960" height="720" alt={w('ภาพจำลอง ','Illustration of ','示意图：')+product.name[lang]}
       loading={detail?'eager':'lazy'} fetchPriority={detail?'high':undefined} decoding="async"/>
     <figcaption>{detail
-      ?w('ภาพจำลองจาก AI สินค้าจริงอาจต่างจากภาพ','AI illustration. The actual product may differ.','AI 示意图，实物可能与图示不同。')
-      :w('ภาพจำลองจาก AI','AI illustration','AI 示意图')}</figcaption>
+      ?w('ภาพประกอบสินค้า สินค้าจริงอาจต่างจากภาพ','Product illustration. The actual product may differ.','商品示意图，实物可能与图示不同。')
+      :w('ภาพประกอบสินค้า','Product illustration','商品示意图')}</figcaption>
   </figure>;
 }
 function ProductCard({product}:{product:Product}) {
