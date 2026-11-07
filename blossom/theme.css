@@ -41,12 +41,12 @@ main:focus{outline:none}
 .outline{background:#fff9f2;color:var(--deep);border-color:#bb746e;box-shadow:none}
 .outline:hover{background:#fae4dd}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
-.hero{width:min(1500px,calc(100% - clamp(1.5rem,4.3vw,4rem)));margin:.32rem auto 0;min-height:clamp(390px,45vw,650px);display:grid;grid-template-columns:43% 57%;isolation:isolate;position:relative;overflow:hidden;border:1px solid #fff3e8;border-radius:.3rem .3rem 1.1rem 1.1rem;background:radial-gradient(ellipse at 24% 38%,#fff1e6 3%,#f7d3cc 49%,#ecb3ae 100%);box-shadow:0 12px 28px #62201e29}
+.hero{width:min(1500px,calc(100% - clamp(1.5rem,4.3vw,4rem)));margin:.32rem auto 0;min-height:clamp(390px,45vw,650px);display:grid;grid-template-columns:45% 55%;isolation:isolate;position:relative;overflow:hidden;border:1px solid #fff3e8;border-radius:.3rem .3rem 1.1rem 1.1rem;background:radial-gradient(ellipse at 24% 38%,#fff1e6 3%,#f7d3cc 49%,#ecb3ae 100%);box-shadow:0 12px 28px #62201e29}
 .hero::before,.banner::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:url(/media/blossom-520.webp) no-repeat left top / clamp(140px,23vw,355px) auto}
 .hero::after{content:"";position:absolute;left:-5%;bottom:-32%;width:74%;height:43%;border-radius:50%;background:linear-gradient(12deg,#ffe1d2,#fff5e9 60%,#fff3e297);transform:rotate(-8deg);z-index:2;pointer-events:none}
 .hero-copy{position:relative;z-index:3;align-self:center;padding:clamp(3.5rem,6vw,7rem) 0 clamp(4rem,6.4vw,7rem) clamp(1.55rem,6.05vw,6.75rem)}
 .hero h1{font-size:clamp(2.5rem,5.55vw,6.25rem);line-height:1.16;margin:.4rem 0 .7rem;color:#820817}
-html[lang="th"] .hero h1{white-space:nowrap}
+html[lang="th"] .hero h1{font-size:clamp(2rem,4.62vw,5.25rem);white-space:nowrap}
 .hero-lead{font:500 clamp(1.13rem,2.12vw,2rem)/1.38 var(--serif);white-space:pre-line}
 .hero-copy .actions{margin-top:.9rem}
 .hero-copy .button{padding-inline:clamp(1.4rem,3vw,2.7rem)}
@@ -151,7 +151,7 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
   .hero{grid-template-columns:1fr;min-height:0}
   .hero-copy{padding:2.4rem clamp(1rem,6vw,2rem) 1.4rem}
   .hero h1{font-size:clamp(2.3rem,9.2vw,3.65rem)}
-  html[lang="th"] .hero h1{white-space:normal}
+  html[lang="th"] .hero h1{font-size:clamp(2.3rem,9.2vw,3.65rem);white-space:normal}
   .hero::before{background-size:140px auto;background-position:right top;opacity:.76;transform:scaleX(-1)}
   .hero::after{display:none}
   .hero-photo{margin:0;min-height:0;aspect-ratio:1.27;border-radius:48% 0 0 0 / 28% 0 0 0;border:0;border-top:3px solid #cc985b;box-shadow:0 -3px 0 #fff3dd}
