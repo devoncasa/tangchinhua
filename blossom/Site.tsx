@@ -83,10 +83,9 @@ function Knot() {
   return <span className="knot" aria-hidden="true"><svg viewBox="0 0 36 36" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="2"><path d="m18 8 10 10-10 10L8 18Z M18 8c-7-10 7-10 0 0m10 10c10-7 10 7 0 0m-10 10c7 10-7 10 0 0M8 18c-10 7-10-7 0 0m10-5 5 5-5 5-5-5Z"/></svg></span>;
 }
 
-const imageSizes: Record<string,number[]> = {hero:[640,960,1440],offer:[640,1100],engagement:[480,960],tea:[480,960],wedding:[480,960],story:[480,960]};
+const imageSizes: Record<string,number[]> = {hero:[640,960,1440],engagement:[480,960],tea:[480,960],wedding:[480,960],story:[480,960]};
 const imageAlt: Record<string,MultilingualString> = {
   hero:text('ถาดแดง ชุดน้ำชา และส้มบนโต๊ะพิธี','Red lacquer tray, tea service and oranges on a ceremony table','仪式桌上的红漆托盘、茶具与橙子'),
-  offer:text('ภาพจากโพสต์ Facebook แสดงชุดฝ่ายเจ้าบ่าวและฝ่ายเจ้าสาว','Facebook offer graphic showing the groom’s and bride’s sets','Facebook 原帖中的男方与女方套装图'),
   engagement:text('ตะกร้าและกล่องของหมั้นสีแดง','Red betrothal basket and gift box','红色聘礼篮与礼盒'),
   tea:text('ถ้วยน้ำชาลายดอกสีแดงบนถาด','Floral porcelain tea cups on a red tray','红盘上的花纹瓷茶杯'),
   wedding:text('ผ้าพิธีสีแดงปักลายมงคล','Red embroidered ceremonial textile','带吉祥刺绣的红色礼仪织物'),
@@ -95,21 +94,45 @@ const imageAlt: Record<string,MultilingualString> = {
 function Photo({id, eager=false, sizes='(max-width: 640px) 92vw, (max-width: 960px) 47vw, 450px'}:{id:string;eager?:boolean;sizes?:string}) {
   const t=useText();
   const widths = imageSizes[id];
-  return <img src={'/media/'+id+'-'+widths[0]+'.webp'} srcSet={widths.map(w=>'/media/'+id+'-'+w+'.webp '+w+'w').join(', ')} sizes={sizes} alt={t(imageAlt[id])} loading={eager?'eager':'lazy'} fetchPriority={eager?'high':undefined} decoding="async" width={id==='offer'?640:960} height={id==='offer'?640:id==='hero'?640:720}/>;
+  return <img src={'/media/'+id+'-'+widths[0]+'.webp'} srcSet={widths.map(w=>'/media/'+id+'-'+w+'.webp '+w+'w').join(', ')} sizes={sizes} alt={t(imageAlt[id])} loading={eager?'eager':'lazy'} fetchPriority={eager?'high':undefined} decoding="async" width={960} height={id==='hero'?640:720}/>;
 }
 function Frame({id, kind='', caption=false, eager=false}:{id:string;kind?:string;caption?:boolean;eager?:boolean}) {
   const t=useText();
-  return <figure className={'frame '+kind}><Photo id={id} eager={eager} sizes={kind.includes('full')?'(max-width: 680px) 92vw, 650px':undefined}/>{caption&&<figcaption>{t(id==='offer'?text('ภาพจากโพสต์ Facebook ของร้าน','Artwork from the shop’s Facebook post','商家 Facebook 原帖图片'):illustration)}</figcaption>}</figure>;
+  return <figure className={'frame '+kind}><Photo id={id} eager={eager} sizes={kind.includes('full')?'(max-width: 680px) 92vw, 650px':undefined}/>{caption&&<figcaption>{t(illustration)}</figcaption>}</figure>;
 }
-function OfferArtwork({offer, eager=false}:{offer:typeof offers[number];eager?:boolean}) {
+const promotionOriginal='/media/engagement-promotion-original.jpg';
+
+function PromotionArtwork({eager=false}:{eager?:boolean}) {
   const w=useWords();
-  const lang=useContext(Locale);
-  return <figure className="frame offer-artwork">
-    <div className={'offer-window '+offer.id}>
-      <img src="/media/offer-640.webp" srcSet="/media/offer-640.webp 640w, /media/offer-1100.webp 1100w" sizes="(max-width: 640px) 145vw, 730px" width="640" height="640" alt={offer.name[lang]} loading={eager?'eager':'lazy'} fetchPriority={eager?'high':undefined} decoding="async"/>
-    </div>
-    <figcaption>{w('ภาพจากโพสต์ Facebook ของร้าน','Image from the shop’s Facebook post','商家 Facebook 原帖图片')}</figcaption>
+  return <figure className="promotion-artwork">
+    <a href={promotionOriginal} target="_blank" rel="noopener noreferrer" aria-label={w('เปิดภาพโปรโมชันขนาดเต็ม','Open the full-size promotion image','打开原尺寸优惠图')}>
+      <img src={promotionOriginal} srcSet={'/media/engagement-promotion-480.webp 480w, /media/engagement-promotion-800.webp 800w, '+promotionOriginal+' 1254w'}
+        sizes="(max-width: 680px) 90vw, 610px" width="1254" height="1254" loading={eager?'eager':'lazy'}
+        fetchPriority={eager?'high':undefined} decoding="async"
+        alt={w('ภาพโปรโมชันครบทั้ง 2 ฝ่าย ชุดเจ้าบ่าว 5,900 บาท ชุดเจ้าสาว 11,900 บาท ซื้อคู่ 17,400 บาท ประหยัด 400 บาท',
+          'Engagement promotion. Groom’s set ฿5,900, bride’s set ฿11,900, both for ฿17,400, saving ฿400.',
+          '订婚套装优惠。男方套装 5,900 泰铢，女方套装 11,900 泰铢，双套 17,400 泰铢，立省 400 泰铢。')}/>
+    </a>
   </figure>;
+}
+
+function PackagePromotion({home=false}:{home?:boolean}) {
+  const w=useWords();
+  return <section className="promotion" aria-labelledby="promotion-title">
+    <div className="promotion-copy">
+      <p className="eyebrow">{w('โปรโมชันชุดของหมั้นจีน','CHINESE ENGAGEMENT OFFER','中式订婚礼套装优惠')}</p>
+      <h1 id="promotion-title">{w('ชุดของหมั้นจีนครบทั้ง 2 ฝ่าย','Engagement sets for both families','中式订婚双方礼套装')}</h1>
+    </div>
+    <div className="promotion-stage"><PromotionArtwork eager/></div>
+    <div className="promotion-copy">
+      <p className="promotion-price">{w('ราคาพิเศษเมื่อซื้อคู่','Special price for both sets','双套优惠价')} <strong>{money(pairPrice)}</strong> <del>{money(regularPairPrice)}</del></p>
+      <div className="actions">
+        <A className="button" to="/contact?set=both"><ChatIcon/>{w('สอบถามทั้งสองชุด','Enquire about both sets','咨询两套')}</A>
+        {home&&<A className="button outline" to="/packages">{w('ดูรายการในแต่ละชุด','See what’s included','查看套装清单')}</A>}
+      </div>
+      <SourceNote/>
+    </div>
+  </section>;
 }
 function Header({path}:{path:string}) {
   const w=useWords();
@@ -155,7 +178,7 @@ function CollectionCard({collection}:{collection:typeof collections[number]}) {
 function OfferCard({offer}:{offer:typeof offers[number]}) {
   const t=useText();
   const w=useWords();
-  return <article className="card offer-card"><OfferArtwork offer={offer}/><div className="card-body"><p className="eyebrow">{w('ชุดจาก Facebook','Facebook offer','Facebook 套装')}</p><h3>{t(offer.name)}</h3><p>{t(offer.summary)}</p><p className="price">{money(offer.price)}</p><A className="button outline" to={'/packages/'+offer.id}>{t(view)}</A></div></article>;
+  return <article className="card offer-card"><div className="card-body"><p className="eyebrow">{w('ชุดจาก Facebook','Facebook offer','Facebook 套装')}</p><h3>{t(offer.name)}</h3><p>{t(offer.summary)}</p><p className="price">{money(offer.price)}</p><A className="button outline" to={'/packages/'+offer.id}>{t(view)}</A></div></article>;
 }
 function ArticleCard({article}:{article:typeof articles[number]}) {
   const t=useText();
@@ -165,17 +188,17 @@ function ArticleCard({article}:{article:typeof articles[number]}) {
 function Home() {
   const w=useWords();
   return <>
+    <PackagePromotion home/>
     <section className="hero">
       <div className="hero-copy"><p className="eyebrow">{w('ของหมั้นและของใช้แต่งงานจีน','Chinese wedding essentials','中式婚礼用品')}</p>
-        <h1>{w('ชุดของหมั้นจีน','Chinese engagement sets','中式订婚礼套装')}</h1>
+        <h2 className="hero-title">{w('ชุดของหมั้นจีน','Chinese engagement sets','中式订婚礼套装')}</h2>
         <p className="hero-lead">{w('ชุดพิธีครบชุด\nสำหรับงานหมั้นและงานแต่ง','Ceremony essentials for your engagement and wedding','为订婚与婚礼准备全套仪式用品')}</p>
         <Knot/><div className="actions"><A to="/packages" className="button">{w('ดูชุดทั้งหมด','View the sets','查看全部套装')}</A></div>
       </div>
-      <div className="hero-photo"><Photo id="hero" eager sizes="(max-width: 680px) 100vw, 58vw"/></div>
+      <div className="hero-photo"><Photo id="hero" sizes="(max-width: 680px) 100vw, 58vw"/></div>
     </section>
     <section className="wrap section"><Heading tag="01 / COLLECTIONS" title={w('เลือกของตามพิธี','Find your ceremony essentials','按仪式挑选用品')}/><div className="grid three">{collections.map(c=><CollectionCard key={c.id} collection={c}/>)}</div></section>
-    <section className="wrap section"><Heading tag="02 / THE SETS" title={w('ครบทั้งสองฝ่าย','Sets for both families','备齐双方礼品')} extra={<A to="/packages" className="text-link">{w('เปรียบเทียบสองชุด','Compare both sets','比较两款套装')}</A>}/><div className="grid two">{offers.map(o=><OfferCard key={o.id} offer={o}/>)}</div></section>
-    <section className="wrap section"><Heading tag="03 / JOURNAL" title={w('อ่านก่อนเริ่มเตรียมงาน','Read before you plan','筹备前阅读')} extra={<A to="/blog" className="text-link">{w('อ่านทั้งหมด','All guides','全部指南')}</A>}/><div className="grid two">{articles.slice(0,2).map(a=><ArticleCard key={a.slug} article={a}/>)}</div></section>
+    <section className="wrap section"><Heading tag="02 / JOURNAL" title={w('อ่านก่อนเริ่มเตรียมงาน','Read before you plan','筹备前阅读')} extra={<A to="/blog" className="text-link">{w('อ่านทั้งหมด','All guides','全部指南')}</A>}/><div className="grid two">{articles.slice(0,2).map(a=><ArticleCard key={a.slug} article={a}/>)}</div></section>
   </>;
 }
 function SourceNote() {
@@ -187,14 +210,11 @@ function PackageIndex() {
   const lang=useContext(Locale);
   const [selection,setSelection]=useState('both');
   const chosen = offers.filter(o=>selection==='both'||o.id===selection);
-  return <><Banner tag="THE ENGAGEMENT SETS" title={w('ชุดของหมั้นจีนครบทั้งสองฝ่าย','Engagement sets for both families','中式订婚双方礼套装')} description={w('เลือกแยกตามฝ่าย หรือสอบถามทั้งสองชุดพร้อมกัน','Choose either set, or enquire about both together.','可单独选择一方套装，也可一起咨询。')} image="engagement"/>
+  return <><PackagePromotion/>
     <section className="wrap section">
       <Heading tag="01 / COMPARE" title={w('เลือกชุดที่ต้องการ','Choose your set','选择需要的套装')}/>
       <div className="pills" aria-label={w('เลือกฝ่าย','Select a set','选择一方')}>{[['both',w('ทั้งสองฝ่าย','Both families','双方')],...offers.map(o=>[o.id,o.name[lang]])].map(([id,label])=><button key={id} type="button" aria-pressed={selection===id} onClick={()=>setSelection(id)}>{label}</button>)}</div>
       <div className="grid two">{chosen.map(o=><OfferCard key={o.id} offer={o}/>)}</div>
-      {selection==='both'&&<div className="pair"><div><p className="eyebrow">{w('ราคาซื้อพร้อมกันตามโพสต์','Pair offer in the post','原帖双套优惠')}</p><h2>{money(pairPrice)} <del>{money(regularPairPrice)}</del></h2></div><A className="button" to="/contact?set=both"><ChatIcon/>{w('สอบถามทั้งสองชุด','Enquire about both sets','咨询两套')}</A></div>}
-      <SourceNote/>
-      <details className="disclosure"><summary>{w('ดูภาพประกาศจาก Facebook','See the original offer artwork','查看原帖图片')}</summary><Frame id="offer" kind="full poster" caption/></details>
     </section>
   </>;
 }
@@ -203,7 +223,7 @@ function OfferPage({offer}:{offer:typeof offers[number]}) {
   const lang=useContext(Locale);
   return <section className="wrap section">
     <A className="text-link back" to="/packages">{w('กลับไปดูชุดทั้งหมด','Back to all sets','返回全部套装')}</A>
-    <div className="detail"><OfferArtwork offer={offer} eager/><div>
+    <div className="detail"><PromotionArtwork eager/><div>
       <p className="eyebrow">{w('ชุดของหมั้นจีน','CHINESE ENGAGEMENT SET','中式订婚礼套装')}</p>
       <h1>{offer.name[lang]}</h1><p className="lead">{offer.summary[lang]}</p><p className="price">{money(offer.price)}</p>
       <div className="contents"><h2>{w('ในชุดประกอบด้วย','What’s included','套装包括')}</h2><ul>{offer.items.map(item=><li key={item.th}>{item[lang]}</li>)}</ul></div>
