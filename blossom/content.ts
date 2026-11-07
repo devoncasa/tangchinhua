@@ -7,7 +7,13 @@ export const brand = 'Tang Chin Hua';
 export const facebook = 'https://www.facebook.com/share/17uHexPnGD/?mibextid=wwXIfr';
 export const messenger = 'https://m.me/61595668643961';
 export const offerSource = 'https://www.facebook.com/photo.php?fbid=122094314373522288';
-export const localePath = (lang: Language, path: string) => lang === 'th' ? path : path === '/' ? '/' + lang + '/' : '/' + lang + path;
+export function localePath(lang: Language, path: string) {
+  const suffix = path.search(/[?#]/);
+  const pathname = suffix === -1 ? path : path.slice(0, suffix);
+  const queryOrFragment = suffix === -1 ? '' : path.slice(suffix);
+  const trailing = pathname.endsWith('/') ? '' : '/';
+  return (lang === 'th' ? '' : '/' + lang) + pathname + trailing + queryOrFragment;
+}
 
 export const offers = [
   {

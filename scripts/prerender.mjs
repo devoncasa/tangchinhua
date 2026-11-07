@@ -18,7 +18,7 @@ for(const path of paths) {
     const metadata=[
       '<link rel="canonical" href="'+canonical+'">',
       ...alternates,
-      '<link rel="alternate" hreflang="x-default" href="'+origin+path+'">',
+      '<link rel="alternate" hreflang="x-default" href="'+origin+localePath('th',path)+'">',
       '<meta property="og:site_name" content="Tang Chin Hua">',
       '<meta property="og:title" content="'+escape(info.title)+'">',
       '<meta property="og:description" content="'+escape(info.description)+'">',
@@ -35,7 +35,7 @@ for(const path of paths) {
     const file=join('dist',url.replace(/^\//,''),'index.html');
     await mkdir(dirname(file),{recursive:true});
     await writeFile(file,page);
-    if(!hidden)urls.push('<url><loc>'+canonical+'</loc>'+languages.map(code=>'<xhtml:link rel="alternate" hreflang="'+locales[code]+'" href="'+origin+localePath(code,path)+'"/>').join('')+'<xhtml:link rel="alternate" hreflang="x-default" href="'+origin+path+'"/></url>');
+    if(!hidden)urls.push('<url><loc>'+canonical+'</loc>'+languages.map(code=>'<xhtml:link rel="alternate" hreflang="'+locales[code]+'" href="'+origin+localePath(code,path)+'"/>').join('')+'<xhtml:link rel="alternate" hreflang="x-default" href="'+origin+localePath('th',path)+'"/></url>');
   }
 }
 const missing=render('/404');
