@@ -118,12 +118,13 @@ function PromotionArtwork({eager=false}:{eager?:boolean}) {
 
 function PackagePromotion({home=false}:{home?:boolean}) {
   const w=useWords();
+  const PromotionTitle=home ? 'h2' : 'h1';
   return <section className="promotion" aria-labelledby="promotion-title">
     <div className="promotion-copy">
       <p className="eyebrow">{w('โปรโมชันชุดของหมั้นจีน','CHINESE ENGAGEMENT OFFER','中式订婚礼套装优惠')}</p>
-      <h1 id="promotion-title">{w('ชุดของหมั้นจีนครบทั้ง 2 ฝ่าย','Engagement sets for both families','中式订婚双方礼套装')}</h1>
+      <PromotionTitle id="promotion-title" className="promotion-title">{w('ชุดของหมั้นจีนครบทั้ง 2 ฝ่าย','Engagement sets for both families','中式订婚双方礼套装')}</PromotionTitle>
     </div>
-    <div className="promotion-stage"><PromotionArtwork eager/></div>
+    <div className="promotion-stage"><PromotionArtwork eager={!home}/></div>
     <div className="promotion-copy">
       <p className="promotion-price">{w('ราคาพิเศษเมื่อซื้อคู่','Special price for both sets','双套优惠价')} <strong>{money(pairPrice)}</strong> <del>{money(regularPairPrice)}</del></p>
       <div className="actions">
@@ -188,15 +189,15 @@ function ArticleCard({article}:{article:typeof articles[number]}) {
 function Home() {
   const w=useWords();
   return <>
-    <PackagePromotion home/>
     <section className="hero">
       <div className="hero-copy"><p className="eyebrow">{w('ของหมั้นและของใช้แต่งงานจีน','Chinese wedding essentials','中式婚礼用品')}</p>
-        <h2 className="hero-title">{w('ชุดของหมั้นจีน','Chinese engagement sets','中式订婚礼套装')}</h2>
+        <h1 className="hero-title">{w('ชุดของหมั้นจีน','Chinese engagement sets','中式订婚礼套装')}</h1>
         <p className="hero-lead">{w('ชุดพิธีครบชุด\nสำหรับงานหมั้นและงานแต่ง','Ceremony essentials for your engagement and wedding','为订婚与婚礼准备全套仪式用品')}</p>
         <Knot/><div className="actions"><A to="/packages" className="button">{w('ดูชุดทั้งหมด','View the sets','查看全部套装')}</A></div>
       </div>
-      <div className="hero-photo"><Photo id="hero" sizes="(max-width: 680px) 100vw, 58vw"/></div>
+      <div className="hero-photo"><Photo id="hero" eager sizes="(max-width: 680px) 100vw, 58vw"/></div>
     </section>
+    <PackagePromotion home/>
     <section className="wrap section"><Heading tag="01 / COLLECTIONS" title={w('เลือกของตามพิธี','Find your ceremony essentials','按仪式挑选用品')}/><div className="grid three">{collections.map(c=><CollectionCard key={c.id} collection={c}/>)}</div></section>
     <section className="wrap section"><Heading tag="02 / JOURNAL" title={w('อ่านก่อนเริ่มเตรียมงาน','Read before you plan','筹备前阅读')} extra={<A to="/blog" className="text-link">{w('อ่านทั้งหมด','All guides','全部指南')}</A>}/><div className="grid two">{articles.slice(0,2).map(a=><ArticleCard key={a.slug} article={a}/>)}</div></section>
   </>;

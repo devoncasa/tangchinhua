@@ -78,7 +78,7 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 .article-card>.frame img{aspect-ratio:1.72}
 .promotion{width:min(1500px,calc(100% - clamp(1.5rem,4.3vw,4rem)));margin:.8rem auto 1.5rem;padding:clamp(1.1rem,3vw,2.6rem) 0 1.3rem;background:linear-gradient(135deg,#fff6ed,#fae5df);border:1px solid #eacbbd;border-radius:1rem;box-shadow:var(--shadow)}
 .promotion-copy{width:min(94%,46rem);margin-inline:auto;text-align:center}
-.promotion h1{font-size:clamp(1.7rem,4.2vw,3.7rem);margin-bottom:.9rem}
+.promotion-title{font-size:clamp(1.7rem,4.2vw,3.7rem);margin-bottom:.9rem}
 .promotion-stage{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,610px) minmax(0,1fr);align-items:stretch;gap:clamp(.6rem,2vw,2rem);padding-inline:clamp(.6rem,2vw,1.5rem)}
 .promotion-stage::before,.promotion-stage::after{content:"";pointer-events:none;min-width:0;align-self:stretch;opacity:.19;background-position:center;background-size:cover;mask-image:radial-gradient(ellipse 65% 53% at center,#000 0%,#000a 45%,transparent 100%)}
 .promotion-stage::before{grid-column:1;grid-row:1;background-image:url(/media/story-480.webp)}
