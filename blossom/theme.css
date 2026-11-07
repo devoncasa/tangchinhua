@@ -178,3 +178,7 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
 .card>.product-photo img,.product-photo img{aspect-ratio:4/3;object-fit:contain;background:var(--ivory)}
+
+.store-location-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem 2rem}
+.store-location address{font-style:normal;margin-top:.5rem}
+.store-location iframe{display:block;width:100%;height:clamp(220px,38vw,320px);border:1px solid var(--line);border-radius:.65rem;margin-top:1rem}

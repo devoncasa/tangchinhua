@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { products } from '../services/data';
 import type { CartItem, Language, MultilingualString, Product } from '../types';
 import { productIllustration } from './product-media';
-import { articles, brand, collections, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, regularPairPrice, text } from './content';
+import { articles, brand, collections, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, regularPairPrice, storeAddress, storeMap, storeMapEmbed, text } from './content';
 
 const Locale = createContext<Language>('th');
 const useText = () => {
@@ -75,9 +75,9 @@ function A({to, children, className, onClick, current}: {to:string; children:Rea
 function ChatIcon() {
   return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.7-.8L4 20l.8-4.2A8.5 8.5 0 1 1 21 11.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round"/></svg>;
 }
-function ChatButton() {
+function ChatButton({className='',label,onClick}:{className?:string;label?:string;onClick?:()=>void}) {
   const t=useText();
-  return <a className="button" href={messenger} target="_blank" rel="noopener noreferrer"><ChatIcon/>{t(chat)}</a>;
+  return <a className={'button '+className} href={messenger} target="_blank" rel="noopener noreferrer" onClick={onClick}><ChatIcon/>{label??t(chat)}</a>;
 }
 function Knot() {
   return <span className="knot" aria-hidden="true"><svg viewBox="0 0 36 36" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="2"><path d="m18 8 10 10-10 10L8 18Z M18 8c-7-10 7-10 0 0m10 10c10-7 10 7 0 0m-10 10c7 10-7 10 0 0M8 18c-10 7-10-7 0 0m10-5 5 5-5 5-5-5Z"/></svg></span>;
@@ -127,7 +127,7 @@ function Header({path}:{path:string}) {
       <nav id="site-nav" className={open?'nav is-open':'nav'} aria-label={w('เมนูหลัก','Main navigation','主导航')}>
         {nav.map(([to,label])=><A key={to} to={to} current={to==='/'?path==='/':path===to||path.startsWith(to+'/')} onClick={()=>setOpen(false)}>{label[lang]}</A>)}
         <div className="locale" aria-label={w('ภาษา','Language','语言')}>{languages.map(item=><Link key={item} to={localePath(item,path)+activeSearch} lang={item} aria-current={item===lang?'true':undefined}>{languageNames[item]}</Link>)}</div>
-        <A to="/contact" className="button menu-chat"><ChatIcon/>{chat[lang]}</A>
+        <ChatButton className="menu-chat" onClick={()=>setOpen(false)}/>
       </nav>
     </div>
   </header>;
@@ -199,7 +199,6 @@ function PackageIndex() {
   </>;
 }
 function OfferPage({offer}:{offer:typeof offers[number]}) {
-  const t=useText();
   const w=useWords();
   const lang=useContext(Locale);
   return <section className="wrap section">
@@ -208,7 +207,7 @@ function OfferPage({offer}:{offer:typeof offers[number]}) {
       <p className="eyebrow">{w('ชุดของหมั้นจีน','CHINESE ENGAGEMENT SET','中式订婚礼套装')}</p>
       <h1>{offer.name[lang]}</h1><p className="lead">{offer.summary[lang]}</p><p className="price">{money(offer.price)}</p>
       <div className="contents"><h2>{w('ในชุดประกอบด้วย','What’s included','套装包括')}</h2><ul>{offer.items.map(item=><li key={item.th}>{item[lang]}</li>)}</ul></div>
-      <A to={'/contact?set='+offer.id} className="button"><ChatIcon/>{t(chat)}</A><SourceNote/>
+      <A to={'/contact?set='+offer.id} className="button"><ChatIcon/>{w('เตรียมข้อความสอบถาม','Prepare an enquiry','准备咨询留言')}</A><SourceNote/>
     </div></div>
   </section>;
 }
@@ -265,7 +264,7 @@ function ProductPage({product}:{product:Product}) {
       <dl className="specs"><div><dt>{w('วัสดุ','Material','材质')}</dt><dd>{product.specifications.material[lang]}</dd></div><div><dt>{w('สี','Colour','颜色')}</dt><dd>{product.specifications.color[lang]}</dd></div></dl>
       {sizes.length>0&&<label className="field"><span>{w('ขนาดที่อยากสอบถาม','Size to ask about','意向尺码')}</span><select value={size} onChange={e=>setSize(e.target.value)}><option value="">{w('ยังไม่ระบุ','Not selected','未选择')}</option>{sizes.map(s=><option key={s}>{s}</option>)}</select></label>}
       <p className="fine">{t(askPrice)}</p>
-      <div className="actions"><A className="button" to={'/contact?'+params.toString()}><ChatIcon/>{t(chat)}</A>{!product.id.startsWith('service-')&&<A className="button outline" to={'/contact?'+photoParams.toString()}>{w('ขอรูปสินค้าจริง','Request a product photo','索取商品实拍')}</A>}</div>
+      <div className="actions"><A className="button" to={'/contact?'+params.toString()}><ChatIcon/>{w('เตรียมข้อความสอบถาม','Prepare an enquiry','准备咨询留言')}</A>{!product.id.startsWith('service-')&&<A className="button outline" to={'/contact?'+photoParams.toString()}>{w('ขอรูปสินค้าจริง','Request a product photo','索取商品实拍')}</A>}</div>
     </div></div>
   </section>;
 }
@@ -309,7 +308,7 @@ function Faq() {
   const w=useWords();
   const lang=useContext(Locale);
   return <><Banner tag="BEFORE YOU ORDER" title={w('คำถามก่อนสั่งชุด','Ordering questions','订购常见问题')} description={w('เลือกชุดให้ตรงกับพิธี แล้วคุยรายละเอียดกับร้านก่อนยืนยัน','Choose a set for your ceremony and confirm the details with the shop.','选择适合仪式的套装，并与商家确认细节。')} image="tea"/>
-    <section className="wrap section faq">{questions.map(([q,a])=><details className="disclosure" key={q.th}><summary>{q[lang]}</summary><p>{a[lang]}</p></details>)}<A to="/contact" className="button"><ChatIcon/>{chat[lang]}</A></section>
+    <section className="wrap section faq">{questions.map(([q,a])=><details className="disclosure" key={q.th}><summary>{q[lang]}</summary><p>{a[lang]}</p></details>)}<ChatButton/></section>
   </>;
 }
 function About() {
@@ -317,6 +316,30 @@ function About() {
   return <><Banner tag="THE TANG CHIN HUA STORY" title={w('เรื่องราวของ Tang Chin Hua','About Tang Chin Hua','关于 Tang Chin Hua')} description={w('ของใช้ในพิธีที่ดูง่ายขึ้น เพื่อให้สองครอบครัวมีเวลาคุยกันเรื่องสำคัญ','A clearer way to prepare ceremony essentials, so families have more time for the decisions that matter.','让礼仪用品更易选择，把时间留给两家真正重要的商量。')} image="story"/>
     <section className="wrap section story-band"><Frame id="engagement" caption/><div><p className="eyebrow">A SHARED TABLE</p><h2>{w('เริ่มจากรายการที่ทุกคนเข้าใจตรงกัน','Start with a list both families understand','从双方都明白的清单开始')}</h2><p>{w('เราแยกรายการของฝ่ายเจ้าบ่าวและเจ้าสาวให้เห็นชัด ชวนให้คุณคุยกับคนในบ้านก่อนเลือก แล้วจึงสอบถามร้านเรื่องของที่จะได้รับและเวลาจัดส่ง','We show the groom’s and bride’s lists separately so you can talk with family first, then confirm the contents and timing with the shop.','我们将男女双方的清单分开列出，方便先与家人讨论，再向商家确认套装内容及配送时间。')}</p><A to="/packages" className="button">{w('ดูสองชุดของหมั้น','See both engagement sets','查看双方订婚套装')}</A></div></section>
   </>;
+}
+function StoreLocation() {
+  const w=useWords();
+  const t=useText();
+  const [showMap,setShowMap]=useState(false);
+  return <section className="wrap section">
+    <div className="contents store-location">
+      <div className="store-location-row">
+        <div>
+          <p className="eyebrow">02 / VISIT THE SHOP</p>
+          <h2>{w('แผนที่ร้านตั้งจิ้นฮั้ว','Visit Tang Chin Hua','前往 Tang Chin Hua')}</h2>
+          <address>{t(storeAddress)}</address>
+          <p className="fine">{w('ทักแชตสอบถามเวลาเปิดร้านก่อนเดินทาง','Message the shop to confirm opening hours before visiting.','前往前请留言确认营业时间。')}</p>
+        </div>
+        <div className="actions">
+          <a className="button" href={storeMap} target="_blank" rel="noopener noreferrer">{w('เปิดใน Google Maps','Open in Google Maps','在 Google 地图中打开')}</a>
+          <button type="button" className="button outline" aria-expanded={showMap} aria-controls="store-map" onClick={()=>setShowMap(!showMap)}>
+            {showMap?w('ซ่อนแผนที่','Hide map','隐藏地图'):w('ดูแผนที่','Show map','显示地图')}
+          </button>
+        </div>
+      </div>
+      <div id="store-map" hidden={!showMap}>{showMap&&<iframe src={storeMapEmbed} title={w('แผนที่ร้านตั้งจิ้นฮั้ว','Tang Chin Hua shop map','Tang Chin Hua 商家地图')} width="900" height="320" loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"/>}</div>
+    </div>
+  </section>;
 }
 function Contact() {
   const w=useWords();
@@ -326,7 +349,7 @@ function Contact() {
   const [activeSearch,setActiveSearch]=useState('');
   const [date,setDate]=useState('');
   const [area,setArea]=useState('');
-  const [copied,setCopied]=useState(false);
+  const [copyStatus,setCopyStatus]=useState<'idle'|'copied'|'manual'>('idle');
   const summaryField=useRef<HTMLTextAreaElement>(null);
   const params=new URLSearchParams(activeSearch);
   const item=products.find(product=>product.id===params.get('item'));
@@ -335,7 +358,7 @@ function Contact() {
     setActiveSearch(search);
     const requested=new URLSearchParams(search).get('set');
     setSelected(requested==='groom'||requested==='bride'||requested==='both'?requested:'');
-    setCopied(false);
+    setCopyStatus('idle');
   },[search]);
   const selectedOffer=offers.find(o=>o.id===selected);
   const chosen=selectedOffer?.name[lang]??(selected==='both'?w('ชุดฝ่ายเจ้าบ่าวและชุดฝ่ายเจ้าสาว','Groom’s and bride’s sets','男方及女方套装'):'');
@@ -348,22 +371,27 @@ function Contact() {
     w('ขอทราบราคา รายการ และรอบจัดส่งที่ยืนยันได้','Please confirm price, contents and delivery options.','请确认价格、清单和配送安排。'),
   ].filter(Boolean).join('\n');
   async function copySummary() {
-    try { await navigator.clipboard.writeText(summary); setCopied(true); }
-    catch { summaryField.current?.focus(); summaryField.current?.select(); }
+    try { await navigator.clipboard.writeText(summary); setCopyStatus('copied'); }
+    catch { setCopyStatus('manual'); summaryField.current?.focus(); summaryField.current?.select(); }
   }
   return <><Banner tag="LET’S TALK" title={w('สอบถามสินค้า','Enquire about a set','套装咨询')} description={w('เลือกชุดที่สนใจ เตรียมข้อความ แล้วเปิด Inbox ของร้าน','Choose a set, prepare a message and open the shop’s Inbox.','选择意向套装，准备留言，再打开商家 Inbox。')} image="tea"/>
     <section className="wrap section detail contact"><div>
       <p className="eyebrow">01 / YOUR ENQUIRY</p><h2>{w('เตรียมข้อความถึงร้าน','Prepare your message','准备留言')}</h2>
       {item&&<p className="contents">{item.name[lang]}{itemSize?' · '+itemSize:''}</p>}
-      <label className="field"><span>{w('ชุดที่สนใจ','Set of interest','意向套装')}</span><select value={selected} onChange={e=>{setSelected(e.target.value);setCopied(false);}}><option value="">{w('ยังไม่ระบุ','Not selected','未选择')}</option>{offers.map(o=><option key={o.id} value={o.id}>{o.name[lang]}</option>)}<option value="both">{w('ทั้งสองชุด','Both sets','双方套装')}</option></select></label>
-      <label className="field"><span>{w('วันงาน (ถ้าทราบ)','Event date (optional)','仪式日期（选填）')}</span><input type="date" value={date} onChange={e=>{setDate(e.target.value);setCopied(false);}}/></label>
-      <label className="field"><span>{w('จังหวัดหรือพื้นที่จัดส่ง (ถ้าทราบ)','Province or delivery area (optional)','府县或配送区域（选填）')}</span><input type="text" value={area} maxLength={90} onChange={e=>{setArea(e.target.value);setCopied(false);}}/></label>
+      <label className="field"><span>{w('ชุดที่สนใจ','Set of interest','意向套装')}</span><select value={selected} onChange={e=>{setSelected(e.target.value);setCopyStatus('idle');}}><option value="">{w('ยังไม่ระบุ','Not selected','未选择')}</option>{offers.map(o=><option key={o.id} value={o.id}>{o.name[lang]}</option>)}<option value="both">{w('ทั้งสองชุด','Both sets','双方套装')}</option></select></label>
+      <label className="field"><span>{w('วันงาน (ถ้าทราบ)','Event date (optional)','仪式日期（选填）')}</span><input type="date" value={date} onChange={e=>{setDate(e.target.value);setCopyStatus('idle');}}/></label>
+      <label className="field"><span>{w('จังหวัดหรือพื้นที่จัดส่ง (ถ้าทราบ)','Province or delivery area (optional)','府县或配送区域（选填）')}</span><input type="text" value={area} maxLength={90} onChange={e=>{setArea(e.target.value);setCopyStatus('idle');}}/></label>
     </div><div className="contents">
       <label className="field"><span>{w('ข้อความสำหรับคัดลอกไปวางในแชต','Message to paste into Messenger','可复制到 Messenger 的留言')}</span><textarea ref={summaryField} rows={7} value={summary} readOnly/></label>
-      <div className="actions"><button type="button" className="button outline" onClick={copySummary}>{w('คัดลอกข้อความ','Copy message','复制留言')}</button><ChatButton/></div>
-      <p className="fine" role="status">{copied?w('คัดลอกแล้ว วางข้อความใน Messenger ได้เลย','Copied. Paste it into Messenger.','已复制，可粘贴到 Messenger。'):w('ส่งข้อความเองใน Messenger หรือเปิดหน้า Facebook ของร้าน','Send the message in Messenger or open the shop’s Facebook page.','请在 Messenger 自行发送，或打开商家的 Facebook 页面。')}</p>
+      <div className="actions"><button type="button" className="button outline" onClick={copySummary}>{w('คัดลอกข้อความ','Copy message','复制留言')}</button><ChatButton label={w('คัดลอกแล้วเปิด Messenger','Copy and open Messenger','复制并打开 Messenger')} onClick={copySummary}/></div>
+      <p className="fine" role="status">{copyStatus==='copied'
+        ?w('คัดลอกแล้ว วางข้อความใน Messenger แล้วกดส่ง','Copied. Paste the message into Messenger and press Send.','已复制。请在 Messenger 粘贴留言并发送。')
+        :copyStatus==='manual'
+          ?w('คัดลอกอัตโนมัติไม่ได้ โปรดคัดลอกข้อความในช่องด้วยตนเอง','Automatic copy was unavailable. Copy the message from the field manually.','无法自动复制，请从文本框手动复制。')
+          :w('วางข้อความใน Messenger แล้วกดส่งถึงร้าน','Paste the message into Messenger and send it to the shop.','在 Messenger 中粘贴留言并发送给商家。')}</p>
       <a href={facebook} className="text-link" target="_blank" rel="noopener noreferrer">{w('เปิดหน้า Facebook ของร้าน','Open the shop’s Facebook page','打开商家 Facebook 页面')}</a>
     </div></section>
+    <StoreLocation/>
   </>;
 }
 function SavedItems() {
