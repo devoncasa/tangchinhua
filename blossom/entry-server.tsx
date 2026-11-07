@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Site, { pageInfo, parsePath } from './Site';
-import { brand, facebook, localePath, storeMap } from './content';
+import { brand, ceremonyChecklist, ceremonyGuideTitle, facebook, localePath, storeMap } from './content';
 export { languages, paths, localePath } from './content';
 
 export function render(url: string, origin: string) {
@@ -43,6 +43,16 @@ export function render(url: string, origin: string) {
     }))});
   }
   if (path === '/contact') schema.push(store);
+  if (path === '/traditions') {
+    schema.push({
+      '@type': 'ItemList',
+      name: ceremonyGuideTitle[lang],
+      itemListElement: ceremonyChecklist.map((ceremony, index) => ({
+        '@type': 'ListItem', position: index + 1,
+        name: ceremony.title[lang], url: canonical + '#' + ceremony.id,
+      })),
+    });
+  }
   if (path.startsWith('/blog/') && info.image) {
     schema.push({
       '@type':'Article',headline:info.label,description:info.description,image:origin+info.image,

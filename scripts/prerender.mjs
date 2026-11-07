@@ -1,4 +1,5 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { render, languages, paths, localePath } from '../.ssr/entry-server.js';
 
@@ -8,6 +9,17 @@ const preview=Boolean(process.env.CONTEXT && process.env.CONTEXT!=='production')
 const locales={th:'th',en:'en',zh:'zh-Hans'};
 const escape=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const urls=[];
+const knownRoutes=new Set(paths.flatMap(path=>languages.map(lang=>localePath(lang,path))));
+const checkedAssetLinks=new Set();
+const titleByLanguage=new Map();
+const descriptionByLanguage=new Map();
+
+function assertUnique(values, lang, value, label, url) {
+  assert(value.trim(), `Missing ${label} at ${url}`);
+  const key=lang+':'+value.trim().toLocaleLowerCase();
+  assert(!values.has(key), `Duplicate ${label} at ${url} and ${values.get(key)}`);
+  values.set(key,url);
+}
 for(const path of paths) {
   for(const lang of languages) {
     const url=localePath(lang,path);
@@ -15,6 +27,20 @@ for(const path of paths) {
     const canonical=origin+url;
     const alternates=languages.map(code=>'<link rel="alternate" hreflang="'+locales[code]+'" href="'+origin+localePath(code,path)+'">');
     const hidden=path==='/cart';
+    if(!hidden) {
+      assertUnique(titleByLanguage,lang,info.title,'title',url);
+      assertUnique(descriptionByLanguage,lang,info.description,'description',url);
+    }
+    for(const [,href] of html.matchAll(/<a\b[^>]*?\shref="(\/(?!\/)[^"]*)"/g)) {
+      const target=new URL(href,origin);
+      if(knownRoutes.has(target.pathname) || checkedAssetLinks.has(target.pathname)) continue;
+      const asset=await stat(join('dist',target.pathname.slice(1))).catch(error=>{
+        if(error.code==='ENOENT') return null;
+        throw error;
+      });
+      assert(asset?.isFile(), `Unrecognized internal link ${href} on ${url}`);
+      checkedAssetLinks.add(target.pathname);
+    }
     const shareImage=origin+(info.image??'/media/hero-960.webp');
     const metadata=[
       '<link rel="canonical" href="'+canonical+'">',
