@@ -241,7 +241,7 @@ function Home() {
         srcSet="/media/hero-gift-preparation-480.webp 480w, /media/hero-gift-preparation-720.webp 720w, /media/hero-gift-preparation-1080.webp 1080w"
         sizes="(max-width: 680px) 80vw, (max-width: 1560px) 39vw, 600px"/>
       <div className="hero-copy"><p className="eyebrow">{w('ของหมั้นและของใช้แต่งงานจีน','Chinese wedding essentials','中式婚礼用品')}</p>
-        <h1 className="hero-title">{w('ชุดของหมั้นจีน','Chinese engagement sets','中式订婚礼品套装')}</h1>
+        <h1 className="hero-title">{w('ครบเครื่องเรื่องชุดของหมั้นและงานแต่งประเพณีจีนแท้','Chinese engagement sets','中式订婚礼品套装')}</h1>
         <p className="hero-lead">{w('เลือกของหมั้นฝ่ายเจ้าบ่าวและเจ้าสาว\nพร้อมของใช้สำหรับพิธียกน้ำชาและงานแต่ง','Ceremony essentials for your engagement and wedding','男方、女方订婚礼品，以及敬茶和婚礼用品')}</p>
         <Knot/><div className="actions"><A to="/packages" className="button">{w('ดูชุดทั้งหมด','View the sets','查看全部套装')}</A></div>
       </div>
