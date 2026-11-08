@@ -31,7 +31,7 @@ export const products: Product[] = [
     traditionTags: ['trad-08'],
     reviews: [
       { id: 'r001', author: 'The Chen Family', rating: 5, date: '2024-07-15', comment: { en: 'Absolutely breathtaking. The craftsmanship is beyond words. It made my daughter\'s wedding day truly royal. A true heirloom piece.', th: 'งดงามจนแทบลืมหายใจ ฝีมือการปักเหนือคำบรรยาย ทำให้วันแต่งงานของลูกสาวดูสูงค่าดั่งราชวงศ์ เป็นมรดกที่แท้จริง', zh: '简直令人叹为观止。工艺水平无法用言语形容。它让我女儿的婚礼真正具有皇家气派。一件真正的传家之宝。' } },
-      { id: 'r002', author: 'Li Wei', rating: 5, date: '2024-06-20', comment: { en: 'The most beautiful dress I have ever worn. I felt like an empress. The team at Tang Chin Hua were so helpful.', th: 'เป็นชุดที่สวยที่สุดที่เคยใส่มา รู้สึกเหมือนเป็นจักรพรรดินีเลย ทีมงานที่ตั้งจิ้นฮั้วให้ความช่วยเหลือดีมาก', zh: '这是我穿过的最美的裙子。我感觉自己像个皇后。Tang Chin Hua的团队非常乐于助人。' } },
+      { id: 'r002', author: 'Li Wei', rating: 5, date: '2024-06-20', comment: { en: 'The most beautiful dress I have ever worn. I felt like an empress. The shop team were so helpful.', th: 'เป็นชุดที่สวยที่สุดที่เคยใส่มา รู้สึกเหมือนเป็นจักรพรรดินีเลย ทีมงานที่ร้านให้ความช่วยเหลือดีมาก', zh: '这是我穿过的最美的裙子。我感觉自己像个皇后。店里的团队非常乐于助人。' } },
     ]
   },
   {

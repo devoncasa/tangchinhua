@@ -20,8 +20,19 @@ main:focus{outline:none}
 .sr,.skip:not(:focus){position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .skip:focus{position:absolute;z-index:30;top:.6rem;left:.6rem;background:var(--paper);color:var(--red);padding:.65rem 1rem}
 .header{position:relative;z-index:5;padding:clamp(.6rem,1.4vw,1rem) clamp(.75rem,2.15vw,2rem) 0}
-.masthead{position:relative;display:flex;justify-content:space-between;align-items:center;gap:clamp(.7rem,2.2vw,2.2rem);padding:.72rem clamp(.82rem,2.25vw,2.15rem);min-height:5.8rem;background:linear-gradient(100deg,#fffaf3,#fff3e6 79%,#ffece5);border:1px solid #fffaf6;border-bottom:1px solid #d2a574;border-radius:1rem 1rem .3rem .3rem;box-shadow:var(--shadow);max-width:1500px;margin:auto}
-.masthead::after{position:absolute;inset:auto 1.1rem -.28rem;height:1px;background:linear-gradient(90deg,transparent,#b97e41,transparent);content:"";pointer-events:none}
+.masthead{position:relative;display:flex;justify-content:space-between;align-items:center;gap:clamp(.7rem,2.2vw,2.2rem);padding:1rem clamp(.82rem,2.25vw,2.15rem);min-height:5.8rem;background:linear-gradient(100deg,#fffaf3,#fff3e6 79%,#ffece5);border:1px solid #fffaf6;border-bottom:1px solid #d2a574;border-radius:1rem 1rem .3rem .3rem;box-shadow:var(--shadow);max-width:1500px;margin:auto}
+.masthead{
+  --masthead-fret:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 8'%3E%3Cpath d='M0 6h4V2h8v4h8V2h8v4h4M8 8V5m16 3V5' fill='none' stroke='%23925038' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+.masthead::before,.masthead::after{
+  content:"";
+  position:absolute;
+  inset:.2rem .85rem auto;
+  height:.42rem;
+  background:var(--masthead-fret) repeat-x center / 1.7rem .42rem;
+  pointer-events:none;
+}
+.masthead::after{inset:auto .85rem .2rem;transform:scaleY(-1)}
 .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;flex-shrink:0;color:var(--deep)}
 .brand img{border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px #c69857}
 .brand span{font:700 clamp(1.3rem,2.35vw,2.04rem)/1 Georgia,"Times New Roman",serif;border-left:1px solid #d7a58b;padding-left:.75rem;white-space:nowrap}
@@ -44,6 +55,18 @@ main:focus{outline:none}
 .hero{width:min(1500px,calc(100% - clamp(1.5rem,4.3vw,4rem)));margin:.32rem auto 0;min-height:clamp(390px,45vw,650px);display:grid;grid-template-columns:45% 55%;isolation:isolate;position:relative;overflow:hidden;border:1px solid #fff3e8;border-radius:.3rem .3rem 1.1rem 1.1rem;background:radial-gradient(ellipse at 24% 38%,#fff1e6 3%,#f7d3cc 49%,#ecb3ae 100%);box-shadow:0 12px 28px #62201e29}
 .hero::before,.banner::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:url(/media/blossom-520.webp) no-repeat left top / clamp(140px,23vw,355px) auto}
 .hero::after{content:"";position:absolute;left:-5%;bottom:-32%;width:74%;height:43%;border-radius:50%;background:linear-gradient(12deg,#ffe1d2,#fff5e9 60%,#fff3e297);transform:rotate(-8deg);z-index:2;pointer-events:none}
+.hero-story{
+  position:absolute;
+  grid-area:1 / 1 / 2 / 2;
+  inset:auto -7% 1% auto;
+  width:86%;
+  height:79%;
+  object-fit:cover;
+  object-position:right bottom;
+  opacity:.31;
+  mask-image:radial-gradient(ellipse 78% 68% at 68% 76%,#000 8%,#000b 38%,transparent 79%);
+  pointer-events:none;
+}
 .hero-copy{position:relative;z-index:3;align-self:center;padding:clamp(3.5rem,6vw,7rem) 0 clamp(4rem,6.4vw,7rem) clamp(1.55rem,6.05vw,6.75rem)}
 .hero-title{font-size:clamp(2.5rem,5.55vw,6.25rem);line-height:1.16;margin:.4rem 0 .7rem;color:#820817}
 html[lang="th"] .hero-title{font-size:clamp(2rem,4.62vw,5.25rem);white-space:nowrap}
@@ -170,6 +193,13 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
     background:radial-gradient(ellipse at 50% 32%,#fff8ef 5%,#f8dfd5 62%,#f3cbc3 100%);
   }
   .hero::before,.hero::after{display:none}
+  .hero-story{
+    inset:auto 0 0 auto;
+    width:80%;
+    height:86%;
+    opacity:.24;
+    mask-image:radial-gradient(ellipse 75% 68% at 68% 71%,#000 8%,#000b 42%,transparent 84%);
+  }
   .hero-copy{
     padding:clamp(1.85rem,7vw,3.35rem) clamp(1rem,5vw,2.5rem) 1.3rem;
     text-align:center;
@@ -191,13 +221,6 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
     margin:.35rem auto .65rem;
     text-wrap:balance;
     white-space:normal;
-  }
-  .hero-copy .eyebrow,.hero-title{
-    text-shadow:-1px 0 #fff,1px 0 #fff,0 -1px #fff,0 1px #fff,-1px -1px #fff,1px 1px #fff,-1px 1px #fff,1px -1px #fff;
-  }
-  @supports (paint-order:stroke fill){
-    .hero-copy .eyebrow,.hero-title{paint-order:stroke fill;-webkit-text-stroke:2px #fff;text-shadow:none}
-    .hero-title{-webkit-text-stroke:3px #fff}
   }
   .hero-lead{margin-inline:auto;max-width:27rem;font-size:clamp(1rem,4.4vw,1.28rem);line-height:1.55;white-space:normal;text-wrap:balance}
   .hero-copy .knot{width:min(100%,8.5rem);margin:.75rem auto 0}
@@ -240,3 +263,27 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 .package-comparison th,.package-comparison td{text-align:start;vertical-align:top;padding:clamp(.35rem,1.4vw,.8rem);border-bottom:1px solid var(--line);overflow-wrap:anywhere}
 .package-comparison th:first-child{width:22%}
 .package-comparison thead th{color:var(--deep);background:var(--ivory)}
+
+.ceremony-checklist .card ul{margin:.6rem 0 0;padding-inline-start:1.2rem}
+.ceremony-checklist .card li+li{margin-top:.35rem}
+.ceremony-checklist>.fine,.ceremony-checklist>.grid+p{margin-top:1rem}
+.banner::before{opacity:.4}
+.banner h1,.banner .eyebrow,.hero-title,.hero-copy .eyebrow{
+  text-shadow:-1px 0 #fff7ee,1px 0 #fff7ee,0 -1px #fff7ee,0 1px #fff7ee;
+}
+@supports (paint-order:stroke fill){
+  .banner h1,.banner .eyebrow,.hero-title,.hero-copy .eyebrow{
+    paint-order:stroke fill;
+    -webkit-text-stroke:2px #fff7ee;
+    text-shadow:none;
+  }
+  .banner h1,.hero-title{-webkit-text-stroke:3px #fff7ee}
+}
+@media(min-width:681px){
+  .hero-copy{padding-inline-end:clamp(1.5rem,5.5vw,6rem);min-width:0}
+  .hero-lead{font-size:clamp(1.13rem,1.85vw,1.85rem);white-space:normal;text-wrap:balance}
+  html[lang="th"] .hero-title{white-space:normal}
+}
+
+html[lang="th"] .hero-title{font-size:clamp(1.8rem,3.1vw,3.2rem);line-height:1.4;white-space:normal;text-wrap:balance}
+@media(max-width:680px){html[lang="th"] .hero-title{font-size:clamp(1.65rem,6.4vw,2.45rem);line-height:1.45}}

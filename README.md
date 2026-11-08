@@ -35,3 +35,19 @@ Visual references used for garment construction and ceremony objects
 - [Hong Kong Intangible Cultural Heritage Office — Cheongsam and Kwan Kwa](https://www.icho.hk/en/web/icho/representative_list_cheongsam_kwan_kwa.html)
 - [The Chinese Wedding Shop — Betrothal baskets and ceremony candles](https://www.thechineseweddingshop.com.sg/guo-da-li/1659-127-guo-da-li-betrothal-package)
 - [Vows.sg — The four components of Si Dian Jin](https://www.vows.sg/guides/si-dian-jin-singapore-guide)
+
+### Search content and contact measurement
+
+The engagement quantities, posted prices and source link live in
+`blossom/content.ts` alongside the localized ceremony checklist and guide metadata.
+Use the same quantities in all locales. Keep prices attributed to the shop’s
+public post until the shop confirms current offers.
+
+The build checks localized titles and descriptions for duplicates and validates
+static links against generated routes or published assets. Canonical URLs,
+language alternates and the sitemap use the same route inventory.
+
+Production uses `VITE_ENABLE_GA=true`. The `messenger_click` and `maps_click`
+events report the path and language. They measure a click, and a shop would
+need its own records to count sent messages, visits or orders. For rollback,
+revert the release commit on `main` and let Netlify rebuild.

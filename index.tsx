@@ -1,6 +1,7 @@
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Site from './blossom/Site';
+import { gtag } from './blossom/analytics';
 import '@fontsource-variable/noto-serif-thai/wght.css';
 import '@fontsource-variable/noto-sans-thai/wght.css';
 import './blossom/theme.css';
@@ -17,9 +18,6 @@ if (import.meta.env.VITE_ENABLE_GA === 'true') {
   script.async = true;
   script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurement;
   document.head.append(script);
-  const analytics = window as Window & { dataLayer?: IArguments[] };
-  analytics.dataLayer ??= [];
-  function gtag(..._args: unknown[]) { analytics.dataLayer!.push(arguments); }
   gtag('js',new Date());
   gtag('config',measurement);
 }
