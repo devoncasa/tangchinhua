@@ -165,7 +165,7 @@ function Header({path}:{path:string}) {
   const toggle=useRef<HTMLButtonElement>(null);
   useEffect(()=>setOpen(false),[path,lang]);
   return <header className="header" onKeyDown={e=>{if(e.key==='Escape'&&open){setOpen(false);toggle.current?.focus();}}}>
-    <div className={path==='/' ? 'masthead masthead--home' : 'masthead'}>
+    <div className="masthead">
       <A to="/" className="brand"><img src="/media/emblem-160.webp" width="68" height="68" alt=""/><span>{brand}</span></A>
       <button ref={toggle} className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={()=>setOpen(!open)}><span aria-hidden="true">☰</span><span className="sr">{w('เมนูหลัก','Main menu','主菜单')}</span></button>
       <nav id="site-nav" className={open?'nav is-open':'nav'} aria-label={w('เมนูหลัก','Main navigation','主导航')}>

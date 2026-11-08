@@ -20,8 +20,19 @@ main:focus{outline:none}
 .sr,.skip:not(:focus){position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .skip:focus{position:absolute;z-index:30;top:.6rem;left:.6rem;background:var(--paper);color:var(--red);padding:.65rem 1rem}
 .header{position:relative;z-index:5;padding:clamp(.6rem,1.4vw,1rem) clamp(.75rem,2.15vw,2rem) 0}
-.masthead{position:relative;display:flex;justify-content:space-between;align-items:center;gap:clamp(.7rem,2.2vw,2.2rem);padding:.72rem clamp(.82rem,2.25vw,2.15rem);min-height:5.8rem;background:linear-gradient(100deg,#fffaf3,#fff3e6 79%,#ffece5);border:1px solid #fffaf6;border-bottom:1px solid #d2a574;border-radius:1rem 1rem .3rem .3rem;box-shadow:var(--shadow);max-width:1500px;margin:auto}
-.masthead::after{position:absolute;inset:auto 1.1rem -.28rem;height:1px;background:linear-gradient(90deg,transparent,#b97e41,transparent);content:"";pointer-events:none}
+.masthead{position:relative;display:flex;justify-content:space-between;align-items:center;gap:clamp(.7rem,2.2vw,2.2rem);padding:1rem clamp(.82rem,2.25vw,2.15rem);min-height:5.8rem;background:linear-gradient(100deg,#fffaf3,#fff3e6 79%,#ffece5);border:1px solid #fffaf6;border-bottom:1px solid #d2a574;border-radius:1rem 1rem .3rem .3rem;box-shadow:var(--shadow);max-width:1500px;margin:auto}
+.masthead{
+  --masthead-fret:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 8'%3E%3Cpath d='M0 6h4V2h8v4h8V2h8v4h4M8 8V5m16 3V5' fill='none' stroke='%23925038' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+.masthead::before,.masthead::after{
+  content:"";
+  position:absolute;
+  inset:.2rem .85rem auto;
+  height:.42rem;
+  background:var(--masthead-fret) repeat-x center / 1.7rem .42rem;
+  pointer-events:none;
+}
+.masthead::after{inset:auto .85rem .2rem;transform:scaleY(-1)}
 .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;flex-shrink:0;color:var(--deep)}
 .brand img{border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px #c69857}
 .brand span{font:700 clamp(1.3rem,2.35vw,2.04rem)/1 Georgia,"Times New Roman",serif;border-left:1px solid #d7a58b;padding-left:.75rem;white-space:nowrap}
@@ -234,20 +245,6 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 .package-comparison th:first-child{width:22%}
 .package-comparison thead th{color:var(--deep);background:var(--ivory)}
 
-/* The fretwork runs along the top and bottom of the home masthead only. */
-.masthead--home{
-  --masthead-fret:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 8'%3E%3Cpath d='M0 6h4V2h8v4h8V2h8v4h4M8 8V5m16 3V5' fill='none' stroke='%23925038' stroke-width='1.2'/%3E%3C/svg%3E");
-  padding-block:1rem;
-}
-.masthead--home::before,.masthead--home::after{
-  content:"";
-  position:absolute;
-  inset:.2rem .85rem auto;
-  height:.42rem;
-  background:var(--masthead-fret) repeat-x center / 1.7rem .42rem;
-  pointer-events:none;
-}
-.masthead--home::after{inset:auto .85rem .2rem;transform:scaleY(-1)}
 .ceremony-checklist .card ul{margin:.6rem 0 0;padding-inline-start:1.2rem}
 .ceremony-checklist .card li+li{margin-top:.35rem}
 .ceremony-checklist>.fine,.ceremony-checklist>.grid+p{margin-top:1rem}
