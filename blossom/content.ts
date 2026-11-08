@@ -27,25 +27,25 @@ export const setQuantities = { oranges: 48, sweetsKg: 4, sweetPacks: 2 };
 const { oranges, sweetsKg, sweetPacks } = setQuantities;
 const sharedSetItems = [
   text(`ส้มเช้งติดซังฮี้ ${oranges} ลูก`, `${oranges} oranges with Double Happiness stickers`, `${oranges} 个贴双喜字的橙子`),
-  text(`ขนมจันอับ ${sweetsKg} กิโลกรัม แบ่ง ${sweetPacks} ห่อ`, `${sweetsKg} kg of traditional sweets in ${sweetPacks} packs`, `泰式华人传统什锦糖果（ขนมจันอับ）${sweetsKg} 公斤，分装 ${sweetPacks} 包`),
+  text(`ขนมจันอับ ${sweetsKg} กิโลกรัม แบ่ง ${sweetPacks} ห่อ`, `${sweetsKg} kg of traditional sweets in ${sweetPacks} packs`, `泰国华人传统什锦喜糖（ขนมจันอับ）${sweetsKg} 公斤，分装 ${sweetPacks} 包`),
 ] as const;
 export const compareSetsAnswer = text(
   `ทั้งสองชุดมีส้มเช้งติดซังฮี้ ${oranges} ลูกและขนมจันอับ ${sweetsKg} กิโลกรัมเหมือนกัน ชุดฝ่ายเจ้าสาวเพิ่มกล้วยหอมและของใช้ในพิธี`,
   `Both sets include ${oranges} Double Happiness oranges and ${sweetsKg} kg of traditional sweets. The bride’s set adds bananas and ceremony items.`,
-  `两套都有 ${oranges} 个贴双喜字的橙子和 ${sweetsKg} 公斤泰式华人传统什锦糖果。女方套装另外配有香蕉和仪式用品。`,
+  `两套都有 ${oranges} 个贴双喜字的橙子和 ${sweetsKg} 公斤泰国华人传统什锦喜糖。女方套装另外配有香蕉和仪式用品。`,
 );
 
 export const offers = [
   {
     id: 'groom', price: 5900, image: 'engagement',
     name: text('ชุดฝ่ายเจ้าบ่าว', 'Groom’s family set', '男方订婚礼品套装'),
-    summary: text('ของหมั้นสำหรับฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ทุกลูกและขนมจันอับ', 'Double Happiness oranges and traditional sweets for the groom’s family.', '男方礼品包括贴双喜字的橙子和泰式华人传统什锦糖果。'),
+    summary: text('ของหมั้นสำหรับฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ทุกลูกและขนมจันอับ', 'Double Happiness oranges and traditional sweets for the groom’s family.', '男方礼品包括贴双喜字的橙子和泰国华人传统什锦喜糖。'),
     items: sharedSetItems,
   },
   {
     id: 'bride', price: 11900, image: 'wedding',
     name: text('ชุดฝ่ายเจ้าสาว', 'Bride’s family set', '女方订婚礼品套装'),
-    summary: text('ของหมั้นสำหรับฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วยหอม และของใช้ในพิธี', 'Fruit, sweets and ceremony accessories for the bride’s family.', '女方礼品包括贴双喜字的橙子、泰式华人传统什锦糖果、香蕉和仪式用品。'),
+    summary: text('ของหมั้นสำหรับฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วยหอม และของใช้ในพิธี', 'Fruit, sweets and ceremony accessories for the bride’s family.', '女方礼品包括贴双喜字的橙子、泰国华人传统什锦喜糖、香蕉和仪式用品。'),
     items: [
       ...sharedSetItems,
       text('กล้วยหอม 1 เครือ', 'One bunch of bananas', '一串香蕉'),
@@ -63,7 +63,7 @@ export const regularPairPrice = offers.reduce((sum, offer) => sum + offer.price,
 export const collections = [
   { id:'engagement', image:'engagement', name:text('ของหมั้นจีน','Engagement essentials','订婚礼品'), intro:text('ตะกร้าของหมั้น เทียนคู่ และของมงคลสำหรับวันที่ทั้งสองบ้านนัดส่งมอบของหมั้น','Betrothal gifts and objects for the exchange between families.','聘礼篮、龙凤喜烛和吉祥饰品，按两家习俗准备过大礼。'), groups:['guodali'] },
   { id:'tea', image:'tea', name:text('ของใช้พิธียกน้ำชา','Tea ceremony','敬茶用品'), intro:text('เลือกชุดกาน้ำชา ถ้วยชา และเบาะรองคุกเข่าสำหรับยกน้ำชาให้ผู้ใหญ่','Objects for setting the table and serving tea during the ceremony.','挑选茶壶、茶杯和跪垫，准备婚礼上向长辈敬茶。'), groups:['tea'] },
-  { id:'wedding', image:'wedding', name:text('ของใช้พิธีแต่งงาน','Wedding ceremony','婚礼用品'), intro:text('ดูชุดเจ้าบ่าวเจ้าสาว เครื่องประดับ ของแต่งงาน และชุดเครื่องนอนสำหรับพิธีปูเตียง','Explore attire, textiles, decoration and family ceremony accessories.','挑选新郎新娘礼服、婚礼配饰、布置用品和安床用床品。'), groups:['bride','groom','acc','bed','decor','service'] },
+  { id:'wedding', image:'wedding', name:text('ของใช้พิธีแต่งงาน','Wedding ceremony','婚礼用品'), intro:text('ดูชุดเจ้าบ่าวเจ้าสาว เครื่องประดับ ของตกแต่งงาน และชุดเครื่องนอนสำหรับพิธีปูเตียง','Explore attire, textiles, decoration and family ceremony accessories.','挑选新郎新娘礼服、婚礼配饰、布置用品和安床用床品。'), groups:['bride','groom','acc','bed','decor','service'] },
 ] as const;
 
 export const ceremonyReference = 'https://www.roots.gov.sg/ich-landing/ich/chinese-weddings';
@@ -122,7 +122,7 @@ export const ceremonyChecklist = [
     items:[
       text('ชุดเจ้าบ่าว เจ้าสาว และเครื่องประดับ','Wedding attire and accessories for both partners','新郎新娘礼服及配饰'),
       text('รถรับเจ้าสาวและเวลานัดหมายของทั้งสองบ้าน','Wedding transport and a schedule agreed by both families','婚车和两家商定的时间表'),
-      text('ซองประตู ร่มแดง หรือพัดแดง หากจัดตามธรรมเนียม','Door-game envelopes, a red umbrella or red fan, if customary','按习俗准备开门红包、红伞或红扇'),
+      text('ซองอั่งเปาสำหรับกั้นประตู ร่มแดง หรือพัดแดง หากจัดตามธรรมเนียม','Door-game envelopes, a red umbrella or red fan, if customary','按习俗准备开门红包、红伞或红扇'),
     ],
   },
   {
@@ -164,14 +164,14 @@ export const ceremonyChecklist = [
 ] as const;
 
 export const ceremonyGuideTitle = text(
-  'เช็กลิสต์งานแต่งจีน 10 หัวข้อ ตั้งแต่หมั้นถึงเยี่ยมบ้านหลังแต่ง',
+  'เช็กลิสต์เตรียมงานแต่งจีน 10 เรื่อง ตั้งแต่วันหมั้นถึงวันกลับไปเยี่ยมบ้านเจ้าสาว',
   'Chinese wedding checklist: 10 topics from betrothal to the return visit',
-  '中式婚礼准备清单：从过大礼到回门的十个主题',
+  '中式婚礼筹备清单：从订婚送礼到婚后回门',
 );
 export const ceremonyGuideDescription = text(
   'เช็กของแต่งงานจีน 10 หัวข้อ เช่น ของหมั้น ของติดตัวเจ้าสาว เครื่องนอนพิธีปูเตียง ชุดหวีผม ชุดยกน้ำชา และของฝากเยี่ยมบ้านหลังแต่ง',
   'See 10 Chinese wedding checklists covering betrothal gifts, the trousseau, bridal bedding, hair combing, tea service, the banquet and the return visit.',
-  '分十个主题查看中式婚礼准备清单，包括过大礼聘礼、嫁妆、安床床品、上头、敬茶茶具、婚宴及回门礼。',
+  '按十个项目整理婚礼所需物品，包括过大礼聘礼、嫁妆、安床床品、上头、敬茶茶具、婚宴及回门礼。',
 );
 
 export const articles = [

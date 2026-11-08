@@ -61,10 +61,10 @@ const pageDescriptions: Record<string, MultilingualString> = {
   '/packages/groom': text(
     `ชุดของหมั้นจีนฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ ${setQuantities.oranges} ลูก และขนมจันอับ ${setQuantities.sweetsKg} กิโลกรัม ดูราคาตามโพสต์และสอบถามการจัดส่งกับตั้งจิ้นฮั้ว`,
     `See the groom’s set from Tang Chin Hua with ${setQuantities.oranges} Double Happiness oranges and ${setQuantities.sweetsKg} kg of traditional sweets. Check the published price and ask about delivery.`,
-    `查看 Tang Chin Hua 男方订婚礼品套装，内含 ${setQuantities.oranges} 个贴双喜字的橙子和 ${setQuantities.sweetsKg} 公斤泰式华人传统什锦糖果。查看店家公布的价格，或联系店家了解配送安排。`),
+    `查看 Tang Chin Hua 男方订婚礼品套装，内含 ${setQuantities.oranges} 个贴双喜字的橙子和 ${setQuantities.sweetsKg} 公斤泰国华人传统什锦喜糖。查看店家公布的价格，或联系店家了解配送安排。`),
   '/packages/bride': text('ชุดของหมั้นจีนฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วย และของใช้ในพิธี ดูรายการครบชุดและสอบถามราคากับตั้งจิ้นฮั้ว',
     'See the bride’s set from Tang Chin Hua with Double Happiness oranges, traditional sweets, bananas and ceremony accessories. Check the full list and enquire.',
-    '查看 Tang Chin Hua 女方订婚礼品套装，内有贴双喜字的橙子、泰式华人传统什锦糖果、香蕉和仪式用品。查看完整清单并向店家询价。'),
+    '查看 Tang Chin Hua 女方订婚礼品套装，内有贴双喜字的橙子、泰国华人传统什锦喜糖、香蕉和仪式用品。查看完整清单并向店家询价。'),
   '/shop': text('เลือกของหมั้นจีน อุปกรณ์ยกน้ำชา และของใช้แต่งงานตามพิธีของคุณ', 'Find Chinese engagement gifts, tea ceremony objects and wedding accessories by ceremony.', '按仪式查找订婚礼品、敬茶用品和婚礼配件。'),
   '/blog': text('อ่านเช็กลิสต์และเคล็ดลับสั้น ๆ สำหรับเตรียมของหมั้นและพิธีแต่งงานจีน', 'Short guides and checklists for Chinese engagement gifts and wedding ceremonies.', '阅读中式订婚礼品与婚礼仪式的简短指南和清单。'),
   '/contact': text('แจ้งชุดที่สนใจ วันงาน และจังหวัดที่ให้จัดส่ง แล้วทักตั้งจิ้นฮั้วทาง Messenger เพื่อเช็กราคา ค่าส่ง และวันรับของ', 'Prepare a message for Tang Chin Hua and ask about ceremony sets, prices and delivery in Messenger.', '选好想问的套装，填写婚期和收货地区，再用 Messenger 向 Tang Chin Hua 咨询价格、运费和收货时间。'),
@@ -310,13 +310,13 @@ function OfferPage({offer}:{offer:typeof offers[number]}) {
       <div className="contents"><h2>{offer.id==='groom' ? w('ชุดฝ่ายเจ้าบ่าวมีอะไรบ้าง?','What’s in the groom’s set?','男方套装里有什么？') : w('ชุดฝ่ายเจ้าสาวมีอะไรบ้าง?','What’s in the bride’s set?','女方套装里有什么？')}</h2><p>{offer.id==='groom' ? w(
         `ตามโพสต์ของร้าน ชุดเจ้าบ่าวมีส้มเช้งติดซังฮี้ ${setQuantities.oranges} ลูกและขนมจันอับ ${setQuantities.sweetsKg} กิโลกรัม`,
         `The published groom’s set contains ${setQuantities.oranges} Double Happiness oranges and ${setQuantities.sweetsKg} kg of traditional sweets.`,
-        `原帖中的男方套装包括 ${setQuantities.oranges} 个贴双喜字的橙子和 ${setQuantities.sweetsKg} 公斤泰式华人传统什锦糖果。`,
+        `原帖中的男方套装包括 ${setQuantities.oranges} 个贴双喜字的橙子和 ${setQuantities.sweetsKg} 公斤泰国华人传统什锦喜糖。`,
       ) : w(
         'ชุดเจ้าสาวมีส้มเช้งและขนมจันอับเท่าชุดเจ้าบ่าว โดยเพิ่มกล้วยหอมและของใช้ในพิธีตามรายการด้านล่าง',
         'The bride’s set has the same quantities of oranges and sweets as the groom’s set, plus bananas and the ceremony items below.',
         '女方套装的橙子和什锦糖果与男方套装数量相同，另有香蕉和下列仪式用品。',
       )}</p><ul>{offer.items.map(item=><li key={item.th}>{item[lang]}</li>)}</ul></div>
-      <A to={'/contact?set='+offer.id} className="button"><ChatIcon/>{w('เตรียมข้อความถามร้าน','Prepare an enquiry','写好要问的内容')}</A><SourceNote/>
+      <A to={'/contact?set='+offer.id} className="button"><ChatIcon/>{w('เขียนข้อความสอบถามร้าน','Prepare an enquiry','填写咨询内容')}</A><SourceNote/>
     </div></div>
   </section>;
 }
@@ -386,7 +386,7 @@ function ProductPage({product}:{product:Product}) {
       {!isService&&<dl className="specs">{showMaterial&&<div><dt>{w('วัสดุ','Material','材质')}</dt><dd>{product.specifications.material[lang]}</dd></div>}<div><dt>{w('สี','Colour','颜色')}</dt><dd>{product.specifications.color[lang]}</dd></div></dl>}
       {sizes.length>0&&<label className="field"><span>{w('ขนาดที่อยากสอบถาม','Size to ask about','想咨询的尺码')}</span><select value={size} onChange={e=>setSize(e.target.value)}><option value="">{w('ยังไม่ระบุ','Not selected','未选择')}</option>{sizes.map(s=><option key={s} value={s}>{productSize(s, lang)}</option>)}</select></label>}
       <p className="fine">{isService ? t(askService) : t(askPrice)}</p>
-      <div className="actions"><A className="button" to={'/contact?'+params.toString()}><ChatIcon/>{w('เตรียมข้อความถามร้าน','Prepare an enquiry','写好要问的内容')}</A>{!isService&&<A className="button outline" to={'/contact?'+photoParams.toString()}>{w('ขอรูปสินค้าจริง','Request a product photo','请店家发实拍图')}</A>}</div>
+      <div className="actions"><A className="button" to={'/contact?'+params.toString()}><ChatIcon/>{w('เขียนข้อความสอบถามร้าน','Prepare an enquiry','填写咨询内容')}</A>{!isService&&<A className="button outline" to={'/contact?'+photoParams.toString()}>{w('ขอรูปสินค้าจริง','Request a product photo','请店家发实拍图')}</A>}</div>
     </div></div>
   </section>;
 }
@@ -395,7 +395,7 @@ function Journal() {
   const lang=useContext(Locale);
   const [filter,setFilter]=useState('');
   const tags=[...new Set(articles.map(a=>a.category[lang]))];
-  return <><Banner tag={w('ก่อนถึงวันงาน','THE BLOSSOM JOURNAL','婚礼筹备笔记')} title={w('คู่มือและเรื่องเล่า','Wedding journal and guides','婚礼指南与故事')} description={w('บทอ่านสั้น ๆ สำหรับเลือกของ จัดโต๊ะ และคุยกับผู้ใหญ่ก่อนวันงาน','Short reads on choosing essentials, setting the table and planning with family.','帮助你挑选用品、布置桌面及与家人沟通的短篇指南。')} image="story"/>
+  return <><Banner tag={w('ก่อนถึงวันงาน','THE BLOSSOM JOURNAL','婚礼筹备笔记')} title={w('คู่มือและเรื่องเล่า','Wedding journal and guides','婚礼指南与故事')} description={w('บทความสั้น ๆ ช่วยเลือกของใช้ จัดโต๊ะพิธี และเตรียมคุยกับผู้ใหญ่ก่อนวันงาน','Short reads on choosing essentials, setting the table and planning with family.','帮助你挑选用品、布置桌面及与家人沟通的短篇指南。')} image="story"/>
     <section className="wrap section"><div className="pills" aria-label={w('หมวดบทความ','Article topics','文章主题')}>
       <button type="button" aria-pressed={!filter} onClick={()=>setFilter('')}>{w('ทั้งหมด','All articles','全部文章')}</button>
       {tags.map(tag=><button key={tag} type="button" aria-pressed={filter===tag} onClick={()=>setFilter(tag)}>{tag}</button>)}
@@ -408,7 +408,7 @@ function ArticlePage({article}:{article:typeof articles[number]}) {
   return <><Banner tag={article.category[lang]} title={article.title[lang]} description={article.intro[lang]} image={article.image}/>
     <article className="wrap section article-body"><A to="/blog" className="text-link">{w('กลับไปดูบทความทั้งหมด','All guides','全部指南')}</A>
       {article.sections.map(([head,body],i)=><section key={head.th}><span className="folio">{String(i+1).padStart(2,'0')}</span><div><h2>{head[lang]}</h2><p>{body[lang]}</p></div></section>)}
-      <A to={article.related} className="button">{w('ดูสิ่งที่เกี่ยวข้อง','Explore related items','查看相关内容')}</A>
+      <A to={article.related} className="button">{w('ดูสินค้าที่เกี่ยวข้อง','Explore related items','查看相关内容')}</A>
     </article>
   </>;
 }
@@ -418,11 +418,11 @@ function Traditions() {
   const lang=useContext(Locale);
   return <><Banner tag={w('ธรรมเนียมแต่งงานจีน','THE CEREMONY PLANNER','中式婚礼习俗')} title={ceremonyGuideTitle[lang]} description={ceremonyGuideDescription[lang]} image="wedding"/>
     <CeremonyChecklist/>
-    <section className="wrap section"><div className="grid three">{collections.map((c,i)=><article className="card" key={c.id}><Frame id={c.image}/><div className="card-body"><p className="eyebrow">0{i+1} / {w('เตรียมพิธี','CEREMONY','仪式筹备')}</p><h2>{c.name[lang]}</h2><p>{c.intro[lang]}</p><A to={'/blog/'+guideLinks[i]} className="text-link">{w('อ่านคู่มือ','Read the guide','阅读指南')}</A></div></article>)}</div></section>
+    <section className="wrap section"><div className="grid three">{collections.map((c,i)=><article className="card" key={c.id}><Frame id={c.image}/><div className="card-body"><p className="eyebrow">0{i+1} / {w('เตรียมของใช้ในพิธี','CEREMONY','仪式筹备')}</p><h2>{c.name[lang]}</h2><p>{c.intro[lang]}</p><A to={'/blog/'+guideLinks[i]} className="text-link">{w('อ่านคู่มือ','Read the guide','阅读指南')}</A></div></article>)}</div></section>
   </>;
 }
 const questions = [
-  [text('เลือกเฉพาะชุดฝ่ายใดฝ่ายหนึ่งได้ไหม','Can I choose one family’s set?','可以只选一方套装吗？'),text('ได้ โพสต์ของร้านระบุชุดฝ่ายเจ้าบ่าวและชุดฝ่ายเจ้าสาวแยกกัน และมีราคาสำหรับซื้อทั้งสองชุดพร้อมกัน','Yes. The shop’s post lists both sets separately and shows a price for purchasing them together.','可以。商家原帖分别列出两方套装，也有一起购买的价格。')],
+  [text('เลือกเฉพาะชุดฝ่ายใดฝ่ายหนึ่งได้ไหม','Can I choose one family’s set?','可以只购买男方或女方的套装吗？'),text('ได้ โพสต์ของร้านระบุชุดฝ่ายเจ้าบ่าวและชุดฝ่ายเจ้าสาวแยกกัน และมีราคาสำหรับซื้อทั้งสองชุดพร้อมกัน','Yes. The shop’s post lists both sets separately and shows a price for purchasing them together.','可以。店家的原帖分别列出了男方和女方的套装，也提供两套一起购买的价格。')],
   [text('ควรแจ้งอะไรเพื่อสอบถามการจัดส่ง','What should I share when asking about delivery?','咨询配送需要提供什么？'),text('แจ้งชุดที่สนใจ วันงาน วันที่สะดวกรับ และจังหวัดปลายทาง เพื่อให้ร้านยืนยันรอบส่งและค่าใช้จ่าย','Share the set, event date, preferred receiving date and destination province so the shop can confirm timing and cost.','请告诉店家想要哪套、婚期、希望收货的日期和收货城市或地区，方便确认运费和送达时间。')],
   [text('ถ้าธรรมเนียมที่บ้านต่างจากรายการในชุดล่ะ','What if my family follows a different custom?','如果家中的习俗与套装不同怎么办？'),text('แนะนำให้เทียบรายการกับผู้ใหญ่ทั้งสองฝ่าย แล้วส่งรายการที่ต้องการให้ร้านช่วยตรวจและแจ้งทางเลือกก่อนสั่ง','Check the list with both families and send your requirements to the shop to discuss available options.','先与双方长辈核对清单，再将需求发给商家，确认可选方案后订购。')],
   [text('จะยืนยันราคาและสั่งซื้ออย่างไร','How do I confirm pricing and order?','如何确认价格及订购？'),text('ทักร้านทาง Messenger เพื่อเช็กรายการของ ราคาล่าสุด วิธีชำระเงิน และการจัดส่ง','Use the shop’s Facebook Inbox to confirm contents, current price, payment and delivery.','用 Messenger 联系店家，确认清单、现价、付款方式和送货安排。')],
@@ -430,14 +430,14 @@ const questions = [
 function Faq() {
   const w=useWords();
   const lang=useContext(Locale);
-  return <><Banner tag={w('ก่อนสั่งของ','BEFORE YOU ORDER','下单前')} title={w('คำถามก่อนสั่งชุด','Ordering questions','订购常见问题')} description={w('เลือกชุดให้ตรงกับพิธี แล้วคุยรายละเอียดกับร้านก่อนยืนยัน','Choose a set for your ceremony and confirm the details with the shop.','选择适合仪式的套装，并与商家确认细节。')} image="tea"/>
+  return <><Banner tag={w('ก่อนสั่งของ','BEFORE YOU ORDER','下单前')} title={w('คำถามก่อนสั่งชุด','Ordering questions','订购常见问题')} description={w('เลือกชุดให้ตรงกับพิธี แล้วคุยรายละเอียดกับร้านก่อนยืนยัน','Choose a set for your ceremony and confirm the details with the shop.','先按婚礼安排选择套装，再向店家确认具体内容。')} image="tea"/>
     <section className="wrap section faq">{questions.map(([q,a])=><details className="disclosure" key={q.th}><summary>{q[lang]}</summary><p>{a[lang]}</p></details>)}<ChatButton/></section>
   </>;
 }
 function About() {
   const w=useWords();
   return <><Banner tag={w('เรื่องของร้าน','THE TANG CHIN HUA STORY','我们的店')} title={w('รู้จักร้านตั้งจิ้นฮั้ว','About Tang Chin Hua','关于 Tang Chin Hua')} description={w('ตั้งจิ้นฮั้วเป็นร้านของหมั้นจีนและของใช้ในพิธีแต่งงานในกรุงเทพฯ เรารวมรายการแยกตามพิธีไว้ให้ทั้งสองบ้านเปิดดูและคุยกันได้ง่ายขึ้น','A clearer way to prepare ceremony essentials, so families have more time for the decisions that matter.','Tang Chin Hua 位于泰国曼谷，提供中式订婚礼品和婚礼用品。我们按仪式整理清单，方便双方家人一起商量。')} image="story"/>
-    <section className="wrap section story-band"><Frame id="engagement" caption/><div><p className="eyebrow">{w('ของหมั้นของสองบ้าน','A SHARED TABLE','两家人的订婚礼单')}</p><h2>{w('เริ่มจากรายการที่ทุกคนเข้าใจตรงกัน','Start with a list both families understand','从双方都明白的清单开始')}</h2><p>{w('เราแยกรายการของฝ่ายเจ้าบ่าวและเจ้าสาวให้เห็นชัด ชวนให้คุณคุยกับคนในบ้านก่อนเลือก แล้วจึงสอบถามร้านเรื่องของที่จะได้รับและเวลาจัดส่ง','We show the groom’s and bride’s lists separately so you can talk with family first, then confirm the contents and timing with the shop.','我们将男女双方的清单分开列出，方便先与家人讨论，再向商家确认礼品清单及配送时间。')}</p><A to="/packages" className="button">{w('ดูชุดของหมั้นทั้งสองฝ่าย','See both engagement sets','查看双方订婚套装')}</A></div></section>
+    <section className="wrap section story-band"><Frame id="engagement" caption/><div><p className="eyebrow">{w('ของหมั้นสำหรับทั้งสองฝ่าย','A SHARED TABLE','两家人的订婚礼单')}</p><h2>{w('เริ่มจากรายการที่ทุกคนเข้าใจตรงกัน','Start with a list both families understand','先把双方要准备的礼品列清楚')}</h2><p>{w('เราแยกรายการของฝ่ายเจ้าบ่าวและเจ้าสาวให้เห็นชัด ชวนให้คุณคุยกับคนในบ้านก่อนเลือก แล้วจึงสอบถามร้านเรื่องของที่จะได้รับและเวลาจัดส่ง','We show the groom’s and bride’s lists separately so you can talk with family first, then confirm the contents and timing with the shop.','我们将男女双方的清单分开列出，方便先与家人讨论，再向商家确认礼品清单及配送时间。')}</p><A to="/packages" className="button">{w('ดูชุดของหมั้นทั้งสองฝ่าย','See both engagement sets','查看双方订婚套装')}</A></div></section>
   </>;
 }
 function StoreLocation() {
@@ -451,7 +451,7 @@ function StoreLocation() {
           <p className="eyebrow">{w('02 / มาที่ร้าน','02 / VISIT THE SHOP','02 / 到店路线')}</p>
           <h2>{w('แผนที่ร้านตั้งจิ้นฮั้ว','Visit Tang Chin Hua','前往 Tang Chin Hua')}</h2>
           <address>{t(storeAddress)}</address>
-          <p className="fine">{w('ทักแชตสอบถามเวลาเปิดร้านก่อนเดินทาง','Message the shop to confirm opening hours before visiting.','前往前请留言确认营业时间。')}</p>
+          <p className="fine">{w('ทักแชตสอบถามเวลาเปิดร้านก่อนเดินทาง','Message the shop to confirm opening hours before visiting.','到店前，请先联系店家确认营业时间。')}</p>
         </div>
         <div className="actions">
           <a className="button" href={storeMap} target="_blank" rel="noopener noreferrer" onClick={()=>trackContactClick('maps_click')}>{w('เปิดใน Google Maps','Open in Google Maps','在 Google 地图中打开')}</a>
