@@ -165,7 +165,7 @@ function Header({path}:{path:string}) {
   const toggle=useRef<HTMLButtonElement>(null);
   useEffect(()=>setOpen(false),[path,lang]);
   return <header className="header" onKeyDown={e=>{if(e.key==='Escape'&&open){setOpen(false);toggle.current?.focus();}}}>
-    <div className="masthead">
+    <div className={path==='/' ? 'masthead masthead--home' : 'masthead'}>
       <A to="/" className="brand"><img src="/media/emblem-160.webp" width="68" height="68" alt=""/><span>{brand}</span></A>
       <button ref={toggle} className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={()=>setOpen(!open)}><span aria-hidden="true">☰</span><span className="sr">{w('เมนูหลัก','Main menu','主菜单')}</span></button>
       <nav id="site-nav" className={open?'nav is-open':'nav'} aria-label={w('เมนูหลัก','Main navigation','主导航')}>
@@ -206,26 +206,30 @@ function ArticleCard({article}:{article:typeof articles[number]}) {
   const w=useWords();
   return <A className="card article-card" to={'/blog/'+article.slug}><Frame id={article.image}/><div className="card-body"><p className="eyebrow">{t(article.category)} · {article.time} {w('นาที','min','分钟')}</p><h3>{t(article.title)}</h3><p>{t(article.intro)}</p></div></A>;
 }
-function CeremonyChecklist() {
+function CeremonyChecklist({compact=false}:{compact?:boolean}) {
   const w=useWords();
   const t=useText();
-  return <section className="wrap section" aria-labelledby="ceremony-checklist-title">
+  const groups=compact ? ceremonyChecklist.filter(c=>['betrothal','bed-setting','tea'].includes(c.id)) : ceremonyChecklist;
+  return <section className="wrap section ceremony-checklist" aria-labelledby="ceremony-checklist-title">
     <div className="section-head"><div>
       <p className="eyebrow">{w('เช็กลิสต์ก่อนวันงาน','Ceremony checklist','婚礼用品清单')}</p>
       <h2 id="ceremony-checklist-title">{w('งานแต่งจีนมีพิธีอะไรบ้าง?','What are the main Chinese wedding ceremonies?','中式婚礼通常有哪些仪式？')}</h2>
-      <p className="lead">{w('เริ่มจาก 3 ช่วงที่พบได้บ่อย แล้วเช็กกับผู้ใหญ่ทั้งสองบ้านว่าบ้านคุณจัดพิธีไหนและต้องใช้ของอะไร',
-        'Start with three common ceremonies, then check with both families which customs and items you will use.',
-        '先看三个常见环节，再和两家长辈确认要办哪些仪式、准备哪些用品。')}</p>
+      <p className="lead">{compact
+        ? w('เริ่มจากของหมั้น ปูเตียง และยกน้ำชา แล้วเปิดเช็กลิสต์ฉบับเต็มเพื่อเตรียมงานแต่ละช่วง','Start with betrothal, bed preparation and tea, then open the full planning checklist.','先看过大礼、安床和敬茶，再打开完整清单。')
+        : w('คู่มือนี้จัดเป็น 10 หัวข้อตามช่วงเตรียมงาน วันแต่ง และหลังแต่ง ประเพณีจีนมีหลายแบบ ลองเลือกเฉพาะพิธีที่ผู้ใหญ่ทั้งสองบ้านตกลงกัน','This guide groups preparation into 10 topics before, during and after the wedding. Customs vary, so confirm the steps and supplies with both families.','本清单按婚前、婚礼当天和婚后分为十个主题。各地习俗不同，请与两家长辈确认仪式和用品。')}</p>
     </div></div>
     <div className="grid three">
-      {ceremonyChecklist.map((ceremony,index)=><article className="card" id={ceremony.id} key={ceremony.id}><div className="card-body">
+      {groups.map((ceremony,index)=><article className="card" id={ceremony.id} key={ceremony.id}><div className="card-body">
         <p className="eyebrow">{String(index+1).padStart(2,'0')}</p>
         <h3>{t(ceremony.title)}</h3>
         <ul>{ceremony.items.map(item=><li key={item.th}>{t(item)}</li>)}</ul>
-        <A to={ceremony.route} className="text-link">{w('ดูของสำหรับพิธีนี้','See items for this ceremony','查看这个仪式的用品')}</A>
+        {ceremony.route!=='/traditions' && <A to={ceremony.route} className="text-link">{ceremony.id==='planning'
+          ? w('ดูวิธีเตรียมข้อมูล','See what to prepare','查看准备指南')
+          : w('ดูของสำหรับพิธีนี้','See items for this ceremony','查看这个仪式的用品')}</A>}
       </div></article>)}
     </div>
-    <p className="fine">{w('อ้างอิงภาพรวมธรรมเนียม','Reference for the ceremony overview','仪式概述参考')} <a href={ceremonyReference} target="_blank" rel="noopener noreferrer">Roots.sg</a></p>
+    {compact && <p><A to="/traditions" className="button outline">{w('เปิดเช็กลิสต์ทั้ง 10 หัวข้อ','Open all 10 checklist topics','查看完整十项清单')}</A></p>}
+    {!compact && <p className="fine">{w('อ้างอิงภาพรวมธรรมเนียม','Reference for the ceremony overview','仪式概述参考')} <a href={ceremonyReference} target="_blank" rel="noopener noreferrer">Roots.sg</a> · <a href="https://sfcca.sg/en/rituals/" target="_blank" rel="noopener noreferrer">SFCCA</a> · <a href="https://www.hkshunling.com/tools/wedding-customs" target="_blank" rel="noopener noreferrer">{w('คู่มือธรรมเนียมฮ่องกง','Hong Kong wedding customs','香港婚嫁习俗')}</a></p>}
   </section>;
 }
 function Home() {
@@ -241,7 +245,7 @@ function Home() {
     </section>
     <PackagePromotion home/>
     <section className="wrap section"><Heading tag={w('01 / ของใช้ตามพิธี','01 / COLLECTIONS','01 / 婚礼用品')} title={w('เลือกของตามพิธี','Find your ceremony essentials','按仪式挑选用品')}/><div className="grid three">{collections.map(c=><CollectionCard key={c.id} collection={c}/>)}</div></section>
-    <CeremonyChecklist/>
+    <CeremonyChecklist compact/>
     <section className="wrap section"><Heading tag={w('02 / คู่มือเตรียมงาน','02 / JOURNAL','02 / 筹备指南')} title={w('อ่านก่อนเริ่มเตรียมงาน','Read before you plan','筹备前阅读')} extra={<A to="/blog" className="text-link">{w('อ่านทั้งหมด','All guides','全部指南')}</A>}/><div className="grid two">{articles.slice(0,2).map(a=><ArticleCard key={a.slug} article={a}/>)}</div></section>
   </>;
 }
