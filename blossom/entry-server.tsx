@@ -14,9 +14,9 @@ export function render(url: string, origin: string) {
     '@type': 'Store',
     '@id': origin + '/#store',
     name: brand,
-    alternateName: 'ตั้งจิ้นฮั้ว',
+    alternateName: 'เจียหลี่',
     url: origin + '/',
-    logo: origin + '/media/emblem-160.webp',
+    logo: origin + '/media/jia-li-emblem.svg',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '482, 484 ถนนมิตรพันธ์ แขวงป้อมปราบ',
@@ -30,7 +30,7 @@ export function render(url: string, origin: string) {
   };
 
   if (path === '/') {
-    schema.push({'@type':'WebSite','@id':origin+'/#website',name:brand,alternateName:'ตั้งจิ้นฮั้ว',url:origin+'/'});
+    schema.push({'@type':'WebSite','@id':origin+'/#website',name:brand,alternateName:'เจียหลี่',url:origin+'/'});
   } else if (path !== '/404' && path !== '/cart') {
     const parents: Record<string,string> = {product:'/shop',packages:'/packages',shop:'/shop',blog:'/blog'};
     const [,section,child] = path.split('/');
@@ -57,7 +57,7 @@ export function render(url: string, origin: string) {
     schema.push({
       '@type':'Article',headline:info.label,description:info.description,image:origin+info.image,
       inLanguage:htmlLang,mainEntityOfPage:canonical,
-      publisher:{'@type':'Organization',name:brand,url:origin+'/',logo:origin+'/media/emblem-160.webp'},
+      publisher:{'@type':'Organization',name:brand,url:origin+'/',logo:origin+'/media/jia-li-emblem.svg'},
     });
   }
   return {

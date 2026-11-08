@@ -46,7 +46,7 @@ for(const path of paths) {
       '<link rel="canonical" href="'+canonical+'">',
       ...alternates,
       '<link rel="alternate" hreflang="x-default" href="'+origin+localePath('th',path)+'">',
-      '<meta property="og:site_name" content="Tang Chin Hua">',
+      '<meta property="og:site_name" content="JIA LI">',
       '<meta property="og:title" content="'+escape(info.title)+'">',
       '<meta property="og:description" content="'+escape(info.description)+'">',
       '<meta property="og:url" content="'+canonical+'">',
@@ -71,7 +71,7 @@ for(const path of paths) {
   }
 }
 const missing=render('/404',origin);
-await writeFile('dist/404.html',template.replace('<title>Tang Chin Hua</title>','<title>ไม่พบหน้านี้ | Tang Chin Hua</title>').replace('<!-- page-metadata -->','<meta name="robots" content="noindex, follow">').replace('<div id="root"></div>',()=>'<div id="root" data-not-found>'+missing.html+'</div>'));
+await writeFile('dist/404.html',template.replace('<title>JIA LI</title>','<title>ไม่พบหน้านี้ | JIA LI</title>').replace('<!-- page-metadata -->','<meta name="robots" content="noindex, follow">').replace('<div id="root"></div>',()=>'<div id="root" data-not-found>'+missing.html+'</div>'));
 await writeFile('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'+urls.join('\n')+'\n</urlset>\n');
 await writeFile('dist/robots.txt',preview?'User-agent: *\nAllow: /\n':'User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n');
 console.log('Prerendered '+paths.length*languages.length+' locale routes');

@@ -3,7 +3,7 @@ import type { Language } from '../types';
 
 export const languages: Language[] = ['th', 'en', 'zh'];
 export const text = (th: string, en: string, zh: string) => ({ th, en, zh });
-export const brand = 'Tang Chin Hua';
+export const brand = 'JIA LI';
 export const facebook = 'https://www.facebook.com/share/17uHexPnGD/?mibextid=wwXIfr';
 export const messenger = 'https://m.me/61595668643961';
 export const storeMap = 'https://maps.app.goo.gl/iAGfd9ywixHzHgcx8';

@@ -46,30 +46,30 @@ const pageNames: Record<string,MultilingualString> = {
   '/shop':text('เลือกของตามพิธี','Shop by ceremony','按仪式选购'),
   '/traditions':ceremonyGuideTitle,
   '/blog':text('คู่มือและเรื่องเล่า','Wedding journal and guides','婚礼指南与故事'),
-  '/about':text('รู้จักร้านตั้งจิ้นฮั้ว','About Tang Chin Hua','关于 Tang Chin Hua'),
+  '/about':text('รู้จักร้านเจียหลี่','About JIA LI','关于 嘉礼'),
   '/faq':text('คำถามก่อนสั่งชุด','Ordering questions','订购常见问题'),
   '/contact':text('สอบถามสินค้า','Enquire about a set','联系店家咨询'),
   '/cart':text('รายการที่บันทึกไว้','Saved items','已保存商品'),
 };
 const pageDescriptions: Record<string, MultilingualString> = {
-  '/': text('ชุดของหมั้นจีน ตั้งจิ้นฮั้ว กรุงเทพฯ เปรียบเทียบชุดฝ่ายเจ้าบ่าวและเจ้าสาว ดูรายการของในแต่ละชุด แล้วสอบถามราคาและการจัดส่งผ่าน Messenger',
-    'Compare groom’s and bride’s Chinese engagement sets at Tang Chin Hua, Bangkok. See what each set includes and ask about pricing and delivery in Messenger.',
-    '在曼谷 Tang Chin Hua 选购中式订婚礼品。比较男女双方的礼品套装，了解各套包含哪些物品，再通过 Messenger 咨询价格和配送。'),
-  '/packages': text('เปรียบเทียบชุดของหมั้นจีนฝ่ายเจ้าบ่าวและเจ้าสาว ดูราคาและรายการของในแต่ละชุดจากโพสต์ของตั้งจิ้นฮั้ว แล้วสอบถามการจัดส่งผ่าน Messenger',
-    'Compare the published prices and contents of both Chinese engagement sets. Ask Tang Chin Hua about current prices and delivery in Messenger.',
+  '/': text('ชุดของหมั้นจีน เจียหลี่ กรุงเทพฯ เปรียบเทียบชุดฝ่ายเจ้าบ่าวและเจ้าสาว ดูรายการของในแต่ละชุด แล้วสอบถามราคาและการจัดส่งผ่าน Messenger',
+    'Compare groom’s and bride’s Chinese engagement sets at JIA LI, Bangkok. See what each set includes and ask about pricing and delivery in Messenger.',
+    '在曼谷 嘉礼 选购中式订婚礼品。比较男女双方的礼品套装，了解各套包含哪些物品，再通过 Messenger 咨询价格和配送。'),
+  '/packages': text('เปรียบเทียบชุดของหมั้นจีนฝ่ายเจ้าบ่าวและเจ้าสาว ดูราคาและรายการของในแต่ละชุดจากโพสต์ของเจียหลี่ แล้วสอบถามการจัดส่งผ่าน Messenger',
+    'Compare the published prices and contents of both Chinese engagement sets. Ask JIA LI about current prices and delivery in Messenger.',
     '比较男女双方中式订婚礼品套装的礼品清单和 Facebook 帖文标价，并通过 Messenger 咨询现价和配送。'),
   '/packages/groom': text(
-    `ชุดของหมั้นจีนฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ ${setQuantities.oranges} ลูก และขนมจันอับ ${setQuantities.sweetsKg} กิโลกรัม ดูราคาตามโพสต์และสอบถามการจัดส่งกับตั้งจิ้นฮั้ว`,
-    `See the groom’s set from Tang Chin Hua with ${setQuantities.oranges} Double Happiness oranges and ${setQuantities.sweetsKg} kg of traditional sweets. Check the published price and ask about delivery.`,
-    `查看 Tang Chin Hua 男方订婚礼品套装，内含 ${setQuantities.oranges} 个贴双喜字的橙子和 ${setQuantities.sweetsKg} 公斤泰国华人传统什锦喜糖。查看店家公布的价格，或联系店家了解配送安排。`),
-  '/packages/bride': text('ชุดของหมั้นจีนฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วย และของใช้ในพิธี ดูรายการครบชุดและสอบถามราคากับตั้งจิ้นฮั้ว',
-    'See the bride’s set from Tang Chin Hua with Double Happiness oranges, traditional sweets, bananas and ceremony accessories. Check the full list and enquire.',
-    '查看 Tang Chin Hua 女方订婚礼品套装，内有贴双喜字的橙子、泰国华人传统什锦喜糖、香蕉和仪式用品。查看完整清单并向店家询价。'),
+    `ชุดของหมั้นจีนฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ ${setQuantities.oranges} ลูก และขนมจันอับ ${setQuantities.sweetsKg} กิโลกรัม ดูราคาตามโพสต์และสอบถามการจัดส่งกับเจียหลี่`,
+    `See the groom’s set from JIA LI with ${setQuantities.oranges} Double Happiness oranges and ${setQuantities.sweetsKg} kg of traditional sweets. Check the published price and ask about delivery.`,
+    `查看 嘉礼 男方订婚礼品套装，内含 ${setQuantities.oranges} 个贴双喜字的橙子和 ${setQuantities.sweetsKg} 公斤泰国华人传统什锦喜糖。查看店家公布的价格，或联系店家了解配送安排。`),
+  '/packages/bride': text('ชุดของหมั้นจีนฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วย และของใช้ในพิธี ดูรายการครบชุดและสอบถามราคากับเจียหลี่',
+    'See the bride’s set from JIA LI with Double Happiness oranges, traditional sweets, bananas and ceremony accessories. Check the full list and enquire.',
+    '查看 嘉礼 女方订婚礼品套装，内有贴双喜字的橙子、泰国华人传统什锦喜糖、香蕉和仪式用品。查看完整清单并向店家询价。'),
   '/shop': text('เลือกของหมั้นจีน อุปกรณ์ยกน้ำชา และของใช้แต่งงานตามพิธีของคุณ', 'Find Chinese engagement gifts, tea ceremony objects and wedding accessories by ceremony.', '按仪式查找订婚礼品、敬茶用品和婚礼配件。'),
   '/blog': text('อ่านเช็กลิสต์และเคล็ดลับสั้น ๆ สำหรับเตรียมของหมั้นและพิธีแต่งงานจีน', 'Short guides and checklists for Chinese engagement gifts and wedding ceremonies.', '阅读中式订婚礼品与婚礼仪式的简短指南和清单。'),
-  '/contact': text('แจ้งชุดที่สนใจ วันงาน และจังหวัดที่ให้จัดส่ง แล้วทักตั้งจิ้นฮั้วทาง Messenger เพื่อเช็กราคา ค่าส่ง และวันรับของ', 'Prepare a message for Tang Chin Hua and ask about ceremony sets, prices and delivery in Messenger.', '选好想问的套装，填写婚期和收货地区，再用 Messenger 向 Tang Chin Hua 咨询价格、运费和收货时间。'),
+  '/contact': text('แจ้งชุดที่สนใจ วันงาน และจังหวัดที่ให้จัดส่ง แล้วทักเจียหลี่ทาง Messenger เพื่อเช็กราคา ค่าส่ง และวันรับของ', 'Prepare a message for JIA LI and ask about ceremony sets, prices and delivery in Messenger.', '选好想问的套装，填写婚期和收货地区，再用 Messenger 向 嘉礼 咨询价格、运费和收货时间。'),
   '/traditions': ceremonyGuideDescription,
-  '/about': text('รู้จักร้านตั้งจิ้นฮั้วในกรุงเทพฯ และดูวิธีเลือกของหมั้นจีนให้ตรงกับธรรมเนียมของทั้งสองบ้าน', 'Meet Tang Chin Hua and learn how to choose engagement essentials for both families.', '了解曼谷的 Tang Chin Hua，以及双方家庭如何按各自习俗挑选中式订婚礼品。'),
+  '/about': text('รู้จักร้านเจียหลี่ในกรุงเทพฯ และดูวิธีเลือกของหมั้นจีนให้ตรงกับธรรมเนียมของทั้งสองบ้าน', 'Meet JIA LI and learn how to choose engagement essentials for both families.', '了解曼谷的 嘉礼，以及双方家庭如何按各自习俗挑选中式订婚礼品。'),
   '/faq': text('คำตอบเรื่องเลือกชุด สอบถามราคา และเตรียมข้อมูลสำหรับจัดส่ง', 'Answers about selecting a set, confirming prices and arranging delivery.', '了解选购套装、确认价格及安排配送的常见问题。'),
 };
 export function pageInfo(path: string, lang: Language) {
@@ -81,7 +81,7 @@ export function pageInfo(path: string, lang: Language) {
   const story = path.startsWith('/blog/') ? articles.find(x=>x.slug===id) : undefined;
   const itemCopy = entry && 'description' in entry ? productCopy(entry, lang) : undefined;
   const label = itemCopy?.title ?? (pageNames[path] ?? entry?.name ?? story?.title ?? text('ไม่พบหน้านี้','Page not found','找不到这个页面'))[lang];
-  const general = text('เลือกชุดของหมั้นจีนและอุปกรณ์ตามพิธี อ่านรายการในชุด แล้วสอบถามรายละเอียดและการจัดส่งกับ Tang Chin Hua', 'Browse Chinese ceremony sets, see what is included, and ask Tang Chin Hua about availability and delivery.', '查看中式订婚礼品和婚礼用品，并向 Tang Chin Hua 咨询库存和配送。');
+  const general = text('เลือกชุดของหมั้นจีนและอุปกรณ์ตามพิธี อ่านรายการในชุด แล้วสอบถามรายละเอียดและการจัดส่งกับ JIA LI', 'Browse Chinese ceremony sets, see what is included, and ask JIA LI about availability and delivery.', '查看中式订婚礼品和婚礼用品，并向 嘉礼 咨询库存和配送。');
   const description = itemCopy?.description ?? (pageDescriptions[path] ?? (entry && 'intro' in entry ? entry.intro : story?.intro ?? general))[lang];
   const image = path === '/traditions' ? '/media/wedding-960.webp' : path === '/packages' || path.startsWith('/packages/') ? promotionOriginal
     : path.startsWith('/product/') ? productIllustration(id)?.detail
@@ -166,7 +166,7 @@ function Header({path}:{path:string}) {
   useEffect(()=>setOpen(false),[path,lang]);
   return <header className="header" onKeyDown={e=>{if(e.key==='Escape'&&open){setOpen(false);toggle.current?.focus();}}}>
     <div className="masthead">
-      <A to="/" className="brand"><img src="/media/emblem-160.webp" width="68" height="68" alt=""/><span>{brand}</span></A>
+      <A to="/" className="brand"><img src="/media/jia-li-emblem.svg" width="68" height="68" alt=""/><span>{w('เจียหลี่','JIA LI','嘉礼')}</span></A>
       <button ref={toggle} className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={()=>setOpen(!open)}><span aria-hidden="true">☰</span><span className="sr">{w('เมนูหลัก','Main menu','主菜单')}</span></button>
       <nav id="site-nav" className={open?'nav is-open':'nav'} aria-label={w('เมนูหลัก','Main navigation','主导航')}>
         {nav.map(([to,label])=><A key={to} to={to} current={to==='/'?path==='/':path===to||path.startsWith(to+'/')} onClick={()=>setOpen(false)}>{label[lang]}</A>)}
@@ -179,7 +179,7 @@ function Header({path}:{path:string}) {
 function Footer() {
   const w=useWords();
   return <footer className="footer"><div className="wrap footer-inner">
-    <div><A to="/" className="brand"><img src="/media/emblem-160.webp" width="54" height="54" alt=""/><span>{brand}</span></A><p>{w('ชุดของหมั้นและของใช้ในพิธีแต่งงานจีน','Chinese engagement and wedding ceremony essentials','中式订婚礼品和婚礼用品')}</p></div>
+    <div><A to="/" className="brand"><img src="/media/jia-li-emblem.svg" width="54" height="54" alt=""/><span>{w('เจียหลี่','JIA LI','嘉礼')}</span></A><p>{w('ชุดของหมั้นและของใช้ในพิธีแต่งงานจีน','Chinese engagement and wedding ceremony essentials','中式订婚礼品和婚礼用品')}</p></div>
     <div><A to="/about">{w('เรื่องราวของร้าน','Our story','关于我们')}</A><A to="/traditions">{w('ลำดับการเตรียมงาน','Ceremony planner','仪式筹备')}</A><A to="/faq">{w('คำถามที่พบบ่อย','Frequently asked questions','常见问题')}</A></div>
     <div><A to="/contact">{w('สอบถามและสั่งชุด','Enquiries and ordering','咨询与订购')}</A><a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a><A to="/cart">{w('รายการที่บันทึกไว้','Saved items','已保存商品')}</A></div>
   </div></footer>;
@@ -436,7 +436,7 @@ function Faq() {
 }
 function About() {
   const w=useWords();
-  return <><Banner tag={w('เรื่องของร้าน','THE TANG CHIN HUA STORY','我们的店')} title={w('รู้จักร้านตั้งจิ้นฮั้ว','About Tang Chin Hua','关于 Tang Chin Hua')} description={w('ตั้งจิ้นฮั้วเป็นร้านของหมั้นจีนและของใช้ในพิธีแต่งงานในกรุงเทพฯ เรารวมรายการแยกตามพิธีไว้ให้ทั้งสองบ้านเปิดดูและคุยกันได้ง่ายขึ้น','A clearer way to prepare ceremony essentials, so families have more time for the decisions that matter.','Tang Chin Hua 位于泰国曼谷，提供中式订婚礼品和婚礼用品。我们按仪式整理清单，方便双方家人一起商量。')} image="story"/>
+  return <><Banner tag={w('เรื่องของร้าน','THE JIA LI STORY','我们的店')} title={w('รู้จักร้านเจียหลี่','About JIA LI','关于 嘉礼')} description={w('เจียหลี่เป็นร้านของหมั้นจีนและของใช้ในพิธีแต่งงานในกรุงเทพฯ เรารวมรายการแยกตามพิธีไว้ให้ทั้งสองบ้านเปิดดูและคุยกันได้ง่ายขึ้น','A clearer way to prepare ceremony essentials, so families have more time for the decisions that matter.','嘉礼 位于泰国曼谷，提供中式订婚礼品和婚礼用品。我们按仪式整理清单，方便双方家人一起商量。')} image="story"/>
     <section className="wrap section story-band"><Frame id="engagement" caption/><div><p className="eyebrow">{w('ของหมั้นสำหรับทั้งสองฝ่าย','A SHARED TABLE','两家人的订婚礼单')}</p><h2>{w('เริ่มจากรายการที่ทุกคนเข้าใจตรงกัน','Start with a list both families understand','先把双方要准备的礼品列清楚')}</h2><p>{w('เราแยกรายการของฝ่ายเจ้าบ่าวและเจ้าสาวให้เห็นชัด ชวนให้คุณคุยกับคนในบ้านก่อนเลือก แล้วจึงสอบถามร้านเรื่องของที่จะได้รับและเวลาจัดส่ง','We show the groom’s and bride’s lists separately so you can talk with family first, then confirm the contents and timing with the shop.','我们将男女双方的清单分开列出，方便先与家人讨论，再向商家确认礼品清单及配送时间。')}</p><A to="/packages" className="button">{w('ดูชุดของหมั้นทั้งสองฝ่าย','See both engagement sets','查看双方订婚套装')}</A></div></section>
   </>;
 }
@@ -449,7 +449,7 @@ function StoreLocation() {
       <div className="store-location-row">
         <div>
           <p className="eyebrow">{w('02 / มาที่ร้าน','02 / VISIT THE SHOP','02 / 到店路线')}</p>
-          <h2>{w('แผนที่ร้านตั้งจิ้นฮั้ว','Visit Tang Chin Hua','前往 Tang Chin Hua')}</h2>
+          <h2>{w('แผนที่ร้านเจียหลี่','Visit JIA LI','前往 嘉礼')}</h2>
           <address>{t(storeAddress)}</address>
           <p className="fine">{w('ทักแชตสอบถามเวลาเปิดร้านก่อนเดินทาง','Message the shop to confirm opening hours before visiting.','到店前，请先联系店家确认营业时间。')}</p>
         </div>
@@ -460,7 +460,7 @@ function StoreLocation() {
           </button>
         </div>
       </div>
-      <div id="store-map" hidden={!showMap}>{showMap&&<iframe src={storeMapEmbed} title={w('แผนที่ร้านตั้งจิ้นฮั้ว','Tang Chin Hua shop map','Tang Chin Hua 商家地图')} width="900" height="320" loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"/>}</div>
+      <div id="store-map" hidden={!showMap}>{showMap&&<iframe src={storeMapEmbed} title={w('แผนที่ร้านเจียหลี่','JIA LI shop map','嘉礼 商家地图')} width="900" height="320" loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"/>}</div>
     </div>
   </section>;
 }
@@ -490,7 +490,7 @@ function Contact() {
   const selectedDate = new Date(date+'T00:00:00Z');
   const eventDate = Number.isNaN(selectedDate.getTime()) ? '' : new Intl.DateTimeFormat(lang==='th'?'th-TH':lang==='zh'?'zh-CN':'en-GB',{dateStyle:'long',timeZone:'UTC'}).format(selectedDate);
   const summary=[
-    w('สวัสดีค่ะ/ครับ อยากสอบถามร้านตั้งจิ้นฮั้ว','Hello Tang Chin Hua, I’d like to enquire.','您好，我想咨询一下。'),
+    w('สวัสดีค่ะ/ครับ อยากสอบถามร้านเจียหลี่','Hello JIA LI, I’d like to enquire.','您好，我想咨询一下。'),
     chosen, item ? itemTitle+(itemSize?' ('+productSize(itemSize,lang)+')':'') : '',
     item && params.get('photo')==='1' ? w('ขอดูรูปสินค้าจริงของชิ้นนี้ด้วยนะคะ/ครับ','Could you send a photo of this exact item?','可以发这件商品的实拍照片吗？') : '',
     eventDate ? w('วันงาน','Event date','婚期')+' '+eventDate : '',
