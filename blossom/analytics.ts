@@ -29,7 +29,7 @@ export function initAnalytics(enabled: boolean) {
   document.head.append(script);
 }
 
-export function trackContactClick(event: 'messenger_click' | 'maps_click') {
+export function trackContactClick(event: 'whatsapp_click' | 'maps_click') {
   if (!initialized) return;
   const { origin, pathname } = window.location;
   gtag('event', event, {

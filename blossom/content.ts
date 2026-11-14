@@ -4,8 +4,7 @@ import type { Language } from '../types';
 export const languages: Language[] = ['th', 'en', 'zh'];
 export const text = (th: string, en: string, zh: string) => ({ th, en, zh });
 export const brand = 'JIA LI';
-export const facebook = 'https://www.facebook.com/share/17uHexPnGD/?mibextid=wwXIfr';
-export const messenger = 'https://m.me/61595668643961';
+export const whatsapp = 'https://wa.me/66818519922';
 export const storePhone = '+66631959922';
 export const storePhoneDisplay = '+66 63 195 9922';
 export const storeMap = 'https://maps.app.goo.gl/UoZ3mMr8RrrvnuTA6';
@@ -15,7 +14,6 @@ export const storeAddress = text(
   '919/1 Jewelry Trade Center, Unit BB038, Silom Road, Silom, Bang Rak, Bangkok 10500, Thailand',
   '泰国曼谷挽叻区是隆路 919/1 号 Jewelry Trade Center，BB038 室，邮编 10500',
 );
-export const offerSource = 'https://www.facebook.com/photo.php?fbid=122094314373522288';
 export const promotionOriginal = '/media/engagement-promotion-original.jpg';
 export function localePath(lang: Language, path: string) {
   const suffix = path.search(/[?#]/);

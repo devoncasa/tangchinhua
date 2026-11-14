@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Site, { pageInfo, parsePath } from './Site';
-import { brand, ceremonyChecklist, ceremonyGuideTitle, facebook, localePath, storeMap, storePhone } from './content';
+import { brand, ceremonyChecklist, ceremonyGuideTitle, localePath, storeMap, storePhone } from './content';
 export { languages, paths, localePath } from './content';
 
 export function render(url: string, origin: string) {
@@ -28,7 +28,6 @@ export function render(url: string, origin: string) {
     hasMap: storeMap,
     telephone: storePhone,
     geo: { '@type': 'GeoCoordinates', latitude: 13.7227283, longitude: 100.5201638 },
-    sameAs: [facebook],
   };
 
   if (path === '/') {

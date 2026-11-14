@@ -11,11 +11,11 @@ function session(host, search='', saved=null, storageFails=false) {
   return {api:context.exports,window,scripts,data,events:()=>window.dataLayer?.map(x=>Array.from(x))??[]};
 }
 for(const host of ['localhost','deploy-preview-6--tangchinhua.netlify.app','main--tangchinhua.netlify.app','tangchinhua.netlify.app.evil.example']) {
- const s=session(host);s.api.initAnalytics(true);s.api.trackContactClick('messenger_click');assert.equal(s.events().length,0);assert.equal(s.scripts.length,0);
+ const s=session(host);s.api.initAnalytics(true);s.api.trackContactClick('whatsapp_click');assert.equal(s.events().length,0);assert.equal(s.scripts.length,0);
 }
 for(const host of ['tangchinhua.netlify.app','www.chinesewedding.shop','chinesewedding.shop']) {
  const s=session(host);s.api.initAnalytics(true);s.api.initAnalytics(true);assert.equal(s.scripts.length,1);assert.equal(s.events().filter(x=>x[0]==='config').length,1);assert(!('debug_mode' in s.events()[1][2]));
- s.api.trackContactClick('messenger_click');assert.equal(s.events()[2][2].content_language,'zh-Hans');assert.equal(s.events()[2][2].page_location,'https://'+host+'/zh/contact/');
+ s.api.trackContactClick('whatsapp_click');assert.equal(s.events()[2][2].content_language,'zh-Hans');assert.equal(s.events()[2][2].page_location,'https://'+host+'/zh/contact/');
  assert(!s.events().some(x=>x[1]==='page_view'),'must not duplicate automatic pageviews');
 }
 for(const args of [['?ga_debug=1',null,false],['','1',false],['?ga_debug=1',null,true]]) {
