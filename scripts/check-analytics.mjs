@@ -14,7 +14,7 @@ for(const host of ['localhost','deploy-preview-6--tangchinhua.netlify.app','main
  const s=session(host);s.api.initAnalytics(true);s.api.trackContactClick('whatsapp_click');assert.equal(s.events().length,0);assert.equal(s.scripts.length,0);
 }
 for(const host of ['tangchinhua.netlify.app','www.chinesewedding.shop','chinesewedding.shop']) {
- const s=session(host);s.api.initAnalytics(true);s.api.initAnalytics(true);assert.equal(s.scripts.length,1);assert.equal(s.events().filter(x=>x[0]==='config').length,1);assert(!('debug_mode' in s.events()[1][2]));
+ const s=session(host);s.api.initAnalytics(true);s.api.initAnalytics(true);assert.equal(s.scripts.length,1);assert.equal(s.events().filter(x=>x[0]==='config').length,1);assert(!('debug_mode' in s.events()[1][2]));assert(!('content_language' in s.events()[1][2]), 'do not persist a stale language on automatic SPA pageviews');
  s.api.trackContactClick('whatsapp_click');assert.equal(s.events()[2][2].content_language,'zh-Hans');assert.equal(s.events()[2][2].page_location,'https://'+host+'/zh/contact/');
  assert(!s.events().some(x=>x[1]==='page_view'),'must not duplicate automatic pageviews');
 }

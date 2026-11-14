@@ -23,7 +23,6 @@ export function initAnalytics(enabled: boolean) {
   script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurement;
   gtag('js', new Date());
   gtag('config', measurement, {
-    content_language: document.documentElement.lang,
     ...(debug ? { debug_mode: true } : {}),
   });
   document.head.append(script);

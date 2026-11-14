@@ -77,3 +77,7 @@ verification meta tag for the legacy property as well.
 
 Rollback: revert this tracking change on main and rebuild via Netlify CI.
 Do not change measurement IDs or delete historical properties to recover.
+
+Automatic page views use language paths for locale analysis. Do not persist a
+content_language value in GA config: SPA language changes would retain the
+initial value. Contact events read the current document language per click.
