@@ -5,7 +5,7 @@ export function gtag(..._args: unknown[]) {
   (analytics.dataLayer ??= []).push(arguments);
 }
 
-export function trackContactClick(event: 'messenger_click' | 'maps_click') {
+export function trackContactClick(event: 'whatsapp_click' | 'maps_click') {
   if (import.meta.env.VITE_ENABLE_GA !== 'true') return;
 
   const { origin, pathname } = window.location;

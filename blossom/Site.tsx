@@ -5,7 +5,7 @@ import type { CartItem, Language, MultilingualString, Product } from '../types';
 import { productIllustration } from './product-media';
 import { productCopy, productSize } from './product-copy';
 import { trackContactClick } from './analytics';
-import { articles, brand, ceremonyChecklist, ceremonyGuideDescription, ceremonyGuideTitle, ceremonyReference, collections, compareSetsAnswer, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, promotionOriginal, regularPairPrice, setQuantities, storeAddress, storeMap, storeMapEmbed, storePhone, storePhoneDisplay, text } from './content';
+import { articles, brand, ceremonyChecklist, ceremonyGuideDescription, ceremonyGuideTitle, ceremonyReference, collections, compareSetsAnswer, languages, localePath, whatsapp, offers, pairPrice, promotionOriginal, regularPairPrice, setQuantities, storeAddress, storeMap, storeMapEmbed, storePhone, storePhoneDisplay, text } from './content';
 
 const Locale = createContext<Language>('th');
 const useText = () => {
@@ -25,7 +25,7 @@ const nav = [
   ['/contact', text('สอบถามสินค้า','Contact','咨询')],
 ] as const;
 const languageNames = {th:'ไทย',en:'EN',zh:'中文'};
-const chat = text('ทักร้านทาง Messenger','Ask in Messenger','用 Messenger 联系店家');
+const chat = text('ทักร้านทาง WhatsApp','Ask in WhatsApp','用 WhatsApp 联系店家');
 const view = text('ดูรายละเอียด','View details','查看详情');
 const askPrice = text('สอบถามราคาและเช็กว่ามีของไหม','Ask about price and availability','咨询价格和库存');
 const askService = text('สอบถามค่าบริการและคิว','Ask about fees and availability','咨询费用和档期');
@@ -52,12 +52,12 @@ const pageNames: Record<string,MultilingualString> = {
   '/cart':text('รายการที่บันทึกไว้','Saved items','已保存商品'),
 };
 const pageDescriptions: Record<string, MultilingualString> = {
-  '/': text('ชุดของหมั้นจีน เจียหลี่ กรุงเทพฯ เปรียบเทียบชุดฝ่ายเจ้าบ่าวและเจ้าสาว ดูรายการของในแต่ละชุด แล้วสอบถามราคาและการจัดส่งผ่าน Messenger',
-    'Compare groom’s and bride’s Chinese engagement sets at JIA LI, Bangkok. See what each set includes and ask about pricing and delivery in Messenger.',
-    '在曼谷 嘉礼 选购中式订婚礼品。比较男女双方的礼品套装，了解各套包含哪些物品，再通过 Messenger 咨询价格和配送。'),
-  '/packages': text('เปรียบเทียบชุดของหมั้นจีนฝ่ายเจ้าบ่าวและเจ้าสาว ดูราคาและรายการของในแต่ละชุดจากโพสต์ของเจียหลี่ แล้วสอบถามการจัดส่งผ่าน Messenger',
-    'Compare the published prices and contents of both Chinese engagement sets. Ask JIA LI about current prices and delivery in Messenger.',
-    '比较男女双方中式订婚礼品套装的礼品清单和 Facebook 帖文标价，并通过 Messenger 咨询现价和配送。'),
+  '/': text('ชุดของหมั้นจีน เจียหลี่ กรุงเทพฯ เปรียบเทียบชุดฝ่ายเจ้าบ่าวและเจ้าสาว ดูรายการของในแต่ละชุด แล้วสอบถามราคาและการจัดส่งผ่าน WhatsApp',
+    'Compare groom’s and bride’s Chinese engagement sets at JIA LI, Bangkok. See what each set includes and ask about pricing and delivery in WhatsApp.',
+    '在曼谷 嘉礼 选购中式订婚礼品。比较男女双方的礼品套装，了解各套包含哪些物品，再通过 WhatsApp 咨询价格和配送。'),
+  '/packages': text('เปรียบเทียบชุดของหมั้นจีนฝ่ายเจ้าบ่าวและเจ้าสาว ดูราคาและรายการของในแต่ละชุดจากโพสต์ของเจียหลี่ แล้วสอบถามการจัดส่งผ่าน WhatsApp',
+    'Compare the published prices and contents of both Chinese engagement sets. Ask JIA LI about current prices and delivery in WhatsApp.',
+    '比较男女双方中式订婚礼品套装的礼品清单和 套装标价，并通过 WhatsApp 咨询现价和配送。'),
   '/packages/groom': text(
     `ชุดของหมั้นจีนฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ ${setQuantities.oranges} ลูก และขนมจันอับ ${setQuantities.sweetsKg} กิโลกรัม ดูราคาตามโพสต์และสอบถามการจัดส่งกับเจียหลี่`,
     `See the groom’s set from JIA LI with ${setQuantities.oranges} Double Happiness oranges and ${setQuantities.sweetsKg} kg of traditional sweets. Check the published price and ask about delivery.`,
@@ -67,7 +67,7 @@ const pageDescriptions: Record<string, MultilingualString> = {
     '查看 嘉礼 女方订婚礼品套装，内有贴双喜字的橙子、泰国华人传统什锦喜糖、香蕉和仪式用品。查看完整清单并向店家询价。'),
   '/shop': text('เลือกของหมั้นจีน อุปกรณ์ยกน้ำชา และของใช้แต่งงานตามพิธีของคุณ', 'Find Chinese engagement gifts, tea ceremony objects and wedding accessories by ceremony.', '按仪式查找订婚礼品、敬茶用品和婚礼配件。'),
   '/blog': text('อ่านเช็กลิสต์และเคล็ดลับสั้น ๆ สำหรับเตรียมของหมั้นและพิธีแต่งงานจีน', 'Short guides and checklists for Chinese engagement gifts and wedding ceremonies.', '阅读中式订婚礼品与婚礼仪式的简短指南和清单。'),
-  '/contact': text('แจ้งชุดที่สนใจ วันงาน และจังหวัดที่ให้จัดส่ง แล้วทักเจียหลี่ทาง Messenger เพื่อเช็กราคา ค่าส่ง และวันรับของ', 'Prepare a message for JIA LI and ask about ceremony sets, prices and delivery in Messenger.', '选好想问的套装，填写婚期和收货地区，再用 Messenger 向 嘉礼 咨询价格、运费和收货时间。'),
+  '/contact': text('แจ้งชุดที่สนใจ วันงาน และจังหวัดที่ให้จัดส่ง แล้วทักเจียหลี่ทาง WhatsApp เพื่อเช็กราคา ค่าส่ง และวันรับของ', 'Prepare a message for JIA LI and ask about ceremony sets, prices and delivery in WhatsApp.', '选好想问的套装，填写婚期和收货地区，再用 WhatsApp 向 嘉礼 咨询价格、运费和收货时间。'),
   '/traditions': ceremonyGuideDescription,
   '/about': text('รู้จักร้านเจียหลี่ในกรุงเทพฯ และดูวิธีเลือกของหมั้นจีนให้ตรงกับธรรมเนียมของทั้งสองบ้าน', 'Meet JIA LI and learn how to choose engagement essentials for both families.', '了解曼谷的 嘉礼，以及双方家庭如何按各自习俗挑选中式订婚礼品。'),
   '/faq': text('คำตอบเรื่องเลือกชุด สอบถามราคา และเตรียมข้อมูลสำหรับจัดส่ง', 'Answers about selecting a set, confirming prices and arranging delivery.', '了解选购套装、确认价格及安排配送的常见问题。'),
@@ -97,9 +97,9 @@ function A({to, children, className, onClick, current}: {to:string; children:Rea
 function ChatIcon() {
   return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.7-.8L4 20l.8-4.2A8.5 8.5 0 1 1 21 11.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round"/></svg>;
 }
-function ChatButton({className='',label,onClick}:{className?:string;label?:string;onClick?:()=>void}) {
+function ChatButton({className='',label,onClick,message}:{className?:string;label?:string;onClick?:()=>void;message?:string}) {
   const t=useText();
-  return <a className={'button '+className} href={messenger} target="_blank" rel="noopener noreferrer" onClick={()=>{trackContactClick('messenger_click');onClick?.();}}><ChatIcon/>{label??t(chat)}</a>;
+  return <a className={'button '+className} href={message ? `${whatsapp}?text=${encodeURIComponent(message)}` : whatsapp} target="_blank" rel="noopener noreferrer" onClick={()=>{trackContactClick('whatsapp_click');onClick?.();}}><ChatIcon/>{label??t(chat)}</a>;
 }
 function Knot() {
   return <span className="knot" aria-hidden="true"><svg viewBox="0 0 36 36" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="2"><path d="m18 8 10 10-10 10L8 18Z M18 8c-7-10 7-10 0 0m10 10c10-7 10 7 0 0m-10 10c7 10-7 10 0 0M8 18c-10 7-10-7 0 0m10-5 5 5-5 5-5-5Z"/></svg></span>;
@@ -181,7 +181,7 @@ function Footer() {
   return <footer className="footer"><div className="wrap footer-inner">
     <div><A to="/" className="brand"><img src="/media/jia-li-emblem.svg" width="54" height="54" alt=""/><span>{w('เจียหลี่','JIA LI','嘉礼')}</span></A><p>{w('ชุดของหมั้นและของใช้ในพิธีแต่งงานจีน','Chinese engagement and wedding ceremony essentials','中式订婚礼品和婚礼用品')}</p></div>
     <div><A to="/about">{w('เรื่องราวของร้าน','Our story','关于我们')}</A><A to="/traditions">{w('ลำดับการเตรียมงาน','Ceremony planner','仪式筹备')}</A><A to="/faq">{w('คำถามที่พบบ่อย','Frequently asked questions','常见问题')}</A></div>
-    <div><A to="/contact">{w('สอบถามและสั่งชุด','Enquiries and ordering','咨询与订购')}</A><a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a><A to="/cart">{w('รายการที่บันทึกไว้','Saved items','已保存商品')}</A></div>
+    <div><A to="/contact">{w('สอบถามและสั่งชุด','Enquiries and ordering','咨询与订购')}</A><A to="/cart">{w('รายการที่บันทึกไว้','Saved items','已保存商品')}</A></div>
   </div></footer>;
 }
 function Banner({tag,title,description,image}:{tag:string;title:string;description:string;image?:string}) {
@@ -199,7 +199,7 @@ function CollectionCard({collection}:{collection:typeof collections[number]}) {
 function OfferCard({offer}:{offer:typeof offers[number]}) {
   const t=useText();
   const w=useWords();
-  return <article className="card offer-card"><div className="card-body"><p className="eyebrow">{w('ชุดจาก Facebook','Facebook offer','Facebook 套装')}</p><h3>{t(offer.name)}</h3><p>{t(offer.summary)}</p><p className="price">{money(offer.price)}</p><A className="button outline" to={'/packages/'+offer.id}>{t(view)}</A></div></article>;
+  return <article className="card offer-card"><div className="card-body"><p className="eyebrow">{w('ชุดของหมั้น','Engagement set','订婚套装')}</p><h3>{t(offer.name)}</h3><p>{t(offer.summary)}</p><p className="price">{money(offer.price)}</p><A className="button outline" to={'/packages/'+offer.id}>{t(view)}</A></div></article>;
 }
 function ArticleCard({article}:{article:typeof articles[number]}) {
   const t=useText();
@@ -255,7 +255,7 @@ function Home() {
 }
 function SourceNote() {
   const w=useWords();
-  return <p className="fine">{w('ราคานี้มาจากโพสต์ของร้าน ทักมาเช็กราคาและวันจัดส่งอีกครั้งก่อนสั่ง','Prices are from the shop’s post. Confirm the price and delivery date before ordering.','以上是店家在 Facebook 公布的价格。下单前请联系我们确认现价和送货日期。')} <a href={offerSource} target="_blank" rel="noopener noreferrer">{w('ดูโพสต์ต้นฉบับ','See the original post','查看原帖')}</a></p>;
+  return <p className="fine">{w('ราคานี้มาจากโพสต์ของร้าน ทักมาเช็กราคาและวันจัดส่งอีกครั้งก่อนสั่ง','Prices are from the shop’s post. Confirm the price and delivery date before ordering.','以上是店家公布的价格。下单前请联系我们确认现价和送货日期。')} </p>;
 }
 function PackageComparison() {
   const w=useWords();
@@ -279,9 +279,9 @@ function PackageComparison() {
     <h3>{w('ซื้อแยกชุดได้ไหม?','Can I order one set separately?','可以单独买一套吗？')}</h3>
     <p>{w('โพสต์ของร้านแสดงราคาแยกทั้งสองชุด เลือกสอบถามเฉพาะชุดที่ต้องการได้','The shop’s post lists each set separately. You can ask about just the set you need.','店家的原帖分别列出两套价格，可只咨询您需要的一套。')}</p>
     <h3>{w('ก่อนสั่งต้องแจ้งอะไรกับร้าน?','What should I tell the shop before ordering?','下单前要告诉店家什么？')}</h3>
-    <p>{w('อยากเช็กราคาหรือค่าส่ง ทักร้านทาง Messenger แล้วบอกชุดที่สนใจ วันงาน และจังหวัดที่ต้องการให้ส่ง',
-      'Ask about current prices and delivery in Messenger. Tell us which set you want, your event date and your delivery area.',
-      '想问现价或运费，可以在 Messenger 告诉我们要哪套、婚期是哪天、想送到哪里。')}</p>
+    <p>{w('อยากเช็กราคาหรือค่าส่ง ทักร้านทาง WhatsApp แล้วบอกชุดที่สนใจ วันงาน และจังหวัดที่ต้องการให้ส่ง',
+      'Ask about current prices and delivery in WhatsApp. Tell us which set you want, your event date and your delivery area.',
+      '想问现价或运费，可以在 WhatsApp 告诉我们要哪套、婚期是哪天、想送到哪里。')}</p>
     <p><A className="text-link" to="/blog/ordering-timeline">{w('อ่านวิธีเตรียมข้อมูลก่อนสอบถาม','Read what to prepare before enquiring','查看咨询前要准备的信息')}</A></p>
   </section>;
 }
@@ -425,7 +425,7 @@ const questions = [
   [text('เลือกเฉพาะชุดฝ่ายใดฝ่ายหนึ่งได้ไหม','Can I choose one family’s set?','可以只购买男方或女方的套装吗？'),text('ได้ โพสต์ของร้านระบุชุดฝ่ายเจ้าบ่าวและชุดฝ่ายเจ้าสาวแยกกัน และมีราคาสำหรับซื้อทั้งสองชุดพร้อมกัน','Yes. The shop’s post lists both sets separately and shows a price for purchasing them together.','可以。店家的原帖分别列出了男方和女方的套装，也提供两套一起购买的价格。')],
   [text('ควรแจ้งอะไรเพื่อสอบถามการจัดส่ง','What should I share when asking about delivery?','咨询配送需要提供什么？'),text('แจ้งชุดที่สนใจ วันงาน วันที่สะดวกรับ และจังหวัดปลายทาง เพื่อให้ร้านยืนยันรอบส่งและค่าใช้จ่าย','Share the set, event date, preferred receiving date and destination province so the shop can confirm timing and cost.','请告诉店家想要哪套、婚期、希望收货的日期和收货城市或地区，方便确认运费和送达时间。')],
   [text('ถ้าธรรมเนียมที่บ้านต่างจากรายการในชุดล่ะ','What if my family follows a different custom?','如果家中的习俗与套装不同怎么办？'),text('แนะนำให้เทียบรายการกับผู้ใหญ่ทั้งสองฝ่าย แล้วส่งรายการที่ต้องการให้ร้านช่วยตรวจและแจ้งทางเลือกก่อนสั่ง','Check the list with both families and send your requirements to the shop to discuss available options.','先与双方长辈核对清单，再将需求发给商家，确认可选方案后订购。')],
-  [text('จะยืนยันราคาและสั่งซื้ออย่างไร','How do I confirm pricing and order?','如何确认价格及订购？'),text('ทักร้านทาง Messenger เพื่อเช็กรายการของ ราคาล่าสุด วิธีชำระเงิน และการจัดส่ง','Use the shop’s Facebook Inbox to confirm contents, current price, payment and delivery.','用 Messenger 联系店家，确认清单、现价、付款方式和送货安排。')],
+  [text('จะยืนยันราคาและสั่งซื้ออย่างไร','How do I confirm pricing and order?','如何确认价格及订购？'),text('ทักร้านทาง WhatsApp เพื่อเช็กรายการของ ราคาล่าสุด วิธีชำระเงิน และการจัดส่ง','Use the shop’s WhatsApp to confirm contents, current price, payment and delivery.','用 WhatsApp 联系店家，确认清单、现价、付款方式和送货安排。')],
 ];
 function Faq() {
   const w=useWords();
@@ -502,7 +502,7 @@ function Contact() {
     try { await navigator.clipboard.writeText(summary); setCopyStatus('copied'); }
     catch { setCopyStatus('manual'); summaryField.current?.focus(); summaryField.current?.select(); }
   }
-  return <><Banner tag={w('คุยกับร้าน','LET’S TALK','联系店家')} title={w('สอบถามสินค้า','Enquire about a set','联系店家咨询')} description={w('เลือกชุดที่สนใจหรือระบุของที่อยากถาม แล้วคัดลอกข้อความไปส่งให้ร้านทาง Messenger','Choose a set, prepare a message and open the shop’s Inbox.','选好要问的套装或商品，把写好的消息复制到 Messenger 发给店家。')} image="tea"/>
+  return <><Banner tag={w('คุยกับร้าน','LET’S TALK','联系店家')} title={w('สอบถามสินค้า','Enquire about a set','联系店家咨询')} description={w('เลือกชุดที่สนใจหรือระบุของที่อยากถาม แล้วคัดลอกข้อความไปส่งให้ร้านทาง WhatsApp','Choose a set, prepare a message and open the shop’s WhatsApp.','选好要问的套装或商品，把写好的消息复制到 WhatsApp 发给店家。')} image="tea"/>
     <section className="wrap section detail contact"><div>
       <p className="eyebrow">{w('01 / รายละเอียดที่อยากถาม','01 / YOUR ENQUIRY','01 / 咨询内容')}</p><h2>{w('เตรียมข้อความถึงร้าน','Prepare your message','准备留言')}</h2>
       {item&&<p className="contents">{itemTitle}{itemSize?' · '+productSize(itemSize,lang):''}</p>}
@@ -510,14 +510,14 @@ function Contact() {
       <label className="field"><span>{w('วันงาน (ถ้าทราบ)','Event date (optional)','婚期（选填）')}</span><input type="date" value={date} onChange={e=>{setDate(e.target.value);setCopyStatus('idle');}}/></label>
       <label className="field"><span>{w('จังหวัดหรือเขตที่ต้องการให้ส่ง (ถ้าทราบ)','Province or delivery area (optional)','收货城市或地区（选填）')}</span><input type="text" value={area} maxLength={90} onChange={e=>{setArea(e.target.value);setCopyStatus('idle');}}/></label>
     </div><div className="contents">
-      <label className="field"><span>{w('ข้อความสำหรับคัดลอกไปวางในแชต','Message to paste into Messenger','要发到 Messenger 的消息')}</span><textarea ref={summaryField} rows={7} value={summary} readOnly/></label>
-      <div className="actions"><button type="button" className="button outline" onClick={copySummary}>{w('คัดลอกข้อความ','Copy message','复制留言')}</button><ChatButton label={w('คัดลอกแล้วเปิด Messenger','Copy and open Messenger','复制并打开 Messenger')} onClick={copySummary}/></div>
+      <label className="field"><span>{w('ข้อความสำหรับคัดลอกไปวางในแชต','Message to paste into WhatsApp','要发到 WhatsApp 的消息')}</span><textarea ref={summaryField} rows={7} value={summary} readOnly/></label>
+      <div className="actions"><button type="button" className="button outline" onClick={copySummary}>{w('คัดลอกข้อความ','Copy message','复制留言')}</button><ChatButton label={w('ส่งข้อความทาง WhatsApp','Message on WhatsApp','通过 WhatsApp 咨询')} message={summary}/></div>
       <p className="fine" role="status">{copyStatus==='copied'
-        ?w('คัดลอกข้อความแล้ว เปิด Messenger วางข้อความ แล้วกดส่งถึงร้านได้เลย','Copied. Paste the message into Messenger and press Send.','已复制。请在 Messenger 粘贴留言并发送。')
+        ?w('คัดลอกข้อความแล้ว เปิด WhatsApp วางข้อความ แล้วกดส่งถึงร้านได้เลย','Copied. Paste the message into WhatsApp and press Send.','已复制。请在 WhatsApp 粘贴留言并发送。')
         :copyStatus==='manual'
           ?w('คัดลอกให้อัตโนมัติไม่ได้ ลองเลือกข้อความในช่องแล้วกดคัดลอกเอง','Automatic copy was unavailable. Copy the message from the field manually.','没能自动复制，请选中文本框里的内容并手动复制。')
-          :w('วางข้อความใน Messenger แล้วกดส่งถึงร้าน','Paste the message into Messenger and send it to the shop.','在 Messenger 中粘贴留言并发送给商家。')}</p>
-      <a href={facebook} className="text-link" target="_blank" rel="noopener noreferrer">{w('เปิดหน้า Facebook ของร้าน','Open the shop’s Facebook page','打开商家 Facebook 页面')}</a>
+          :w('กดปุ่มเพื่อเปิด WhatsApp พร้อมข้อความ แล้วกดส่งถึงร้าน','Open WhatsApp with your prepared message, then press Send.','点击按钮打开 WhatsApp，确认留言后发送给商家。')}</p>
+
     </div></section>
     <StoreLocation/>
   </>;
