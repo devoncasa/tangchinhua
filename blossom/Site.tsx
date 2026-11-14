@@ -5,7 +5,7 @@ import type { CartItem, Language, MultilingualString, Product } from '../types';
 import { productIllustration } from './product-media';
 import { productCopy, productSize } from './product-copy';
 import { trackContactClick } from './analytics';
-import { articles, brand, ceremonyChecklist, ceremonyGuideDescription, ceremonyGuideTitle, ceremonyReference, collections, compareSetsAnswer, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, promotionOriginal, regularPairPrice, setQuantities, storeAddress, storeMap, storeMapEmbed, text } from './content';
+import { articles, brand, ceremonyChecklist, ceremonyGuideDescription, ceremonyGuideTitle, ceremonyReference, collections, compareSetsAnswer, facebook, languages, localePath, messenger, offers, offerSource, pairPrice, promotionOriginal, regularPairPrice, setQuantities, storeAddress, storeMap, storeMapEmbed, storePhone, storePhoneDisplay, text } from './content';
 
 const Locale = createContext<Language>('th');
 const useText = () => {
@@ -443,7 +443,7 @@ function About() {
 function StoreLocation() {
   const w=useWords();
   const t=useText();
-  const [showMap,setShowMap]=useState(false);
+  const [showMap,setShowMap]=useState(true);
   return <section className="wrap section">
     <div className="contents store-location">
       <div className="store-location-row">
@@ -451,6 +451,7 @@ function StoreLocation() {
           <p className="eyebrow">{w('02 / มาที่ร้าน','02 / VISIT THE SHOP','02 / 到店路线')}</p>
           <h2>{w('แผนที่ร้านเจียหลี่','Visit JIA LI','前往 嘉礼')}</h2>
           <address>{t(storeAddress)}</address>
+          <p><a href={`tel:${storePhone}`}>{w('โทร','Call','电话')}: {storePhoneDisplay}</a></p>
           <p className="fine">{w('ทักแชตสอบถามเวลาเปิดร้านก่อนเดินทาง','Message the shop to confirm opening hours before visiting.','到店前，请先联系店家确认营业时间。')}</p>
         </div>
         <div className="actions">
@@ -460,7 +461,7 @@ function StoreLocation() {
           </button>
         </div>
       </div>
-      <div id="store-map" hidden={!showMap}>{showMap&&<iframe src={storeMapEmbed} title={w('แผนที่ร้านเจียหลี่','JIA LI shop map','嘉礼 商家地图')} width="900" height="320" loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"/>}</div>
+      <div id="store-map" hidden={!showMap}>{showMap&&<iframe src={storeMapEmbed} title={w('แผนที่ร้านเจียหลี่','JIA LI shop map','嘉礼 商家地图')} width="400" height="250" loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"/>}</div>
     </div>
   </section>;
 }

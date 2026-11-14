@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Site, { pageInfo, parsePath } from './Site';
-import { brand, ceremonyChecklist, ceremonyGuideTitle, facebook, localePath, storeMap } from './content';
+import { brand, ceremonyChecklist, ceremonyGuideTitle, facebook, localePath, storeMap, storePhone } from './content';
 export { languages, paths, localePath } from './content';
 
 export function render(url: string, origin: string) {
@@ -19,13 +19,15 @@ export function render(url: string, origin: string) {
     logo: origin + '/media/jia-li-emblem.svg',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '482, 484 ถนนมิตรพันธ์ แขวงป้อมปราบ',
-      addressLocality: 'เขตป้อมปราบศัตรูพ่าย',
+      streetAddress: '919/1 อาคารจิวเวลรี่เทรดเซ็นเตอร์ ห้อง BB038 ถนนสีลม แขวงสีลม',
+      addressLocality: 'เขตบางรัก',
       addressRegion: 'กรุงเทพมหานคร',
-      postalCode: '10100',
+      postalCode: '10500',
       addressCountry: 'TH',
     },
     hasMap: storeMap,
+    telephone: storePhone,
+    geo: { '@type': 'GeoCoordinates', latitude: 13.7227283, longitude: 100.5201638 },
     sameAs: [facebook],
   };
 

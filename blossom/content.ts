@@ -6,12 +6,14 @@ export const text = (th: string, en: string, zh: string) => ({ th, en, zh });
 export const brand = 'JIA LI';
 export const facebook = 'https://www.facebook.com/share/17uHexPnGD/?mibextid=wwXIfr';
 export const messenger = 'https://m.me/61595668643961';
-export const storeMap = 'https://maps.app.goo.gl/iAGfd9ywixHzHgcx8';
-export const storeMapEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.633312662837!2d100.50973917621609!3d13.740636486650063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29921516faec5%3A0xc8edb4f67c7793dd!2z4LiV4Lix4LmJ4LiH4LiI4Li04LmJ4LiZ4Liu4Lix4LmJ4Lin!5e0!3m2!1sen!2sth!4v1760311432244!5m2!1sen!2sth';
+export const storePhone = '+66631959922';
+export const storePhoneDisplay = '+66 63 195 9922';
+export const storeMap = 'https://maps.app.goo.gl/UoZ3mMr8RrrvnuTA6';
+export const storeMapEmbed = 'https://maps.google.com/maps?cid=12690941692168187938&output=embed';
 export const storeAddress = text(
-  '482, 484 ถนนมิตรพันธ์ แขวงป้อมปราบ เขตป้อมปราบศัตรูพ่าย กรุงเทพมหานคร 10100',
-  '482, 484 Mittraphan Road, Pom Prap, Pom Prap Sattru Phai, Bangkok 10100',
-  '泰国曼谷 Pom Prap Sattru Phai 区 Mittraphan 路 482、484 号，10100',
+  '919/1 อาคารจิวเวลรี่เทรดเซ็นเตอร์ ห้อง BB038 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',
+  '919/1 Jewelry Trade Center, Unit BB038, Silom Road, Silom, Bang Rak, Bangkok 10500, Thailand',
+  '泰国曼谷挽叻区是隆路 919/1 号 Jewelry Trade Center，BB038 室，邮编 10500',
 );
 export const offerSource = 'https://www.facebook.com/photo.php?fbid=122094314373522288';
 export const promotionOriginal = '/media/engagement-promotion-original.jpg';
