@@ -51,3 +51,29 @@ Production uses `VITE_ENABLE_GA=true`. The `messenger_click` and `maps_click`
 events report the path and language. They measure a click, and a shop would
 need its own records to count sent messages, visits or orders. For rollback,
 revert the release commit on `main` and let Netlify rebuild.
+
+
+## GA4 QA and domain recovery (2026-11-14)
+
+GA4 keeps measurement ID `G-48H7DXEZ20`. Initialization runs before React
+hydration and only when `VITE_ENABLE_GA=true` on the exact production hostnames
+`tangchinhua.netlify.app`, `www.chinesewedding.shop`, or `chinesewedding.shop`.
+Preview and branch hostnames cannot send analytics even if the build flag is set.
+Use `?ga_debug=1` for a marked QA session; the flag persists in sessionStorage
+through navigation/reloads in that tab. Use `?ga_debug=0` to clear it. Ordinary
+traffic does not set debug_mode. Keep the GA4 Developer QA exclusion in Testing
+until the marked events and ordinary controls are confirmed in processed reports.
+Existing automatic page-view behavior is unchanged; no second manual page view
+is emitted. Contact clicks remain intent signals, not completed enquiries.
+
+The production domain was shown as expired on October 17 in Netlify on November
+14. Google ownership verification and the custom hostname currently fail. Keep
+the reachable Netlify canonical origin until registration/DNS are restored;
+then change `scripts/prerender.mjs` origin to `https://www.chinesewedding.shop`,
+rebuild, verify all locale canonicals/hreflang/sitemaps, and submit its sitemap.
+The Google-provided verification file `public/googleaa0c747b7e073694.html`
+is retained in deployments for that future verification. Keep the existing
+verification meta tag for the legacy property as well.
+
+Rollback: revert this tracking change on main and rebuild via Netlify CI.
+Do not change measurement IDs or delete historical properties to recover.
