@@ -155,6 +155,16 @@ function PackagePromotion({home=false}:{home?:boolean}) {
     </div>
   </section>;
 }
+function BrandLockup() {
+  const w=useWords();
+  return <A to="/" className="brand">
+    <img src="/media/jia-li-logo-136.webp" srcSet="/media/jia-li-logo-136.webp 136w, /media/jia-li-logo-272.webp 272w" sizes="68px" width="68" height="68" alt=""/>
+    <span className="brand-wordmark">
+      <span className="brand-name"><span lang="th">เจียหลี่</span><span className="brand-chinese" lang="zh-Hans">嘉礼</span></span>
+      <span className="brand-tagline">{w('ของหมั้นและของใช้ในพิธีแต่งงานจีน','Chinese engagement & wedding essentials','中式订婚礼品与婚礼用品')}</span>
+    </span>
+  </A>;
+}
 function Header({path}:{path:string}) {
   const w=useWords();
   const lang=useContext(Locale);
@@ -166,7 +176,7 @@ function Header({path}:{path:string}) {
   useEffect(()=>setOpen(false),[path,lang]);
   return <header className="header" onKeyDown={e=>{if(e.key==='Escape'&&open){setOpen(false);toggle.current?.focus();}}}>
     <div className="masthead">
-      <A to="/" className="brand"><img src="/media/jia-li-logo-136.webp" srcSet="/media/jia-li-logo-136.webp 136w, /media/jia-li-logo-272.webp 272w" sizes="68px" width="68" height="68" alt=""/><span>{w('เจียหลี่','JIA LI','嘉礼')}</span></A>
+      <BrandLockup/>
       <button ref={toggle} className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={()=>setOpen(!open)}><span aria-hidden="true">☰</span><span className="sr">{w('เมนูหลัก','Main menu','主菜单')}</span></button>
       <nav id="site-nav" className={open?'nav is-open':'nav'} aria-label={w('เมนูหลัก','Main navigation','主导航')}>
         {nav.map(([to,label])=><A key={to} to={to} current={to==='/'?path==='/':path===to||path.startsWith(to+'/')} onClick={()=>setOpen(false)}>{label[lang]}</A>)}
@@ -179,7 +189,7 @@ function Header({path}:{path:string}) {
 function Footer() {
   const w=useWords();
   return <footer className="footer"><div className="wrap footer-inner">
-    <div><A to="/" className="brand"><img src="/media/jia-li-logo-136.webp" srcSet="/media/jia-li-logo-136.webp 136w, /media/jia-li-logo-272.webp 272w" sizes="68px" width="54" height="54" alt=""/><span>{w('เจียหลี่','JIA LI','嘉礼')}</span></A><p>{w('ชุดของหมั้นและของใช้ในพิธีแต่งงานจีน','Chinese engagement and wedding ceremony essentials','中式订婚礼品和婚礼用品')}</p></div>
+    <div><BrandLockup/></div>
     <div><A to="/about">{w('เรื่องราวของร้าน','Our story','关于我们')}</A><A to="/traditions">{w('ลำดับการเตรียมงาน','Ceremony planner','仪式筹备')}</A><A to="/faq">{w('คำถามที่พบบ่อย','Frequently asked questions','常见问题')}</A></div>
     <div><A to="/contact">{w('สอบถามและสั่งชุด','Enquiries and ordering','咨询与订购')}</A><A to="/cart">{w('รายการที่บันทึกไว้','Saved items','已保存商品')}</A></div>
   </div></footer>;

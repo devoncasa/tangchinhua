@@ -35,7 +35,7 @@ main:focus{outline:none}
 .masthead::after{inset:auto .85rem .2rem;transform:scaleY(-1)}
 .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;flex-shrink:0;color:var(--deep)}
 .brand img{border-radius:50%;object-fit:contain}
-.brand span{font:700 clamp(1.3rem,2.35vw,2.04rem)/1 Georgia,"Times New Roman",serif;border-left:1px solid #d7a58b;padding-left:.75rem;white-space:nowrap}
+
 .nav{display:flex;align-items:center;gap:clamp(.43rem,1.25vw,1.3rem)}
 .nav>a:not(.button){position:relative;text-decoration:none;font-size:clamp(.79rem,1.1vw,.94rem);font-weight:690;white-space:nowrap;padding:.9rem .12rem}
 .nav>a:not(.button)::after{content:"";position:absolute;bottom:.4rem;left:12%;right:12%;height:2px;background:var(--red);transform:scaleX(0);transition:transform .18s}
@@ -169,7 +169,7 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 @media(max-width:1120px){
   .masthead{min-height:4.9rem}
   .masthead .brand img{width:55px;height:55px}
-  .brand span{font-size:1.52rem}
+
   .menu-toggle{display:grid;place-items:center;background:#fff6ed;color:var(--deep);border:1px solid #d8a397;border-radius:.6rem;min-height:2.8rem;min-width:2.8rem;font-size:1.25rem}
   .nav{display:none;position:absolute;inset:calc(100% + .3rem) 0 auto;flex-direction:column;align-items:stretch;gap:.22rem;background:#fff6ed;border:1px solid #dfbcb0;border-radius:.65rem;padding:.85rem;box-shadow:0 14px 25px #55141b30;max-height:calc(100dvh - 6rem);overflow:auto}
   .nav.is-open{display:flex}
@@ -243,10 +243,9 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 }
 @media(max-width:490px){
   .grid.two,.grid.three{grid-template-columns:1fr}
-  .brand span{font-size:1.39rem}
+
   .masthead .brand{flex-shrink:1;min-width:0;gap:clamp(.4rem,2vw,.75rem)}
   .masthead .brand img{flex:none;width:clamp(42px,12vw,55px);height:clamp(42px,12vw,55px)}
-  .masthead .brand span{padding-left:.5rem;font-size:clamp(1.1rem,5.1vw,1.39rem);white-space:normal}
   .banner h1{font-size:2rem}
   .button{min-height:2.9rem}
 }
@@ -287,3 +286,11 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #67231926}
 
 html[lang="th"] .hero-title{font-size:clamp(1.8rem,3.1vw,3.2rem);line-height:1.4;white-space:normal;text-wrap:balance}
 @media(max-width:680px){html[lang="th"] .hero-title{font-size:clamp(1.65rem,6.4vw,2.45rem);line-height:1.45}}
+
+/* Shared Thai–Chinese wordmark, with live text for crisp small-screen rendering. */
+.brand .brand-wordmark{display:flex;flex-direction:column;gap:.4rem;border-left:1px solid #d7a58b;padding-left:.75rem;min-width:0}
+.brand .brand-name{display:flex;align-items:baseline;gap:.55rem;white-space:nowrap;color:var(--deep);font:760 clamp(1.4rem,2.1vw,1.9rem)/1.35 var(--serif);letter-spacing:-.035em}
+.brand .brand-chinese{font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-size:.82em;font-weight:600;letter-spacing:.08em;color:#936325}
+.brand .brand-tagline{font:500 .61rem/1.55 var(--sans);letter-spacing:0;color:var(--muted);max-width:16rem}
+@media(min-width:1121px) and (max-width:1370px){.masthead{gap:.7rem;padding-inline:1rem}.masthead .brand{gap:.5rem}.masthead .brand img{width:54px;height:54px}.masthead .brand .brand-wordmark{padding-left:.5rem}.masthead .brand .brand-name{font-size:1.45rem}.masthead .brand .brand-tagline{font-size:.56rem}.nav{gap:.5rem}.nav>a:not(.button){font-size:.79rem}}
+@media(max-width:490px){.brand .brand-wordmark{padding-left:.45rem;gap:.2rem}.brand .brand-name{font-size:clamp(1.15rem,5.2vw,1.5rem);gap:.35rem}.brand .brand-tagline{font-size:clamp(.5rem,2.1vw,.62rem);max-width:12rem}.masthead{gap:.4rem}.masthead .brand{max-width:calc(100% - 3.2rem)}.masthead .brand img{width:42px;height:42px}}
