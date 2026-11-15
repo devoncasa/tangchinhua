@@ -1,6 +1,6 @@
 type AnalyticsWindow = Window & { dataLayer?: IArguments[] };
 const measurement = 'G-48H7DXEZ20';
-const productionHosts = new Set(['tangchinhua.netlify.app', 'www.chinesewedding.shop', 'chinesewedding.shop']);
+const productionHosts = new Set(['jiali.netlify.app', ]);
 let initialized = false;
 
 export function gtag(..._args: unknown[]) {

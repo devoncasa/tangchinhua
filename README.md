@@ -57,7 +57,7 @@ revert the release commit on `main` and let Netlify rebuild.
 
 GA4 keeps measurement ID `G-48H7DXEZ20`. Initialization runs before React
 hydration and only when `VITE_ENABLE_GA=true` on the exact production hostnames
-`tangchinhua.netlify.app`, `www.chinesewedding.shop`, or `chinesewedding.shop`.
+`jiali.netlify.app`.
 Preview and branch hostnames cannot send analytics even if the build flag is set.
 Use `?ga_debug=1` for a marked QA session; the flag persists in sessionStorage
 through navigation/reloads in that tab. Use `?ga_debug=0` to clear it. Ordinary
@@ -66,14 +66,15 @@ until the marked events and ordinary controls are confirmed in processed reports
 Existing automatic page-view behavior is unchanged; no second manual page view
 is emitted. Contact clicks remain intent signals, not completed enquiries.
 
-The production domain was shown as expired on October 17 in Netlify on November
-14. Google ownership verification and the custom hostname currently fail. Keep
-the reachable Netlify canonical origin until registration/DNS are restored;
-then change `scripts/prerender.mjs` origin to `https://www.chinesewedding.shop`,
-rebuild, verify all locale canonicals/hreflang/sitemaps, and submit its sitemap.
-The Google-provided verification file `public/googleaa0c747b7e073694.html`
-is retained in deployments for that future verification. Keep the existing
-verification meta tag for the legacy property as well.
+The permanent production origin is `https://jiali.netlify.app` (migration on
+2026-11-15). The expired chinesewedding.shop domain will not be renewed.
+Canonicals, hreflang, social URLs, structured data and sitemap are generated
+from the prerender origin. Keep GA4 measurement ID G-48H7DXEZ20 to preserve
+historical reporting. Update the existing GA4 stream URL and register the new
+URL-prefix Search Console property, then submit /sitemap.xml. Retain existing
+Google verification files/meta tags for verification; never delete historical
+properties. The old Netlify hostname does not redirect automatically after a
+rename and requires a separate redirect site if retained.
 
 Rollback: revert this tracking change on main and rebuild via Netlify CI.
 Do not change measurement IDs or delete historical properties to recover.

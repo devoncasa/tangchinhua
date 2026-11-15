@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path';
 import { render, languages, paths, localePath } from '../.ssr/entry-server.js';
 
 const template=await readFile('dist/index.html','utf8');
-const origin='https://tangchinhua.netlify.app';
+const origin='https://jiali.netlify.app';
 const preview=Boolean(process.env.CONTEXT && process.env.CONTEXT!=='production');
 const locales={th:'th',en:'en',zh:'zh-Hans'};
 const escape=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
