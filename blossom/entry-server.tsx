@@ -16,7 +16,7 @@ export function render(url: string, origin: string) {
     name: brand,
     alternateName: 'เจียหลี่',
     url: origin + '/',
-    logo: origin + '/media/jia-li-emblem.svg',
+    logo: origin + '/media/jia-li-logo-272.webp',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '919/1 อาคารจิวเวลรี่เทรดเซ็นเตอร์ ห้อง BB038 ถนนสีลม แขวงสีลม',
@@ -58,7 +58,7 @@ export function render(url: string, origin: string) {
     schema.push({
       '@type':'Article',headline:info.label,description:info.description,image:origin+info.image,
       inLanguage:htmlLang,mainEntityOfPage:canonical,
-      publisher:{'@type':'Organization',name:brand,url:origin+'/',logo:origin+'/media/jia-li-emblem.svg'},
+      publisher:{'@type':'Organization',name:brand,url:origin+'/',logo:origin+'/media/jia-li-logo-272.webp'},
     });
   }
   return {

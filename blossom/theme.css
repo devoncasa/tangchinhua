@@ -34,7 +34,7 @@ main:focus{outline:none}
 }
 .masthead::after{inset:auto .85rem .2rem;transform:scaleY(-1)}
 .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;flex-shrink:0;color:var(--deep)}
-.brand img{border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px #c69857}
+.brand img{border-radius:50%;object-fit:contain}
 .brand span{font:700 clamp(1.3rem,2.35vw,2.04rem)/1 Georgia,"Times New Roman",serif;border-left:1px solid #d7a58b;padding-left:.75rem;white-space:nowrap}
 .nav{display:flex;align-items:center;gap:clamp(.43rem,1.25vw,1.3rem)}
 .nav>a:not(.button){position:relative;text-decoration:none;font-size:clamp(.79rem,1.1vw,.94rem);font-weight:690;white-space:nowrap;padding:.9rem .12rem}
