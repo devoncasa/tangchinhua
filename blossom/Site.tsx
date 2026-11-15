@@ -59,7 +59,7 @@ const pageDescriptions: Record<string, MultilingualString> = {
     'Compare the published prices and contents of both Chinese engagement sets. Ask JIA LI about current prices and delivery in WhatsApp.',
     '比较男女双方中式订婚礼品套装的礼品清单和 套装标价，并通过 WhatsApp 咨询现价和配送。'),
   '/packages/groom': text(
-    `ชุดของหมั้นจีนฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ ${setQuantities.oranges} ลูก และขนมจันอับ ${setQuantities.sweetsKg} กิโลกรัม ดูราคาตามโพสต์และสอบถามการจัดส่งกับเจียหลี่`,
+    `ชุดของหมั้นจีนฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ ${setQuantities.oranges} ลูก และขนมจันอับ ${setQuantities.sweetsKg} กิโลกรัม ดูราคาชุดและสอบถามการจัดส่งกับเจียหลี่`,
     `See the groom’s set from JIA LI with ${setQuantities.oranges} Double Happiness oranges and ${setQuantities.sweetsKg} kg of traditional sweets. Check the published price and ask about delivery.`,
     `查看 嘉礼 男方订婚礼品套装，内含 ${setQuantities.oranges} 个贴双喜字的橙子和 ${setQuantities.sweetsKg} 公斤泰国华人传统什锦喜糖。查看店家公布的价格，或联系店家了解配送安排。`),
   '/packages/bride': text('ชุดของหมั้นจีนฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วย และของใช้ในพิธี ดูรายการครบชุดและสอบถามราคากับเจียหลี่',
@@ -124,15 +124,20 @@ function Frame({id, kind='', caption=false, eager=false}:{id:string;kind?:string
 }
 function PromotionArtwork({eager=false}:{eager?:boolean}) {
   const w=useWords();
+  const t=useText();
   return <figure className="promotion-artwork">
-    <a href={promotionOriginal} target="_blank" rel="noopener noreferrer" aria-label={w('เปิดภาพโปรโมชันขนาดเต็ม','Open the full-size promotion image','打开原尺寸优惠图')}>
-      <img src={promotionOriginal} srcSet={'/media/engagement-promotion-480.webp 480w, /media/engagement-promotion-800.webp 800w, '+promotionOriginal+' 1254w'}
-        sizes="(max-width: 680px) 90vw, 610px" width="1254" height="1254" loading={eager?'eager':'lazy'}
-        fetchPriority={eager?'high':undefined} decoding="async"
-        alt={w('ภาพโปรโมชันครบทั้ง 2 ฝ่าย ชุดเจ้าบ่าว 5,900 บาท ชุดเจ้าสาว 11,900 บาท ซื้อคู่ 17,400 บาท ประหยัด 400 บาท',
-          'Engagement promotion. Groom’s set ฿5,900, bride’s set ฿11,900, both for ฿17,400, saving ฿400.',
-          '订婚套装优惠。男方套装 5,900 泰铢，女方套装 11,900 泰铢，双套 17,400 泰铢，省 400 泰铢。')}/>
-    </a>
+    <div className="promotion-poster">
+      <p className="poster-heading">{w('เตรียมครบ เพื่อวันของสองครอบครัว','Prepared for two families','为两家人的喜事备齐礼品')}</p>
+      <p className="poster-intro">{w('เลือกชุดฝ่ายเจ้าบ่าวและเจ้าสาวให้เข้ากับธรรมเนียมของบ้านคุณ','Choose each family’s set to suit your traditions.','按双方家庭的习俗，挑选合适的订婚礼品。')}</p>
+      <A to="/packages" className="poster-photo-link">
+        <img src="/media/ceremony-pair-800.webp" srcSet="/media/ceremony-pair-480.webp 480w, /media/ceremony-pair-800.webp 800w, /media/ceremony-pair-1200.webp 1200w"
+          sizes="(max-width: 680px) 90vw, 610px" width="1200" height="800" loading={eager?'eager':'lazy'} fetchPriority={eager?'high':undefined} decoding="async"
+          alt={w('ภาพประกอบชุดของหมั้นสองฝ่าย ส้มเช้ง ขนมจันอับ และของใช้ในพิธีบนถาดไม้สีแดง','Illustration of both families’ betrothal gifts: oranges, sweets and ceremonial accessories in red trays.','双方订婚礼品示意图：红色礼盘中的橙子、喜糖与仪式用品。')}/>
+      </A>
+      <div className="poster-options">{offers.map(offer=><A key={offer.id} to={'/packages/'+offer.id}><strong>{t(offer.name)}</strong><b>{money(offer.price)}</b><span>{offer.id==='groom'?w('ส้มเช้งติดซังฮี้และขนมจันอับ','Oranges and traditional sweets','双喜橙子与传统喜糖'):w('ผลไม้มงคล ขนม และของใช้ในพิธี','Fruit, sweets and ceremony essentials','吉祥水果、喜糖与仪式用品')}</span></A>)}</div>
+      <div className="poster-total"><span>{w('ราคาแยกซื้อรวม','Combined separate price','两套单买合计')} {money(regularPairPrice)}</span><strong>{w('เลือกทั้งสองชุด','Both sets together','两套一起选')}</strong><b>{money(pairPrice)}</b><span>{w('ประหยัด','Save','节省')} {money(regularPairPrice-pairPrice)}</span></div>
+      <p className="poster-note">{w('ภาพประกอบการจัดชุด สอบถามรูปสินค้าจริงและรายการของก่อนสั่ง','Illustrative arrangement. Ask for current product photos and contents before ordering.','图片为摆放示意，下单前请确认实物照片及礼品清单。')}</p>
+    </div>
   </figure>;
 }
 
@@ -142,7 +147,7 @@ function PackagePromotion({home=false}:{home?:boolean}) {
   return <section className="promotion" aria-labelledby="promotion-title">
     <div className="promotion-copy">
       <p className="eyebrow">{w('โปรโมชันชุดของหมั้นจีน','CHINESE ENGAGEMENT OFFER','中式订婚礼品套装优惠')}</p>
-      <PromotionTitle id="promotion-title" className="promotion-title">{w('ชุดของหมั้นจีนครบทั้ง 2 ฝ่าย','Engagement sets for both families','中式订婚礼品 · 男女双方套装')}</PromotionTitle>
+      <PromotionTitle id="promotion-title" className="promotion-title">{w('ของหมั้นพร้อม สำหรับวันสำคัญของสองบ้าน','Engagement sets for both families','中式订婚礼品 · 男女双方套装')}</PromotionTitle>
     </div>
     <div className="promotion-stage"><PromotionArtwork eager={!home}/></div>
     <div className="promotion-copy">
@@ -265,7 +270,7 @@ function Home() {
 }
 function SourceNote() {
   const w=useWords();
-  return <p className="fine">{w('ราคานี้มาจากโพสต์ของร้าน ทักมาเช็กราคาและวันจัดส่งอีกครั้งก่อนสั่ง','Prices are from the shop’s post. Confirm the price and delivery date before ordering.','以上是店家公布的价格。下单前请联系我们确认现价和送货日期。')} </p>;
+  return <p className="fine">{w('สอบถามค่าส่งและวันรับของกับร้านก่อนยืนยันคำสั่งซื้อ','Confirm delivery charges and your receiving date with the shop before ordering.','下单前请联系店家确认运费及收货日期。')} </p>;
 }
 function PackageComparison() {
   const w=useWords();
@@ -278,7 +283,7 @@ function PackageComparison() {
         {offers.map(o=><th key={o.id} scope="col">{o.name[lang]}</th>)}
       </tr></thead>
       <tbody>
-        <tr><th scope="row">{w('ราคาตามโพสต์','Published price','原帖价格')}</th>
+        <tr><th scope="row">{w('ราคาชุด','Set price','套装价格')}</th>
           {offers.map(o=><td key={o.id}><strong>{money(o.price)}</strong></td>)}
         </tr>
         <tr><th scope="row">{w('ของในชุด','What’s included','礼品清单')}</th>

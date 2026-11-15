@@ -14,7 +14,7 @@ export const storeAddress = text(
   '919/1 Jewelry Trade Center, Unit BB038, Silom Road, Silom, Bang Rak, Bangkok 10500, Thailand',
   '泰国曼谷挽叻区是隆路 919/1 号 Jewelry Trade Center，BB038 室，邮编 10500',
 );
-export const promotionOriginal = '/media/engagement-promotion-original.jpg';
+export const promotionOriginal = '/media/ceremony-pair-1200.webp';
 export function localePath(lang: Language, path: string) {
   const suffix = path.search(/[?#]/);
   const pathname = suffix === -1 ? path : path.slice(0, suffix);
@@ -37,13 +37,13 @@ export const compareSetsAnswer = text(
 
 export const offers = [
   {
-    id: 'groom', price: 5900, image: 'engagement',
+    id: 'groom', price: 6785, image: 'engagement',
     name: text('ชุดฝ่ายเจ้าบ่าว', 'Groom’s family set', '男方订婚礼品套装'),
     summary: text('ของหมั้นสำหรับฝ่ายเจ้าบ่าว มีส้มเช้งติดซังฮี้ทุกลูกและขนมจันอับ', 'Double Happiness oranges and traditional sweets for the groom’s family.', '男方礼品包括贴双喜字的橙子和泰国华人传统什锦喜糖。'),
     items: sharedSetItems,
   },
   {
-    id: 'bride', price: 11900, image: 'wedding',
+    id: 'bride', price: 13685, image: 'wedding',
     name: text('ชุดฝ่ายเจ้าสาว', 'Bride’s family set', '女方订婚礼品套装'),
     summary: text('ของหมั้นสำหรับฝ่ายเจ้าสาว มีส้มเช้งติดซังฮี้ ขนมจันอับ กล้วยหอม และของใช้ในพิธี', 'Fruit, sweets and ceremony accessories for the bride’s family.', '女方礼品包括贴双喜字的橙子、泰国华人传统什锦喜糖、香蕉和仪式用品。'),
     items: [
@@ -57,7 +57,7 @@ export const offers = [
     ],
   },
 ] as const;
-export const pairPrice = 17400;
+export const pairPrice = 20010;
 export const regularPairPrice = offers.reduce((sum, offer) => sum + offer.price, 0);
 
 export const collections = [

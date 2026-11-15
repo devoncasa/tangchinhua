@@ -294,3 +294,13 @@ html[lang="th"] .hero-title{font-size:clamp(1.8rem,3.1vw,3.2rem);line-height:1.4
 .brand .brand-tagline{font:500 .61rem/1.55 var(--sans);letter-spacing:0;color:var(--muted);max-width:16rem}
 @media(min-width:1121px) and (max-width:1370px){.masthead{gap:.7rem;padding-inline:1rem}.masthead .brand{gap:.5rem}.masthead .brand img{width:54px;height:54px}.masthead .brand .brand-wordmark{padding-left:.5rem}.masthead .brand .brand-name{font-size:1.45rem}.masthead .brand .brand-tagline{font-size:.56rem}.nav{gap:.5rem}.nav>a:not(.button){font-size:.79rem}}
 @media(max-width:490px){.brand .brand-wordmark{padding-left:.45rem;gap:.2rem}.brand .brand-name{font-size:clamp(1.15rem,5.2vw,1.5rem);gap:.35rem}.brand .brand-tagline{font-size:clamp(.5rem,2.1vw,.62rem);max-width:12rem}.masthead{gap:.4rem}.masthead .brand{max-width:calc(100% - 3.2rem)}.masthead .brand img{width:42px;height:42px}}
+
+.promotion-poster{background:#fffaf5;padding:clamp(.5rem,1.4vw,1rem);border-radius:.3rem;text-align:center}
+.poster-heading{font:750 clamp(1.2rem,2.6vw,1.9rem)/1.5 var(--serif);color:var(--deep);padding:.4rem .2rem}
+.poster-intro{font-size:clamp(.65rem,1.3vw,.85rem);margin-bottom:.8rem;color:var(--muted)}
+.promotion-artwork .poster-photo-link img{aspect-ratio:3/2;object-fit:cover}
+.poster-options{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.promotion-artwork .poster-options a{display:flex;flex-direction:column;gap:.2rem;text-decoration:none;font-size:clamp(.75rem,1.6vw,.97rem)}
+.poster-options strong{color:var(--deep)}.poster-options b{font-size:1.15em;color:var(--red)}.poster-options span{font-size:.72em;color:var(--muted)}
+.poster-total{display:flex;flex-direction:column;gap:.25rem;padding:.8rem 0;color:var(--deep)}.poster-total>span{font-size:.8rem}.poster-total>strong{font-family:var(--serif);font-size:1.15rem}.poster-total>b{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.35;background:var(--red);color:var(--paper);border-radius:.7rem;margin:.15rem auto;padding:.3rem 1.4rem;min-width:75%}
+.promotion-poster .poster-note{font-size:.64rem;color:var(--muted);line-height:1.65}
